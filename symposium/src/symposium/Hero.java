@@ -1,65 +1,90 @@
 package symposium;
 
 public class Hero {
-	
-	
+
 	private String armorEquip;
 	private String weaponEquip;
 	private int str;
 	private int agl;
 	private int vit;
 	private int luk;
+	private int level;
 
-	public Hero(String armor, String weapon, int str, int agl, int vit, int luk) {
-		
-		this.armorEquip = "none";
-		this.weaponEquip = "none";
-		this.str = 1;
-		this.agl = 1;
-		this.vit = 1;		
-		this.luk = 1;
+	public Hero(String armor, String weapon, int str, int agl, int vit, int luk, int level) {
 
-		// TODO Auto-generated constructor stub
+		this.armorEquip = armorEquip;
+		this.weaponEquip = weaponEquip;
+		this.str = str;
+		this.agl = agl;
+		this.vit = vit;
+		this.luk = luk;
+		this.level = level;
+
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 	}
-	
-	public int strength()
+	public int level()
 	{
+		return level;
+	}
+	
+	public int strength() {
 		return str;
-		//str* (weaponatk/10 + 1);
-	}
-	
-	public int speed()
-	{
-		return agl;
-		//agl- (weight of wpn*.5 + amr*.25).
-	}
-	
-	public int health()
-	{
-		return vit*50;
 		
-		//vit* (Amr/10 + 1);
 	}
-	
-	public int luck()
-	{
+
+	public int speed() {
+		return agl;
+	}
+
+	public int health() {
+		return vit;
+	}
+
+	public int luck() {
 		return luk;
-		//luk*.001;
+		// luk*.001;
 	}
-	
-	public String weaponE()
-	{
+
+	public String weaponE() {
 		return weaponEquip;
 	}
-	
-	public String armorEquip()
-	{
+
+	public String armorEquip() {
 		return armorEquip;
 	}
+
+	public void setStrength(int strength) {
+		//this.str = str* (weaponatk/10 + 1);;
+	}
+
+	public void setSpeed(int speed) {
+		//this.agl = agl- (weight of wpn*.5 + amr*.25);
+	}
+
+	public void setAttack(int attack) {
+		//this.attack = attack;
+	}
+
+	public void setDefense(int defense) {
+		//this.vit = vit* (Amr/10 + 1);
+	}
+
+	public void setHp(int hp) {
+		this.vit = vit * 50;
+	}
+
+	public void setLevel(int level) {
+		this.level += level;
+	}
+
+	public int getLevel() {
+		return this.level;
+	}
+
+
 
 }

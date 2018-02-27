@@ -12,13 +12,13 @@ public class MainGame {
 		// TODO Auto-generated method stub
 		
 		
-		System.out.println();
+		System.out.println("hero created "+"atk stats: ");
 	}
 	
 	
 	public void heroCreation()
 	{
-		mc = new Hero("none","none",1,1,1,1);
+		mc = new Hero("none","none",1,1,1,1,1);
 	}
 	
 
