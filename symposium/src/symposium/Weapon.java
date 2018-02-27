@@ -15,5 +15,21 @@ public class Weapon {
 		// TODO Auto-generated method stub
 
 	}
+	
+	
+	public String weaponType()
+	{
+		return type;
+	}
+	
+	public int attack()
+	{
+		return atkstats;
+	}
+	
+	public int weight()
+	{
+		return weaponweight;
+	}
 
 }

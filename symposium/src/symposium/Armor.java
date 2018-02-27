@@ -12,4 +12,19 @@ public class Armor {
 		// TODO Auto-generated constructor stub
 	}
 
+	public String armorType()
+	{
+		return type;
+	}
+	
+	public int defense()
+	{
+		return defensestats;
+	}
+	
+	public int weight()
+	{
+		return armorweight;
+	}
+	
 }
