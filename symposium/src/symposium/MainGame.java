@@ -35,7 +35,11 @@ public class MainGame {
 		rags = new Armor("RAGS", 1, 1);
 		mc = new Hero(knife,rags,1,1,1,1,1);
 		
-		
+		//kunai
+		//dual blade
+		//posion arrow
+		//flame arrow
+		//katana
 	}
 	
 
