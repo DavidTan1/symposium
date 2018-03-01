@@ -1,19 +1,19 @@
 package symposium;
 
 public class Hero {
-
-	private String armorEquip;
-	private String weaponEquip;
+	
+	private Weapon weapon;
+	private Armor armor;
 	private int str;
 	private int agl;
 	private int vit;
 	private int luk;
 	private int level;
 
-	public Hero(String armor, String weapon, int str, int agl, int vit, int luk, int level) {
+	public Hero(Weapon weapon, Armor armor, int str, int agl, int vit, int luk, int level) {
 
-		this.armorEquip = armorEquip;
-		this.weaponEquip = weaponEquip;
+		this.weapon = weapon;
+		this.armor = armor;
 		this.str = str;
 		this.agl = agl;
 		this.vit = vit;
@@ -26,65 +26,66 @@ public class Hero {
 		// TODO Auto-generated method stub
 
 	}
-	public int level()
-	{
-		return level;
-	}
-	
-	public int strength() {
-		return str;
-		
+
+
+	public Armor getArmor() {
+		return armor;
 	}
 
-	public int speed() {
+	public void setArmor(Armor armor) {
+		this.armor = armor;
+	}
+
+	public Weapon getWeapon() {
+		return weapon;
+	}
+
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
+	}
+
+	public int getStr() {
+		
+		return str;
+	}
+
+	public int setStr() {
+		
+		System.out.println(getWeapon());
+		int trueSTR = str*getWeapon().getattackstats();
+		return trueSTR;
+	}
+
+	public int getAgl() {
 		return agl;
 	}
 
-	public int health() {
+	public void setAgl(int agl) {
+		this.agl = agl;
+	}
+
+	public int getVit() {
 		return vit;
 	}
 
-	public int luck() {
+	public void setVit(int vit) {
+		this.vit = vit;
+	}
+
+	public int getLuk() {
 		return luk;
-		// luk*.001;
 	}
 
-	public String weaponE() {
-		return weaponEquip;
-	}
-
-	public String armorEquip() {
-		return armorEquip;
-	}
-
-	public void setStrength(int strength) {
-		//this.str = str* (weaponatk/10 + 1);;
-	}
-
-	public void setSpeed(int speed) {
-		//this.agl = agl- (weight of wpn*.5 + amr*.25);
-	}
-
-	public void setAttack(int attack) {
-		//this.attack = attack;
-	}
-
-	public void setDefense(int defense) {
-		//this.vit = vit* (Amr/10 + 1);
-	}
-
-	public void setHp(int hp) {
-		this.vit = vit * 50;
-	}
-
-	public void setLevel(int level) {
-		this.level += level;
+	public void setLuk(int luk) {
+		this.luk = luk;
 	}
 
 	public int getLevel() {
-		return this.level;
+		return level;
 	}
 
-
-
+	public void setLevel(int level) {
+		this.level = level;
+	}
+	
 }

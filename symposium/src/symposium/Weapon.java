@@ -2,27 +2,25 @@ package symposium;
 
 public class Weapon {
 
-	
+	private String name;
 	private String type;
 	public int atkstats;
 	public int weaponweight;
 	
-	public Weapon(int atkstats, int weaponweight, String type) {
-		// TODO Auto-generated constructor stub
+	public Weapon(String name, int atkstats, int weaponweight, String type) {
+		this.name = name;
+		this.atkstats = atkstats;
+		this.weaponweight = weaponweight;
+		this.type = type;
 	}
 
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
-	}
-	
 	
 	public String weaponType()
 	{
 		return type;
 	}
 	
-	public int attack()
+	public int getattackstats()
 	{
 		return atkstats;
 	}
@@ -31,5 +29,10 @@ public class Weapon {
 	{
 		return weaponweight;
 	}
+	public String name()
+	{
+		return name;
+	}
+	
 
 }

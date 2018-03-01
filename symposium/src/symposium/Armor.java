@@ -2,29 +2,35 @@ package symposium;
 
 public class Armor {
 
-	private String type;
+	
+	private String name;
 	public int defensestats;
 	public int armorweight;
 	
 	
 	
-	public Armor(String type, int armorweight, int defensestats) {
-		// TODO Auto-generated constructor stub
-	}
-
-	public String armorType()
-	{
-		return type;
+	public Armor(String name, int armorweight, int defensestats) {
+		this.name = name;
+		
+		this.armorweight = armorweight;
+		this.defensestats = defensestats;
+		
 	}
 	
-	public int defense()
+	public int getdefense()
 	{
 		return defensestats;
 	}
 	
-	public int weight()
+	public int getweight()
 	{
 		return armorweight;
 	}
+
+	public String getName()
+	{
+		return name;
+	}
+	
 	
 }
