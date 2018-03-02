@@ -4,10 +4,12 @@ public class Weapon {
 
 	private String name;
 	private String type;
+	private String img;
 	public int atkstats;
 	public int weaponweight;
 	
-	public Weapon(String name, int atkstats, int weaponweight, String type) {
+	public Weapon(String img, String name, int atkstats, int weaponweight, String type) {
+		this.img = img;
 		this.name = name;
 		this.atkstats = atkstats;
 		this.weaponweight = weaponweight;
@@ -33,6 +35,11 @@ public class Weapon {
 	{
 		return name;
 	}
+	public String img()
+	{
+		return img;
+	}
+	
 	
 
 }
