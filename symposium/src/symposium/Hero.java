@@ -60,16 +60,19 @@ public class Hero {
 		return agl;
 	}
 
-	public void setAgl(int agl) {
-		this.agl = agl;
-	}
+	public int setAgl() {
+		System.out.println(getArmor());
+		int trueAGL = (int) (agl-(getArmor().getweight()*.75));
+		return trueAGL;	}
 
 	public int getVit() {
 		return vit;
 	}
 
-	public void setVit(int vit) {
-		this.vit = vit;
+	public int setVit() {
+		System.out.println(getArmor());
+		int trueVIT = vit*getArmor().getdefense();
+		return trueVIT;
 	}
 
 	public int getLuk() {

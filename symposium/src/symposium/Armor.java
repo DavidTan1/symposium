@@ -27,7 +27,7 @@ public class Armor {
 		return armorweight;
 	}
 
-	public String getName()
+	public String getArmorName()
 	{
 		return name;
 	}

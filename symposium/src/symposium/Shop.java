@@ -7,7 +7,7 @@ public class Shop extends MainGame{
 	}
 
 	public static void main(String[] args) {
-		System.out.println("What would like to do buy we have "+rod.name());
+		System.out.println("What would like to do buy we have "+Hero.Weapon.getname());
 	}
 
 }
