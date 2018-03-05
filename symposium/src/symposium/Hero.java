@@ -71,7 +71,7 @@ public class Hero {
 
 	public int setVit() {
 		System.out.println(getArmor());
-		int trueVIT = vit*getArmor().getdefense();
+		int trueVIT = vit*(getArmor().getdefense()/10);
 		return trueVIT;
 	}
 
