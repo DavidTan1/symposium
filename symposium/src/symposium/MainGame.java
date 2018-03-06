@@ -62,7 +62,7 @@ public class MainGame {
 		LongSword = new Weapon("symposium/ironsword.png","LONG SWORD",700,50,"STAB");
 		bow = new Weapon("symposium/ironsword.png","BOW",850,50,"STAB");
 		LightSaber = new Weapon("symposium/ironsword.png","LIGHT SABER",1000,50,"STAB");
-		axe = new Weapon("symposium/ironsword.png","AXE",350,50,"STAB");
+		axe = new Weapon("symposium/axe.jpg","AXE",350,50,"STAB");
 		pistol = new Weapon("symposium/ironsword.png","PISTOL",700,50,"STAB");
 		rocketL = new Weapon("symposium/ironsword.png","ROCKET",2000,100,"STAB");
 		treeBranch = new Weapon("symposium/ironsword.png","TREEBRANCH",200,50,"STAB");
