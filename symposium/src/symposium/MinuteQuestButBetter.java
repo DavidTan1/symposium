@@ -37,6 +37,8 @@ public class MinuteQuestButBetter extends GUIApplication {
 
 	@Override
 	public void initScreen() {
+		
+		creation();
 		// TODO Auto-generated method stub
 		shop = new Shop(getWidth(), getHeight());
 		setScreen(shop);
