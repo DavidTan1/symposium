@@ -1,6 +1,7 @@
 package symposium;
 
 import guiTeacher.GUIApplication;
+import javafx.scene.paint.Color;
 
 public class MinuteQuestButBetter extends GUIApplication {
 
@@ -42,6 +43,8 @@ public class MinuteQuestButBetter extends GUIApplication {
 		// TODO Auto-generated method stub
 		shop = new Shop(getWidth(), getHeight());
 		setScreen(shop);
+		
+
 	}
 	
 	
@@ -84,5 +87,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 		
 		
 	}
+
+
 
 }

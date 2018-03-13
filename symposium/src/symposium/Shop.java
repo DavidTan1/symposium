@@ -16,14 +16,22 @@ public class Shop extends FullFunctionScreen {
 
 	private Button ONE;
 	private Button TWO;
+	private Button THREE;
+	private Button FOUR;
+	private Button back;
 	private Graphic inventory;
 	private TextArea welcomeText;
 	private AnimatedComponent armor;
 	public ArrayList<Weapon> weapons;
 	public ArrayList<Weapon> uinventory;
-	public int stock;
+	public ArrayList<Graphic> asf;
+	public int stock1;
+	public int stock2;
+	public int stock3;
+	public int stock4;
 	public int i;
-
+	private Graphic bob;
+	
 	public Shop(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -32,20 +40,28 @@ public class Shop extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
-		stock = 1;
+		
+		i = 1;
+		stock1 = 1;
+		stock2 = 1;
+		stock3 = 1;
+		stock4 = 1;
 
 		weapons = new ArrayList<Weapon>();
 		uinventory = new ArrayList<Weapon>();
 
+		
+		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "symposium/weaponshopbackground.jpg");
+
+		viewObjects.add(background);
+				
 		weapons.add(MinuteQuestButBetter.axe);
 		weapons.add(MinuteQuestButBetter.shotgun);
 		weapons.add(MinuteQuestButBetter.spear);
 		weapons.add(MinuteQuestButBetter.stick);
 
-		
-		
-
-		welcomeText = new TextArea(5, 700, 800, 100, "Welcome to armory! We sell the finest weapons. "+"PRO TIP: Click on the weapon you would like to buy.");
+		welcomeText = new TextArea(5, 700, 800, 100, "Welcome to armory! We sell the finest weapons. "
+				+ "PRO TIP: Click on the weapon you would like to buy.");
 		viewObjects.add(welcomeText);
 
 		armor = new AnimatedComponent(0, 0, 598, 59);
@@ -56,83 +72,151 @@ public class Shop extends FullFunctionScreen {
 		// asdf.start();
 
 		Graphic firstitem = new Graphic(100, 100, 60, 60, weapons.get(0).img());
-		
+
 		Graphic seconditem = new Graphic(100, 200, 60, 60, weapons.get(1).img());
-		
+
 		Graphic thirditem = new Graphic(100, 300, 60, 60, weapons.get(2).img());
-		
+
 		Graphic fourthitem = new Graphic(100, 400, 60, 60, weapons.get(3).img());
-		
+
 		viewObjects.add(firstitem);
 		viewObjects.add(seconditem);
 		viewObjects.add(thirditem);
 		viewObjects.add(fourthitem);
-
-		
 
 		ONE = new Button(100, 100, 60, 60, "", new Action() {
 
 			@Override
 			public void act() {
 
-				if (stock == 1)
-				{
-					displayInventory();
-					
+				if (stock1 == 1) {
 
-					uinventory.add(weapons.get(0));
-					displayInventory();
-					//Graphic inventory = new Graphic(700, 700, 60, 60, uinventory.get(0).img());
+					System.out.print("Add to inventory.");
+
+					displayInventory(weapons.get(0));
+					update();
+
 					viewObjects.add(inventory);
-					stock = 0;
+
+					update();
+					stock1--;
 
 					ONE.setEnabled(false);
 					ONE.setVisible(false);
+					check();
 
-				} 
+				}
 
 			}
 		});
 
 		viewObjects.add(ONE);
-		
-		
+
 		TWO = new Button(100, 200, 60, 60, "", new Action() {
 
 			@Override
 			public void act() {
 
-				if (stock == 1)
-				{
-					
-					
+				if (stock2 == 1) {
+
 					System.out.print("Add to inventory.");
 
-					uinventory.add(weapons.get(1));
-					displayInventory();
-					//Graphic inventory = new Graphic(700, 700, 60, 60, uinventory.get(0).img());
+					displayInventory(weapons.get(1));
+					update();
+
 					viewObjects.add(inventory);
-					stock = 0;
+					update();
+					stock2--;
 
 					TWO.setEnabled(false);
 					TWO.setVisible(false);
+					check();
 
-				} 
+				}
 
 			}
 		});
 
 		viewObjects.add(TWO);
+
+		THREE = new Button(100, 300, 60, 60, "", new Action() {
+
+			@Override
+			public void act() {
+
+				if (stock3 == 1) {
+
+					System.out.print("Add to inventory.");
+
+					displayInventory(weapons.get(2));
+					update();
+
+					viewObjects.add(inventory);
+					update();
+					stock3--;
+
+					THREE.setEnabled(false);
+					THREE.setVisible(false);
+					check();
+
+				}
+
+			}
+		});
+
+		viewObjects.add(THREE);
+
+		FOUR = new Button(100, 400, 60, 60, "", new Action() {
+
+			@Override
+			public void act() {
+
+				if (stock4 == 1) {
+
+					System.out.print("Add to inventory.");
+
+					displayInventory(weapons.get(3));
+					update();
+
+					viewObjects.add(inventory);
+					update();
+					stock4--;
+
+					FOUR.setEnabled(false);
+					FOUR.setVisible(false);
+
+					check();
+				}
+
+			}
+		});
+
+		viewObjects.add(FOUR);
+
+		back = new Button(700, 650, 60, 60, "Back", new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+
+			}
+
+		});
+
+		viewObjects.add(back);
 	}
-		
-	
-	public void displayInventory()
-	{
-		for(i=0; i<uinventory.size(); i++)
-		{
-			inventory = new Graphic(700, i*100, 60, 60, uinventory.get(i).img());
+
+	protected void check() {
+		if (stock1 == 0 && stock2 == 0 && stock3 == 0 && stock4 == 0) {
+			welcomeText.setText("Out of items come back later.");
 
 		}
 	}
-		
+
+	public void displayInventory(Weapon weapon) {
+
+		inventory = new Graphic(700, 50 * i, 30, 30, weapon.img());
+		i++;
+
+	}
 }
