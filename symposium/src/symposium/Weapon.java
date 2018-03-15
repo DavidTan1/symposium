@@ -7,13 +7,15 @@ public class Weapon {
 	private String img;
 	public int atkstats;
 	public int weaponweight;
+	public int cost;
 	
-	public Weapon(String img, String name, int atkstats, int weaponweight, String type) {
+	public Weapon(String img, String name, int atkstats, int weaponweight, String type, int Cost) {
 		this.img = img;
 		this.name = name;
 		this.atkstats = atkstats;
 		this.weaponweight = weaponweight;
 		this.type = type;
+		this.cost = cost;
 	}
 
 	
@@ -22,6 +24,10 @@ public class Weapon {
 		return type;
 	}
 	
+	public int getCost()
+	{
+		return cost;
+	}
 	public int getattackstats()
 	{
 		return atkstats;

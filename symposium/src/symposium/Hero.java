@@ -9,8 +9,9 @@ public class Hero {
 	private int vit;
 	private int luk;
 	private int level;
-
-	public Hero(Weapon weapon, Armor armor, int str, int agl, int vit, int luk, int level) {
+	private int gold;
+	
+	public Hero(Weapon weapon, Armor armor, int str, int agl, int vit, int luk, int level, int gold) {
 
 		this.weapon = weapon;
 		this.armor = armor;
@@ -19,7 +20,7 @@ public class Hero {
 		this.vit = vit;
 		this.luk = luk;
 		this.level = level;
-
+		this.gold = gold;
 	}
 
 	public static void main(String[] args) {
@@ -27,6 +28,10 @@ public class Hero {
 
 	}
 
+	public int getGold()
+	{
+		return gold;
+	}
 
 	public Armor getArmor() {
 		return armor;

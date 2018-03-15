@@ -1,7 +1,11 @@
 package symposium;
 
+import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
+import java.awt.Color;
+
+import javax.swing.JFrame;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.AnimatedComponent;
@@ -10,7 +14,6 @@ import guiTeacher.components.Graphic;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
-import javafx.scene.paint.Color;
 
 public class Shop extends FullFunctionScreen {
 
@@ -30,8 +33,10 @@ public class Shop extends FullFunctionScreen {
 	public int stock3;
 	public int stock4;
 	public int i;
+	public int currValue;
 	private Graphic bob;
 	
+
 	public Shop(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -40,6 +45,7 @@ public class Shop extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
+		currValue = MinuteQuestButBetter.mc.getGold();
 		
 		i = 1;
 		stock1 = 1;
@@ -50,11 +56,12 @@ public class Shop extends FullFunctionScreen {
 		weapons = new ArrayList<Weapon>();
 		uinventory = new ArrayList<Weapon>();
 
-		
-		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "symposium/weaponshopbackground.jpg");
+		Graphic text = new Graphic(0, 500, 800, 800, "symposium/blackscreen.jpg");
+		//viewObjects.add(text);
 
+		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "symposium/weaponshopbackground.png");
 		viewObjects.add(background);
-				
+
 		weapons.add(MinuteQuestButBetter.axe);
 		weapons.add(MinuteQuestButBetter.shotgun);
 		weapons.add(MinuteQuestButBetter.spear);
@@ -63,13 +70,6 @@ public class Shop extends FullFunctionScreen {
 		welcomeText = new TextArea(5, 700, 800, 100, "Welcome to armory! We sell the finest weapons. "
 				+ "PRO TIP: Click on the weapon you would like to buy.");
 		viewObjects.add(welcomeText);
-
-		armor = new AnimatedComponent(0, 0, 598, 59);
-		viewObjects.add(armor);
-
-		// armor.addSequence("symposium/armor1.png", 200, 0, 0, 597, 58, 10);
-		// Thread asdf = new Thread(armor);
-		// asdf.start();
 
 		Graphic firstitem = new Graphic(100, 100, 60, 60, weapons.get(0).img());
 
@@ -89,7 +89,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock1 == 1) {
+				if (stock1 == 1 && weapons.get(0).getCost() <= currValue) {
 
 					System.out.print("Add to inventory.");
 
@@ -104,6 +104,13 @@ public class Shop extends FullFunctionScreen {
 					ONE.setEnabled(false);
 					ONE.setVisible(false);
 					check();
+					currValue = currValue - weapons.get(0).getCost();
+					System.out.print(currValue);
+
+				}
+				else
+				{
+					System.out.print("You don't have enough gold.");
 
 				}
 
@@ -117,7 +124,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock2 == 1) {
+				if (stock2 == 1 && weapons.get(1).getCost() <= currValue) {
 
 					System.out.print("Add to inventory.");
 
@@ -131,6 +138,12 @@ public class Shop extends FullFunctionScreen {
 					TWO.setEnabled(false);
 					TWO.setVisible(false);
 					check();
+					currValue = currValue - weapons.get(1).getCost();
+					System.out.print(currValue);
+				}
+				else
+				{
+					welcomeText.setText("You don't have enough gold.");
 
 				}
 
@@ -144,9 +157,8 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock3 == 1) {
+				if (stock3 == 1 && weapons.get(2).getCost() <= currValue) {
 
-					System.out.print("Add to inventory.");
 
 					displayInventory(weapons.get(2));
 					update();
@@ -158,6 +170,17 @@ public class Shop extends FullFunctionScreen {
 					THREE.setEnabled(false);
 					THREE.setVisible(false);
 					check();
+					System.out.print(currValue);
+					
+					currValue = currValue - weapons.get(2).getCost();
+					System.out.print(currValue);
+
+					//checkOut(weapons.get(2).getCost());
+					
+				}
+				else
+				{
+					welcomeText.setText("You don't have enough gold.");
 
 				}
 
@@ -171,7 +194,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock4 == 1) {
+				if (stock4 == 1 && weapons.get(3).getCost() <= currValue) {
 
 					System.out.print("Add to inventory.");
 
@@ -186,6 +209,12 @@ public class Shop extends FullFunctionScreen {
 					FOUR.setVisible(false);
 
 					check();
+					currValue = currValue - weapons.get(3).getCost();
+					System.out.print(currValue);				}
+				else
+				{
+					welcomeText.setText("You don't have enough gold.");
+
 				}
 
 			}
@@ -213,6 +242,16 @@ public class Shop extends FullFunctionScreen {
 		}
 	}
 
+	
+	public int checkOut(int cost)
+	{
+		
+		currValue = currValue - cost;
+		System.out.print(currValue);
+		return currValue;
+	}
+	
+	
 	public void displayInventory(Weapon weapon) {
 
 		inventory = new Graphic(700, 50 * i, 30, 30, weapon.img());

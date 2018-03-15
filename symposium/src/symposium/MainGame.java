@@ -53,29 +53,28 @@ public class MainGame {
 	
 	public static void creation()
 	{
-		knife = new Weapon("symposium/ironsword.png","KNIFE",200,100,"STAB"); 
-		club = new Weapon("symposium/ironsword.png","CLUB",400,320,"STAB");
-		Firerod = new Weapon("symposium/ironsword.png","FIRE ROD",100,140,"STAB");
-		crossBow = new Weapon("symposium/ironsword.png","CROSS BOW",400,180,"STAB");
-		IronSword = new Weapon("symposium/ironsword.png","IRON SWORD",800,50,"STAB");
-		cane = new Weapon("symposium/ironsword.png","CANE",300,50,"STAB");
-		LongSword = new Weapon("symposium/ironsword.png","LONG SWORD",700,50,"STAB");
-		bow = new Weapon("symposium/ironsword.png","BOW",850,50,"STAB");
-		LightSaber = new Weapon("symposium/ironsword.png","LIGHT SABER",1000,50,"STAB");
-		axe = new Weapon("symposium/axe.jpg","AXE",350,50,"STAB");
-		pistol = new Weapon("symposium/ironsword.png","PISTOL",700,50,"STAB");
-		rocketL = new Weapon("symposium/ironsword.png","ROCKET",2000,100,"STAB");
-		treeBranch = new Weapon("symposium/ironsword.png","TREEBRANCH",200,50,"STAB");
-		scythe = new Weapon("symposium/ironsword.png","SCYTHE",900,50,"STAB");
-		claws = new Weapon("symposium/ironsword.png","CLAWS",500,25,"STAB");
-		ElectricLance = new Weapon("symposium/ironsword.png","ELECTRIC LANCE",900,75,"STAB");
-		stick = new Weapon("symposium/ironsword.png","STICK",10,1,"STAB");
-		hammer = new Weapon("symposium/ironsword.png","HAMMER",100,10,"STAB");
-		shotgun = new Weapon("symposium/ironsword.png","SHOTGUN",800,10,"STAB");
-		spear = new Weapon("symposium/ironsword.png","SPEAR",100,5,"STAB");
-		
+		knife = new Weapon("symposium/deathislikethewind/blueorb.png","KNIFE",200,100,"STAB",100); 
+		club = new Weapon("symposium/deathislikethewind/hook.png","CLUB",400,320,"STAB",75);
+		Firerod = new Weapon("symposium/deathislikethewind/firerod.png","FIRE ROD",100,140,"STAB",150);
+		crossBow = new Weapon("symposium/deathislikethewind/crossbow.png","CROSS BOW",400,180,"STAB",125);
+		IronSword = new Weapon("symposium/deathislikethewind/ironsword.png","IRON SWORD",800,50,"STAB",150);
+		cane = new Weapon("symposium/deathislikethewind/staff.png","CANE",300,50,"STAB",50);
+		LongSword = new Weapon("symposium/deathislikethewind/longsword.png","LONG SWORD",700,50,"STAB",175);
+		bow = new Weapon("symposium/deathislikethewind/bow.png","BOW",850,50,"STAB",100);
+		LightSaber = new Weapon("symposium/deathislikethewind/lightsaber.png","LIGHT SABER",1000,50,"STAB",200);
+		axe = new Weapon("symposium/deathislikethewind/axe.png","AXE",350,50,"STAB",100);
+		pistol = new Weapon("symposium/deathislikethewind/pistol.png","PISTOL",700,50,"STAB",175);
+		rocketL = new Weapon("symposium/deathislikethewind/rocketl.png","ROCKET",2000,100,"STAB",225);
+		treeBranch = new Weapon("symposium/deathislikethewind/treebranch.png","TREEBRANCH",200,50,"STAB",25);
+		scythe = new Weapon("symposium/deathislikethewind/scythe.png","SCYTHE",900,50,"STAB",200);
+		claws = new Weapon("symposium/deathislikethewind/claws.png","CLAWS",500,25,"STAB",100);
+		ElectricLance = new Weapon("symposium/deathislikethewind/lightinglance.png","ELECTRIC LANCE",900,75,"STAB",200);
+		stick = new Weapon("symposium/deathislikethewind/stick.png","STICK",10,1,"STAB",10);
+		hammer = new Weapon("symposium/deathislikethewind/hammertime.png","HAMMER",100,10,"STAB",50);
+		shotgun = new Weapon("symposium/deathislikethewind/shotgun.png","SHOTGUN",800,10,"STAB",210);
+		spear = new Weapon("symposium/deathislikethewind/spear.png","SPEAR",100,5,"STAB",50);
 		rags = new Armor("RAGS", 10, 5);
-		mc = new Hero(IronSword,rags,1,1,1,1,1);
+		mc = new Hero(IronSword,rags,1,1,1,1,1,100);
 		
 		
 		
