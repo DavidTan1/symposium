@@ -6,6 +6,7 @@ import javafx.scene.paint.Color;
 public class MinuteQuestButBetter extends GUIApplication {
 
 	public static MinuteQuestButBetter gameGUI;
+	//public static Inventory inventory;
 	public static Shop shop;
 	public static Hero mc;
 	public static Weapon knife;
@@ -41,6 +42,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 		creation();
 		// TODO Auto-generated method stub
 		shop = new Shop(getWidth(), getHeight());
+		//inventory = new Inventory(getWidth(),getHeight());
 		setScreen(shop);
 		
 

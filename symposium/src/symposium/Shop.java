@@ -17,12 +17,13 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class Shop extends FullFunctionScreen {
 
+	public static Inventory inventory;
 	private Button ONE;
 	private Button TWO;
 	private Button THREE;
 	private Button FOUR;
 	private Button back;
-	private Graphic inventory;
+	private Graphic userinventory;
 	private TextArea welcomeText;
 	private AnimatedComponent armor;
 	public ArrayList<Weapon> weapons;
@@ -35,7 +36,7 @@ public class Shop extends FullFunctionScreen {
 	public int i;
 	public int currValue;
 	private Graphic bob;
-	
+	private Button inventoryb;
 
 	public Shop(int width, int height) {
 		super(width, height);
@@ -44,9 +45,10 @@ public class Shop extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-
-		currValue = MinuteQuestButBetter.mc.getGold();
 		
+		
+		currValue = MinuteQuestButBetter.mc.getGold();
+
 		i = 1;
 		stock1 = 1;
 		stock2 = 1;
@@ -57,7 +59,7 @@ public class Shop extends FullFunctionScreen {
 		uinventory = new ArrayList<Weapon>();
 
 		Graphic text = new Graphic(0, 500, 800, 800, "symposium/blackscreen.jpg");
-		//viewObjects.add(text);
+		// viewObjects.add(text);
 
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "symposium/weaponshopbackground.png");
 		viewObjects.add(background);
@@ -67,7 +69,7 @@ public class Shop extends FullFunctionScreen {
 		weapons.add(MinuteQuestButBetter.spear);
 		weapons.add(MinuteQuestButBetter.stick);
 
-		welcomeText = new TextArea(5, 700, 800, 100, "Welcome to armory! We sell the finest weapons. "
+		welcomeText = new TextArea(5, 675, 800, 100, "Welcome to armory! We sell the finest weapons. "
 				+ "PRO TIP: Click on the weapon you would like to buy.");
 		viewObjects.add(welcomeText);
 
@@ -91,27 +93,29 @@ public class Shop extends FullFunctionScreen {
 
 				if (stock1 == 1 && weapons.get(0).getCost() <= currValue) {
 
-					System.out.print("Add to inventory.");
+					System.out.println("Add to inventory.");
 
 					displayInventory(weapons.get(0));
 					update();
 
-					viewObjects.add(inventory);
+					viewObjects.add(userinventory);
 
 					update();
 					stock1--;
+
+					System.out.println(weapons.get(0).name() + " cost " + weapons.get(0).getCost());
 
 					ONE.setEnabled(false);
 					ONE.setVisible(false);
 					check();
 					currValue = currValue - weapons.get(0).getCost();
-					System.out.print(currValue);
+					
+					uinventory.add(weapons.get(0));
+					welcomeText.setText("You have " + currValue + " gold left.");
 
-				}
-				else
-				{
+
+				} else {
 					System.out.print("You don't have enough gold.");
-
 				}
 
 			}
@@ -131,18 +135,25 @@ public class Shop extends FullFunctionScreen {
 					displayInventory(weapons.get(1));
 					update();
 
-					viewObjects.add(inventory);
+					viewObjects.add(userinventory);
+
 					update();
 					stock2--;
+
+					System.out.println(weapons.get(1).name() + " cost " + weapons.get(1).getCost());
 
 					TWO.setEnabled(false);
 					TWO.setVisible(false);
 					check();
+
 					currValue = currValue - weapons.get(1).getCost();
-					System.out.print(currValue);
-				}
-				else
-				{
+					
+					uinventory.add(weapons.get(1));
+
+
+					welcomeText.setText("You have " + currValue + " gold left.");
+
+				} else {
 					welcomeText.setText("You don't have enough gold.");
 
 				}
@@ -159,11 +170,10 @@ public class Shop extends FullFunctionScreen {
 
 				if (stock3 == 1 && weapons.get(2).getCost() <= currValue) {
 
-
 					displayInventory(weapons.get(2));
 					update();
 
-					viewObjects.add(inventory);
+					viewObjects.add(userinventory);
 					update();
 					stock3--;
 
@@ -171,15 +181,12 @@ public class Shop extends FullFunctionScreen {
 					THREE.setVisible(false);
 					check();
 					System.out.print(currValue);
-					
-					currValue = currValue - weapons.get(2).getCost();
-					System.out.print(currValue);
 
-					//checkOut(weapons.get(2).getCost());
-					
-				}
-				else
-				{
+					currValue = currValue - weapons.get(2).getCost();
+					uinventory.add(weapons.get(2));
+					welcomeText.setText("You have " + currValue + " gold left.");
+
+				} else {
 					welcomeText.setText("You don't have enough gold.");
 
 				}
@@ -201,7 +208,7 @@ public class Shop extends FullFunctionScreen {
 					displayInventory(weapons.get(3));
 					update();
 
-					viewObjects.add(inventory);
+					viewObjects.add(userinventory);
 					update();
 					stock4--;
 
@@ -210,9 +217,10 @@ public class Shop extends FullFunctionScreen {
 
 					check();
 					currValue = currValue - weapons.get(3).getCost();
-					System.out.print(currValue);				}
-				else
-				{
+					
+					uinventory.add(weapons.get(3));
+					welcomeText.setText("You have " + currValue + " gold left.");
+				} else {
 					welcomeText.setText("You don't have enough gold.");
 
 				}
@@ -222,17 +230,33 @@ public class Shop extends FullFunctionScreen {
 
 		viewObjects.add(FOUR);
 
-		back = new Button(700, 650, 60, 60, "Back", new Action() {
+		back = new Button(700, 625, 60, 60, "Back", new Action() {
 
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
-
+				
 			}
 
 		});
 
 		viewObjects.add(back);
+
+		inventoryb = new Button(700, 675, 60, 60, "inventory", new Action() {
+
+			@Override
+			public void act() {
+				// TODO Auto-generated method stub
+				
+				//inventory = new Inventory(getWidth(),getHeight());
+				System.out.println(uinventory.get(0).name());
+				MinuteQuestButBetter.gameGUI.setScreen(new Inventory(getWidth(),getHeight()));
+
+			}
+
+		});
+
+		viewObjects.add(inventoryb);
 	}
 
 	protected void check() {
@@ -242,20 +266,24 @@ public class Shop extends FullFunctionScreen {
 		}
 	}
 
-	
-	public int checkOut(int cost)
-	{
-		
+	public int checkOut(int cost) {
+
 		currValue = currValue - cost;
 		System.out.print(currValue);
 		return currValue;
 	}
-	
-	
+
 	public void displayInventory(Weapon weapon) {
 
-		inventory = new Graphic(700, 50 * i, 30, 30, weapon.img());
+		userinventory = new Graphic(700, 50 * i, 30, 30, weapon.img());
 		i++;
 
 	}
+	
+	public ArrayList<Weapon> getInventory()
+	{
+		return uinventory;
+	}
+
+	
 }

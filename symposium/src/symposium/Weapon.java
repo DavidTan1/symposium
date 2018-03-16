@@ -9,7 +9,7 @@ public class Weapon {
 	public int weaponweight;
 	public int cost;
 	
-	public Weapon(String img, String name, int atkstats, int weaponweight, String type, int Cost) {
+	public Weapon(String img, String name, int atkstats, int weaponweight, String type, int cost) {
 		this.img = img;
 		this.name = name;
 		this.atkstats = atkstats;
@@ -28,6 +28,7 @@ public class Weapon {
 	{
 		return cost;
 	}
+	
 	public int getattackstats()
 	{
 		return atkstats;
