@@ -78,7 +78,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 		scythe = new Weapon("symposium/deathislikethewind/scythe.png","SCYTHE",900,50,"STAB",200);
 		claws = new Weapon("symposium/deathislikethewind/claws.png","CLAWS",500,25,"STAB",100);
 		ElectricLance = new Weapon("symposium/deathislikethewind/lightinglance.png","ELECTRIC LANCE",900,75,"STAB",200);
-		stick = new Weapon("symposium/deathislikethewind/stick.png","STICK",10,1,"STAB",10);
+		stick = new Weapon("symposium/deathislikethewind/stick.png","STICK",1,1,"STAB",10);
 		hammer = new Weapon("symposium/deathislikethewind/hammertime.png","HAMMER",100,10,"STAB",50);
 		shotgun = new Weapon("symposium/deathislikethewind/shotgun.png","SHOTGUN",800,10,"STAB",210);
 		spear = new Weapon("symposium/deathislikethewind/spear.png","SPEAR",100,5,"STAB",50);

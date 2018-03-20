@@ -108,5 +108,10 @@ public class MainGame {
 		weaponDropList.add(spear);
 	}
 	
+	
+	public void addWeapon(Weapon weapon)
+	{
+		
+	}
 
 }

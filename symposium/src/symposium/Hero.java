@@ -96,4 +96,9 @@ public class Hero {
 		this.level = level;
 	}
 	
+	public void addWeapon(Weapon asdf)
+	{
+		weapon = asdf;
+	}
+	
 }
