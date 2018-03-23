@@ -44,6 +44,17 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static Armor silverarmor;
 	public static Armor titaniumarmor;
 	
+	public static Mobs slime;
+	public static Mobs zombie;
+	public static Mobs beast;
+	public static Mobs devil;
+	public static Mobs vampire;
+	public static Mobs robot;
+	public static Mobs angel;
+
+
+
+	
 	public MinuteQuestButBetter(int width, int height) {
 		super(width, height);
 		setVisible(true);
@@ -111,9 +122,20 @@ public class MinuteQuestButBetter extends GUIApplication {
 		titaniumarmor = new Armor("titaniumarmor", 100, 1000, 20000, "symposium/armor/titaniumarmor.png");
 		
 		
+		angel = new Mobs("", 50, 10, 25, 100, 1);
+		slime = new Mobs("", 50, 10, 25, 100, 1);
+		angel = new Mobs("", 50, 10, 25, 100, 1);
+		zombie = new Mobs("", 50, 10, 25, 100, 1);
+		beast = new Mobs("", 50, 10, 25, 100, 1);
+		vampire = new Mobs("", 50, 10, 25, 100, 1);
+		robot = new Mobs("", 50, 10, 25, 100, 1);
+
+
+		
+		
 		mc = new Hero(nonew,nonea,1,1,1,1,1,100);
 		
-		
+	
 		
 		
 		
