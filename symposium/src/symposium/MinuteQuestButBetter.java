@@ -8,6 +8,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static MinuteQuestButBetter gameGUI;
 	//public static Inventory inventory;
 	public static Shop shop;
+	public static ShopA shopa;
 	public static Hero mc;
 	public static Weapon knife;
 	public static Weapon club;
@@ -30,6 +31,19 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static Weapon shotgun;
 	public static Weapon spear;
 	public static Armor rags;
+	
+	
+	public static Armor beginnerrobe;
+	public static Armor bronzearmor;
+	public static Armor devilarmor;
+	public static Armor diamondarmor;
+	public static Armor emeraldarmor;
+	public static Armor goldarmor;
+	public static Armor lavaarmor;
+	public static Armor royalarmor;
+	public static Armor silverarmor;
+	public static Armor titaniumarmor;
+	
 	public MinuteQuestButBetter(int width, int height) {
 		super(width, height);
 		setVisible(true);
@@ -42,6 +56,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 		creation();
 		// TODO Auto-generated method stub
 		shop = new Shop(getWidth(), getHeight());
+		shopa = new ShopA(getWidth(), getHeight());
 		//inventory = new Inventory(getWidth(),getHeight());
 		setScreen(shop);
 		
@@ -83,8 +98,21 @@ public class MinuteQuestButBetter extends GUIApplication {
 		shotgun = new Weapon("symposium/deathislikethewind/shotgun.png","SHOTGUN",800,10,"STAB",210);
 		spear = new Weapon("symposium/deathislikethewind/spear.png","SPEAR",100,5,"STAB",50);
 		
-		rags = new Armor("RAGS", 10, 5);
-		mc = new Hero(IronSword,rags,1,1,1,1,1,100);
+		beginnerrobe = new Armor("beginnerrobe", 10, 25, 80, "symposium/armor/beginnerrobe.png");
+		bronzearmor = new Armor("bronzearmor", 20, 50, 400, "symposium/armor/bronzearmor.png");
+		devilarmor = new Armor("devilarmor", 30, 75, 750, "symposium/armor/devilarmor.png");
+		diamondarmor = new Armor("diamondarmor", 40, 100, 800, "symposium/armor/diamondarmor.png");
+		emeraldarmor = new Armor("emeraldarmor", 50, 150, 1000, "symposium/armor/emeraldarmor.png");
+		goldarmor = new Armor("goldarmor", 60, 200, 2500, "symposium/armor/goldarmor.png");
+		lavaarmor = new Armor("lavaarmor", 70, 400, 3000, "symposium/armor/lavaarmor.png");
+		royalarmor = new Armor("royalarmor", 80, 500, 5000, "symposium/armor/royalarmor.png");
+		silverarmor = new Armor("silverarmor", 90, 750, 8000, "symposium/armor/silverarmor.png");
+		titaniumarmor = new Armor("titaniumarmor", 100, 1000, 20000, "symposium/armor/titaniumarmor.png");
+		
+		
+		mc = new Hero(null,null,1,1,1,1,1,100);
+		
+		
 		
 		
 		
