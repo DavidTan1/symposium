@@ -8,7 +8,6 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static MinuteQuestButBetter gameGUI;
 	//public static Inventory inventory;
 	public static Shop shop;
-	public static ShopA shopa;
 	public static Hero mc;
 	public static Weapon knife;
 	public static Weapon club;
