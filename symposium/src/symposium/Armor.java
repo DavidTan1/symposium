@@ -6,17 +6,20 @@ public class Armor {
 	private String name;
 	public int defensestats;
 	public int armorweight;
+	private String img;
+	public int cost;
 	
 	
-	
-	public Armor(String name, int armorweight, int defensestats) {
+	public Armor(String name, int armorweight, int defensestats, int cost, String img) {
 		this.name = name;
-		
+		this.cost = cost;
 		this.armorweight = armorweight;
 		this.defensestats = defensestats;
-		
+		this.img = img;
 	}
 	
+	
+
 	public int getdefense()
 	{
 		return defensestats;
@@ -31,6 +34,13 @@ public class Armor {
 	{
 		return name;
 	}
-	
+	public String img()
+	{
+		return img;
+	}
+	public int cost()
+	{
+		return cost;
+	}
 	
 }
