@@ -29,9 +29,10 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static Weapon hammer;
 	public static Weapon shotgun;
 	public static Weapon spear;
-	public static Armor rags;
+	public static Weapon nonew;
 	
 	
+	public static Armor nonea;	
 	public static Armor beginnerrobe;
 	public static Armor bronzearmor;
 	public static Armor devilarmor;
@@ -95,7 +96,9 @@ public class MinuteQuestButBetter extends GUIApplication {
 		hammer = new Weapon("symposium/deathislikethewind/hammertime.png","HAMMER",100,10,"STAB",50);
 		shotgun = new Weapon("symposium/deathislikethewind/shotgun.png","SHOTGUN",800,10,"STAB",210);
 		spear = new Weapon("symposium/deathislikethewind/spear.png","SPEAR",100,5,"STAB",50);
-		
+		nonew = new Weapon("symposium/white.png","no armor",0,0,"NONE",0);
+
+		nonea = new Armor("no armor", 0, 0, 0, "symposium/white.png");
 		beginnerrobe = new Armor("beginnerrobe", 10, 25, 80, "symposium/armor/beginnerrobe.png");
 		bronzearmor = new Armor("bronzearmor", 20, 50, 400, "symposium/armor/bronzearmor.png");
 		devilarmor = new Armor("devilarmor", 30, 75, 750, "symposium/armor/devilarmor.png");
@@ -108,7 +111,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 		titaniumarmor = new Armor("titaniumarmor", 100, 1000, 20000, "symposium/armor/titaniumarmor.png");
 		
 		
-		mc = new Hero(null,null,1,1,1,1,1,100);
+		mc = new Hero(nonew,nonea,1,1,1,1,1,100);
 		
 		
 		

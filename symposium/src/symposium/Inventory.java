@@ -33,9 +33,9 @@ public class Inventory extends FullFunctionScreen {
 
 		weaponEquip = new Graphic(600, 400, 60, 60, "symposium/white.png");
 		
-		stats = new TextArea(5, 675, 800, 100, "Your character has a " + MinuteQuestButBetter.mc.getWeapon().name()
+		stats = new TextArea(5, 675, 800, 100, "Your character has " + MinuteQuestButBetter.mc.getWeapon().name()
 				+ " equipped." + " Your character STR: " + MinuteQuestButBetter.mc.getStr() + "->"
-				+ MinuteQuestButBetter.mc.setStr() + " Your character has a "
+				+ MinuteQuestButBetter.mc.setStr() + " Your character has "
 				+ MinuteQuestButBetter.mc.getArmor().getArmorName() + " equipped." + " Your character VIT: "
 				+ MinuteQuestButBetter.mc.getVit() + " -> " + MinuteQuestButBetter.mc.setVit() + " Your character AGL: "
 				+ MinuteQuestButBetter.mc.getAgl() + " -> " + MinuteQuestButBetter.mc.setAgl());

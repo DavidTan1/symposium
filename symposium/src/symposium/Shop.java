@@ -76,7 +76,7 @@ public class Shop extends FullFunctionScreen {
 		Graphic firstitem = new Graphic(100, 100, 60, 60, weapons.get(0).img());
 
 		Graphic seconditem = new Graphic(100, 200, 60, 60, weapons.get(1).img());
-
+		
 		Graphic thirditem = new Graphic(100, 300, 60, 60, weapons.get(2).img());
 
 		Graphic fourthitem = new Graphic(100, 400, 60, 60, weapons.get(3).img());
