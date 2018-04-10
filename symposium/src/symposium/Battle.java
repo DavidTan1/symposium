@@ -26,12 +26,12 @@ public class Battle extends FullFunctionScreen {
 		
 		viewObjects.add(background);
 		
-		Graphic standing = new Graphic(700, 663, 64,82, "symposium/stand1_0.png");
+		Graphic standing = new Graphic(700, 603, 64,82, "symposium/stand1_0.png");
 		viewObjects.add(standing);
 
 		
 		
-		walking = new AnimatedComponent(700, 320, 65, 83);
+		walking = new AnimatedComponent(700, 603, 65, 83);
 		viewObjects.add(walking);
 		
 		walking.addSequence("symposium/walking.png", 200, 0, 0, 64, 82, 8);
