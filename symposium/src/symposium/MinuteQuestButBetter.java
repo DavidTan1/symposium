@@ -52,6 +52,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static Mobs vampire;
 	public static Mobs robot;
 	public static Mobs angel;
+	public static Mobs bdragon;
 
 
 
@@ -131,7 +132,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 		beast = new Mobs("", 50, 10, 25, 100, 1);
 		vampire = new Mobs("", 50, 10, 25, 100, 1);
 		robot = new Mobs("", 50, 10, 25, 100, 1);
-
+		bdragon = new Mobs("symposium/bdragon.png", 50, 10, 25, 100, 1);
 
 		
 		

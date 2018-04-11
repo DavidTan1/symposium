@@ -22,7 +22,7 @@ public class Shop extends FullFunctionScreen {
 	private Button TWO;
 	private Button THREE;
 	private Button FOUR;
-	private Button back;
+	private Button battleb;
 	private Graphic userinventory;
 	private TextArea welcomeText;
 	private AnimatedComponent armor;
@@ -230,17 +230,17 @@ public class Shop extends FullFunctionScreen {
 
 		viewObjects.add(FOUR);
 
-		back = new Button(700, 625, 60, 60, "Back", new Action() {
+		battleb = new Button(700, 625, 60, 60, "Battle", new Action() {
 
 			@Override
 			public void act() {
-				// TODO Auto-generated method stub
+				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.battle);
 				
 			}
 
 		});
 
-		viewObjects.add(back);
+		viewObjects.add(battleb);
 
 		inventoryb = new Button(700, 675, 60, 60, "inventory", new Action() {
 
@@ -257,6 +257,9 @@ public class Shop extends FullFunctionScreen {
 		});
 
 		viewObjects.add(inventoryb);
+		
+		
+		
 	}
 
 	protected void check() {
