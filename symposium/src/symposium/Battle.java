@@ -24,6 +24,8 @@ public class Battle extends FullFunctionScreen {
 	private Button skills;
 	private Button attack;
 	private AnimatedComponent mob;
+	private AnimatedComponent strike;
+	public boolean attackrn;
 
 	public Battle(int width, int height) {
 		super(width, height);
@@ -35,14 +37,18 @@ public class Battle extends FullFunctionScreen {
 		// TODO Auto-generated method stub
 
 		MinuteQuestButBetter.bdragon.img();
-		
+
 		count = 1;
 		currHP = MinuteQuestButBetter.mc.getVit();
 		currPosition = 700;
+		attackrn = false;
 
 		Graphic background = new Graphic(0, 0, 1364, 746, "symposium/battlebackground.png");
 
 		viewObjects.add(background);
+
+		strike = new AnimatedComponent(currPosition, 603, 102, 107);
+		viewObjects.add(strike);
 
 		standing = new Graphic(700, 603, 64, 82, "symposium/stand1_0.png");
 		// viewObjects.add(standing);
@@ -54,15 +60,13 @@ public class Battle extends FullFunctionScreen {
 		Thread walk = new Thread(walking);
 		walk.start();
 
-		
 		mob = new AnimatedComponent(500, 603, 74, 82);
 		viewObjects.add(mob);
 
 		mob.addSequence("symposium/blackdragonstand.png", 200, 0, 0, 73, 81, 5);
 		Thread mobbdragon = new Thread(mob);
 		mobbdragon.start();
-		
-		
+
 		stats = new TextArea(1375, 100, 200, 1000, "Your character has " + MinuteQuestButBetter.mc.getWeapon().name()
 				+ " equipped." + " Your character STR: " + MinuteQuestButBetter.mc.getStr() + "->"
 				+ MinuteQuestButBetter.mc.setStr() + " Your character has "
@@ -103,31 +107,98 @@ public class Battle extends FullFunctionScreen {
 
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			if (attackrn == false) {
+				for (int i = 0; i < 1; i++) {
 
-			for (int i = 0; i < 1; i++) {
+					if (currPosition <= 700) {
+						newPosition = currPosition + count;
+						walking.move(newPosition, 603, 100);
+						count++;
+						currPosition = newPosition;
+					}
 
-				if (currPosition <= 700) {
-					newPosition = currPosition + count;
-					walking.move(newPosition, 603, 100);
-					count++;
-					currPosition = newPosition;
 				}
-
 			}
 
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			for (int i = 0; i < 1; i++) {
 
-				if (currPosition >= 1) {
-					newPosition = currPosition - count;
-					walking.move(newPosition, 603, 100);
-					count++;
-					currPosition = newPosition;
+			if (attackrn == false) {
+				for (int i = 0; i < 1; i++) {
+
+					if (currPosition >= 1) {
+						newPosition = currPosition - count;
+						walking.move(newPosition, 603, 100);
+						count++;
+						currPosition = newPosition;
+					}
 				}
 			}
-			repaint();
+
+		} else if (e.getKeyCode() == KeyEvent.VK_A) {
+
+			walking.setVisible(false);
+
+			attackrn = true;
+
+			if (attackrn == true) {
+
+				strike.setVisible(true);
+				strike.move(currPosition - 20, 603, 1);
+
+				strike.addSequence("symposium/basicattack.png", 200, 0, 0, 97, 107, 7);
+				Thread striking = new Thread(strike);
+				striking.start();
+
+				new Thread() {
+
+					public void run() {
+
+						try {
+							Thread.sleep(2000);
+						} catch (InterruptedException a) {
+							// TODO Auto-generated catch block
+							a.printStackTrace();
+						}
+
+						strike.setVisible(false);
+
+						walking.setVisible(true);
+
+					}
+				}.start();
+
+				attackrn = false;
+
+				
+				if(checkMob()==true)
+				{
+					MinuteQuestButBetter.bdragon.currHealth();
+					welcomeText.setText("Black Dragon health: "+MinuteQuestButBetter.bdragon.currHealth()
+					+"/"+MinuteQuestButBetter.bdragon.getVit());
+				}
+
+				
+				
+			} else {
+
+			}
 
 		}
+		repaint();
+
+	}
+	
+	
+	public boolean checkMob()
+	{
+		
+		if(currPosition==MinuteQuestButBetter.bdragon.getPositionx())
+		{
+			return true;
+
+		}
+		return false;
+		
 	}
 
 }
