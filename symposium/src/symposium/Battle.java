@@ -1,6 +1,7 @@
 package symposium;
 
 import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 import java.util.List;
 
 import guiTeacher.components.Action;
@@ -26,6 +27,7 @@ public class Battle extends FullFunctionScreen {
 	private AnimatedComponent mob;
 	private AnimatedComponent strike;
 	public boolean attackrn;
+	public ArrayList<Mobs> mobs;
 
 	public Battle(int width, int height) {
 		super(width, height);
@@ -36,11 +38,47 @@ public class Battle extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		// TODO Auto-generated method stub
 
+
+		//strike = new AnimatedComponent(currPosition, 600, 101, 101);
+		//viewObjects.add(strike);
+
+		
+
+		//walking = new AnimatedComponent(100, 603, 91, 117);
+		//viewObjects.add(walking);
+
+		//walking.addSequence("symposium/walkingsword.png", 200, 0, 0, 90, 116, 4);
+		//Thread walk = new Thread(walking);
+		//walk.start();
+
+		
+
+		
+
+		
+	
+		//strike.setVisible(true);
+				//strike.move(currPosition - 20, 603, 1);
+
+				//strike.addSequence("symposium/attack left.png", 200, 0, 0, 100, 100, 7);
+				//Thread striking = new Thread(strike);
+				//striking.start();
+
+
+	
+
+
+
+	
+		
+		
+		createMobs();
 		MinuteQuestButBetter.bdragon.img();
 
 		count = 1;
 		currHP = MinuteQuestButBetter.mc.getVit();
 		currPosition = 700;
+		//currPosition = 100;
 		attackrn = false;
 
 		Graphic background = new Graphic(0, 0, 1364, 746, "symposium/battlebackground.png");
@@ -103,6 +141,7 @@ public class Battle extends FullFunctionScreen {
 		});
 
 		viewObjects.add(skills);
+
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -167,18 +206,31 @@ public class Battle extends FullFunctionScreen {
 					}
 				}.start();
 
-				attackrn = false;
+				if (checkMob() == true) {
+					mobs.get(0).currHealth();
+					welcomeText
+							.setText("Black Dragon health: " + mobs.get(0).currHealth() + "/" + mobs.get(0).getVit());
 
-				
-				if(checkMob()==true)
-				{
-					MinuteQuestButBetter.bdragon.currHealth();
-					welcomeText.setText("Black Dragon health: "+MinuteQuestButBetter.bdragon.currHealth()
-					+"/"+MinuteQuestButBetter.bdragon.getVit());
+					if (mobs.get(0).dead() == true) {
+						welcomeText.setText("You kill the dragon.");
+						// mob.setVisible(false);
+
+						if (MinuteQuestButBetter.bdragon.dead() == true) {
+
+							getViewObjects().remove(mob);
+							//mobs.remove(0);
+							//mobs.add(MinuteQuestButBetter.deadMob);
+							System.out.println("asd");
+						}
+						mob.update();
+					}
+
+				} else {
+					welcomeText.setText("You swing your sword but hit nothing.");
 				}
 
-				
-				
+				attackrn = false;
+
 			} else {
 
 			}
@@ -187,18 +239,31 @@ public class Battle extends FullFunctionScreen {
 		repaint();
 
 	}
-	
-	
-	public boolean checkMob()
-	{
-		
-		if(currPosition==MinuteQuestButBetter.bdragon.getPositionx())
-		{
-			return true;
+
+	public boolean checkMob() {
+		if(mobs.get(0).dead()==false) {
+
+			if ((mobs.get(0).getPositionx() - 10 < currPosition || currPosition < 10 + mobs.get(0).getPositionx())) {
+				return true;
+			}
 
 		}
 		return false;
-		
+
+	}
+
+	private void createMobs() {
+		mobs = new ArrayList<Mobs>();
+		// System.out.println(bannerNum);
+
+		mobs.add(MinuteQuestButBetter.bdragon);
+		// mobs.add();
+		// mobs.add();
+		// mobs.add();
+		// mobs.add();
+
+		System.out.println("d");
+
 	}
 
 }

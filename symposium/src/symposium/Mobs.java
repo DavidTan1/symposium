@@ -12,6 +12,7 @@ public class Mobs {
 	private int positionx;
 	private int positiony;
 	private int currHealth;
+	private int maxHealth;
 	
 	public Mobs(String img, int str, int agl, int vit, int luk, int level, int positionx, int positiony) {
 		this.img = img;
@@ -22,6 +23,11 @@ public class Mobs {
 		this.level = level;
 		this.positionx = positionx;
 		this.positiony = positiony;
+		
+		
+		maxHealth = getVit();
+		currHealth = maxHealth;
+
 	}
 
 	public static void main(String[] args) {
@@ -31,8 +37,41 @@ public class Mobs {
 	
 	public int currHealth()
 	{
-		return currHealth = vit-MinuteQuestButBetter.mc.getStr();
+		if(maxHealth==currHealth)
+		{
+			currHealth = maxHealth-MinuteQuestButBetter.mc.getStr();
+			System.out.println(currHealth);
+			
+			
+			return currHealth;
+			
+		}
+		else
+		{
+			
+
+			currHealth = currHealth-MinuteQuestButBetter.mc.getStr();
+			return currHealth;
+		}
+		
 	}
+	
+	public boolean dead()
+	{
+		if(currHealth<=0)
+		{
+			return true;
+		}
+		return false;
+	}
+	
+	public int getHealth() 
+	{
+		
+		return 1;
+	}
+	
+	
 	
 	public int getPositiony() {			
 		return positiony;

@@ -79,7 +79,7 @@ public abstract class ComponentContainer extends JPanel{
 	public void setDimensions(int w, int h){
 		widthScreen = w;
 		heightScreen = h;
-		startingObjects = viewObjects;
+		startingObjects = getViewObjects();
 		create();
 	}
 	
@@ -87,13 +87,13 @@ public abstract class ComponentContainer extends JPanel{
 	 * Called by constructors only (because this method calls initObjects, which will actually wipe out temp data from UI objects)
 	 */
 	private void create(){
-		viewObjects = new ArrayList<Visible>();
+		setViewObjects(new ArrayList<Visible>());
 		for (Visible v: startingObjects){
-			viewObjects.add(v);
+			getViewObjects().add(v);
 		}
 		initImage(widthScreen, heightScreen);
 		update();
-		initObjects(viewObjects);
+		initObjects(getViewObjects());
 	}
 	
 	
@@ -124,7 +124,7 @@ public abstract class ComponentContainer extends JPanel{
 	public int[] calculateMaxXY(){
 		int maxX = 1;
 		int maxY = 1;
-		for(Visible v: viewObjects){
+		for(Visible v: getViewObjects()){
 			int tempX = v.getX()+v.getWidth();
 			int tempY = v.getY()+v.getHeight();
 			maxX = (tempX > maxX)?tempX : maxX;
@@ -137,7 +137,7 @@ public abstract class ComponentContainer extends JPanel{
 
 
 	public void addObject(Visible v){
-		viewObjects.add(v);
+		getViewObjects().add(v);
 	}
 
 
@@ -253,8 +253,8 @@ public abstract class ComponentContainer extends JPanel{
 
 	public void drawObjects(Graphics2D g){
 		//iterate through all view objects
-		for(int i = 0; i < viewObjects.size(); i++){
-			Visible v= viewObjects.get(i);
+		for(int i = 0; i < getViewObjects().size(); i++){
+			Visible v= getViewObjects().get(i);
 			if(v.isVisible()){
 				if(v.getAlpha() == 1f){
 					g.drawImage(v.getImage(), v.getX(), v.getY(), null);
@@ -271,27 +271,27 @@ public abstract class ComponentContainer extends JPanel{
 	}
 
 	public void remove(Visible v){
-		if(viewObjects.contains(v)){
-			viewObjects.remove(v);//all other objects slide up in order
+		if(getViewObjects().contains(v)){
+			getViewObjects().remove(v);//all other objects slide up in order
 		}
 	}
 
 	public void moveToFront(Visible v){
-		if(viewObjects.contains(v)){
-			viewObjects.remove(v);//all other objects slide up in order
-			viewObjects.add(v);
+		if(getViewObjects().contains(v)){
+			getViewObjects().remove(v);//all other objects slide up in order
+			getViewObjects().add(v);
 		}
 	}
 
 	public void moveToBack(Visible v){
-		if(viewObjects.contains(v)){
-			viewObjects.remove(v);//all other objects slide up in order
-			viewObjects.add(0, v);
+		if(getViewObjects().contains(v)){
+			getViewObjects().remove(v);//all other objects slide up in order
+			getViewObjects().add(0, v);
 		}
 	}
 
 	public void removeAll(){
-		viewObjects = new ArrayList<Visible>();
+		setViewObjects(new ArrayList<Visible>());
 	}
 
 	public BufferedImage getImage(){
@@ -333,6 +333,14 @@ public abstract class ComponentContainer extends JPanel{
 
 	public void setAlpha(float alpha) {
 		this.alpha = alpha;
+	}
+
+	public List<Visible> getViewObjects() {
+		return viewObjects;
+	}
+
+	public void setViewObjects(List<Visible> viewObjects) {
+		this.viewObjects = viewObjects;
 	}
 
 	

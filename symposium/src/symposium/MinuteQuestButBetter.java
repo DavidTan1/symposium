@@ -53,6 +53,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static Mobs robot;
 	public static Mobs angel;
 	public static Mobs bdragon;
+	public static Mobs deadMob;
 
 
 
@@ -133,10 +134,11 @@ public class MinuteQuestButBetter extends GUIApplication {
 		//vampire = new Mobs("", 50, 10, 25, 100, 1);
 		//robot = new Mobs("", 50, 10, 25, 100, 1);
 		bdragon = new Mobs("symposium/bdragon.png", 50, 10, 25, 100, 1, 500, 603);
+		deadMob = new Mobs("", 0, 0, 0, 0, 0, 0, 0);
 
 		
 		
-		mc = new Hero(nonew,nonea,1,1,1,1,1,100);
+		mc = new Hero(nonew,nonea,10,10,10,10,10,100);
 		
 	
 		
