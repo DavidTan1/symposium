@@ -39,19 +39,18 @@ public class Battle extends FullFunctionScreen {
 		// TODO Auto-generated method stub
 
 
-		//strike = new AnimatedComponent(currPosition, 600, 101, 101);
+		//strikeL = new AnimatedComponent(currPosition, 600, 101, 101);
 		//viewObjects.add(strike);
 
 		
 
-		//walking = new AnimatedComponent(100, 603, 91, 117);
-		//viewObjects.add(walking);
+		//walkingL = new AnimatedComponent(100, 603, 91, 117);
+		//viewObjects.add(walkingL);
 
-		//walking.addSequence("symposium/walkingsword.png", 200, 0, 0, 90, 116, 4);
+		//walkingL.addSequence("symposium/walkingsword.png", 200, 0, 0, 90, 116, 4);
 		//Thread walk = new Thread(walking);
 		//walk.start();
 
-		
 
 		
 
@@ -144,17 +143,23 @@ public class Battle extends FullFunctionScreen {
 
 	}
 
-	public void keyReleased(KeyEvent e) {
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+	public void keyPressed(KeyEvent e) {
+		System.out.println("print");
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT && e.) {
 			if (attackrn == false) {
 				for (int i = 0; i < 1; i++) {
 
-					if (currPosition <= 700) {
+					//if (currPosition <= 700) {
 						newPosition = currPosition + count;
 						walking.move(newPosition, 603, 100);
 						count++;
 						currPosition = newPosition;
-					}
+						
+						if(currPosition > 1360)
+						{
+							MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
+						}
+					//}
 
 				}
 			}
