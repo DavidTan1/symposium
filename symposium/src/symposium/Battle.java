@@ -207,7 +207,7 @@ public class Battle extends FullFunctionScreen {
 							// mobs.add(MinuteQuestButBetter.deadMob);
 							System.out.println("asd");
 						}
-						mob.update();
+						mob.update();//test
 					}
 
 				} else {
