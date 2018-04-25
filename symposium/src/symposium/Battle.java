@@ -14,23 +14,22 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class Battle extends FullFunctionScreen {
 
-	
 	public ArrayList<Mobs> mobs;
-	
+
 	public int currHP;
 	public int count;
 	public int currPosition;
-	
+
 	private AnimatedComponent walking;
 	private AnimatedComponent walkingR;
 	private AnimatedComponent strikeR;
 	private AnimatedComponent strikeL;
 	private AnimatedComponent mob;
-	
+
 	private TextArea stats;
 	private TextArea welcomeText;
 	private Button items;
-	
+
 	public boolean attackrn;
 	public boolean right;
 	public boolean left;
@@ -45,7 +44,6 @@ public class Battle extends FullFunctionScreen {
 		// TODO Auto-generated method stub
 
 		createMobs();
-		
 
 		count = 1;
 		currHP = MinuteQuestButBetter.mc.getVit();
@@ -57,25 +55,27 @@ public class Battle extends FullFunctionScreen {
 
 		viewObjects.add(background);
 
-		strikeL = new AnimatedComponent(currPosition, 603, 102, 107); //create better movement and attack animation
-		viewObjects.add(strikeL); //striking left
+		strikeL = new AnimatedComponent(currPosition, 603, 102, 107); // create better movement and attack animation
+		viewObjects.add(strikeL); // striking left
 
-		strikeR = new AnimatedComponent(currPosition, 600, 101, 101); //create better movement and attack animation
-		viewObjects.add(strikeR); //striking right
+		strikeR = new AnimatedComponent(currPosition, 600, 101, 101); // create better movement and attack animation
+		viewObjects.add(strikeR); // striking right
 
-		walkingR = new AnimatedComponent(100, 603, 91, 117); 
-		viewObjects.add(walkingR); 
+		walkingR = new AnimatedComponent(100, 603, 91, 117);
+		viewObjects.add(walkingR);
 
-		walkingR.addSequence("symposium/walkingsword.png", 200, 0, 0, 90, 116, 4); //create better movement and attack animation
-		Thread walkR = new Thread(walkingR); //animation for moving right
+		walkingR.addSequence("symposium/walkingsword.png", 200, 0, 0, 90, 116, 4); // create better movement and attack
+																					// animation
+		Thread walkR = new Thread(walkingR); // animation for moving right
 		walkR.start();
 
-		walking = new AnimatedComponent(100, 603, 65, 83); 
+		walking = new AnimatedComponent(100, 603, 65, 83);
 		viewObjects.add(walking);
 		walking.setVisible(false);
 
-		walking.addSequence("symposium/walking.png", 200, 0, 0, 64, 82, 8); //create better movement and attack animation
-		Thread walk = new Thread(walking); //animation for moving left
+		walking.addSequence("symposium/walking.png", 200, 0, 0, 64, 82, 8); // create better movement and attack
+																			// animation
+		Thread walk = new Thread(walking); // animation for moving left
 		walk.start();
 
 		mob = new AnimatedComponent(500, 603, 74, 82);
@@ -94,8 +94,8 @@ public class Battle extends FullFunctionScreen {
 
 		viewObjects.add(stats);
 
-		welcomeText = new TextArea(5, 800, 800, 100, "Kill the dragon to reach the next town."
-				+ "PRO TIP: Pressed 'A' to attack.");
+		welcomeText = new TextArea(5, 800, 800, 100,
+				"Kill the dragon to reach the next town." + "PRO TIP: Pressed 'A' to attack.");
 		viewObjects.add(welcomeText);
 
 		items = new Button(1000, 800, 60, 60, "Skills", new Action() {
@@ -169,8 +169,8 @@ public class Battle extends FullFunctionScreen {
 				strikeL.setVisible(true);
 				strikeL.move(currPosition - 20, 603, 1);
 
-				strikeL.addSequence("symposium/basicattack.png", 200, 0, 0, 97, 107, 7); 
-				Thread striking = new Thread(strikeL); //animation for striking left
+				strikeL.addSequence("symposium/basicattack.png", 200, 0, 0, 97, 107, 7);
+				Thread striking = new Thread(strikeL); // animation for striking left
 				striking.start();
 
 				new Thread() {
@@ -198,13 +198,12 @@ public class Battle extends FullFunctionScreen {
 
 					if (mobs.get(0).dead() == true) {
 						welcomeText.setText("You kill the dragon.");
-						// mob.setVisible(false);
+						
 
 						if (MinuteQuestButBetter.bdragon.dead() == true) {
 
 							getViewObjects().remove(mob);
-							// mobs.remove(0);
-							// mobs.add(MinuteQuestButBetter.deadMob);
+							
 							System.out.println("asd");
 						}
 						mob.update();
@@ -222,7 +221,7 @@ public class Battle extends FullFunctionScreen {
 				strikeR.move(currPosition - 20, 603, 1);
 
 				strikeR.addSequence("symposium/attack right.png", 200, 0, 0, 100, 100, 7);
-				Thread strikingR = new Thread(strikeR); //animation for striking right
+				Thread strikingR = new Thread(strikeR); // animation for striking right
 				strikingR.start();
 
 				new Thread() {
@@ -250,13 +249,12 @@ public class Battle extends FullFunctionScreen {
 
 					if (mobs.get(0).dead() == true) {
 						welcomeText.setText("You kill the dragon.");
-						// mob.setVisible(false);
+						
 
 						if (MinuteQuestButBetter.bdragon.dead() == true) {
 
 							getViewObjects().remove(mob);
-							// mobs.remove(0);
-							// mobs.add(MinuteQuestButBetter.deadMob);
+							
 							System.out.println("asd");
 						}
 						mob.update();
