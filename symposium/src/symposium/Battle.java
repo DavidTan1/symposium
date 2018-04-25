@@ -45,7 +45,7 @@ public class Battle extends FullFunctionScreen {
 		// TODO Auto-generated method stub
 
 		createMobs();
-		// MinuteQuestButBetter.bdragon.img();
+		
 
 		count = 1;
 		currHP = MinuteQuestButBetter.mc.getVit();
@@ -57,25 +57,25 @@ public class Battle extends FullFunctionScreen {
 
 		viewObjects.add(background);
 
-		strikeL = new AnimatedComponent(currPosition, 603, 102, 107);
-		viewObjects.add(strikeL);
+		strikeL = new AnimatedComponent(currPosition, 603, 102, 107); //create better movement and attack animation
+		viewObjects.add(strikeL); //striking left
 
-		strikeR = new AnimatedComponent(currPosition, 600, 101, 101);
-		viewObjects.add(strikeR);
+		strikeR = new AnimatedComponent(currPosition, 600, 101, 101); //create better movement and attack animation
+		viewObjects.add(strikeR); //striking right
 
-		walkingR = new AnimatedComponent(100, 603, 91, 117);
-		viewObjects.add(walkingR);
+		walkingR = new AnimatedComponent(100, 603, 91, 117); 
+		viewObjects.add(walkingR); 
 
-		walkingR.addSequence("symposium/walkingsword.png", 200, 0, 0, 90, 116, 4);
-		Thread walkR = new Thread(walkingR);
+		walkingR.addSequence("symposium/walkingsword.png", 200, 0, 0, 90, 116, 4); //create better movement and attack animation
+		Thread walkR = new Thread(walkingR); //animation for moving right
 		walkR.start();
 
-		walking = new AnimatedComponent(100, 603, 65, 83);
+		walking = new AnimatedComponent(100, 603, 65, 83); 
 		viewObjects.add(walking);
 		walking.setVisible(false);
 
-		walking.addSequence("symposium/walking.png", 200, 0, 0, 64, 82, 8);
-		Thread walk = new Thread(walking);
+		walking.addSequence("symposium/walking.png", 200, 0, 0, 64, 82, 8); //create better movement and attack animation
+		Thread walk = new Thread(walking); //animation for moving left
 		walk.start();
 
 		mob = new AnimatedComponent(500, 603, 74, 82);
@@ -169,8 +169,8 @@ public class Battle extends FullFunctionScreen {
 				strikeL.setVisible(true);
 				strikeL.move(currPosition - 20, 603, 1);
 
-				strikeL.addSequence("symposium/basicattack.png", 200, 0, 0, 97, 107, 7);
-				Thread striking = new Thread(strikeL);
+				strikeL.addSequence("symposium/basicattack.png", 200, 0, 0, 97, 107, 7); 
+				Thread striking = new Thread(strikeL); //animation for striking left
 				striking.start();
 
 				new Thread() {
@@ -221,8 +221,8 @@ public class Battle extends FullFunctionScreen {
 				strikeR.setVisible(true);
 				strikeR.move(currPosition - 20, 603, 1);
 
-				strikeR.addSequence("symposium/attack left.png", 200, 0, 0, 100, 100, 7);
-				Thread strikingR = new Thread(strikeR);
+				strikeR.addSequence("symposium/attack right.png", 200, 0, 0, 100, 100, 7);
+				Thread strikingR = new Thread(strikeR); //animation for striking right
 				strikingR.start();
 
 				new Thread() {
