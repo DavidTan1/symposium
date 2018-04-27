@@ -4,6 +4,10 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.sun.javafx.geom.Rectangle;
+import com.sun.prism.Graphics;
+import com.sun.prism.paint.Color;
+
 import guiTeacher.components.Action;
 import guiTeacher.components.AnimatedComponent;
 import guiTeacher.components.Button;
@@ -28,11 +32,17 @@ public class Battle extends FullFunctionScreen {
 
 	private TextArea stats;
 	private TextArea welcomeText;
+	private TextArea hpBar;
 	private Button items;
 
 	public boolean attackrn;
 	public boolean right;
 	public boolean left;
+	public int healthMax;
+	public int currHealth;
+	public int c;
+
+	private boolean gameover;
 
 	public Battle(int width, int height) {
 		super(width, height);
@@ -46,22 +56,30 @@ public class Battle extends FullFunctionScreen {
 		createMobs();
 
 		count = 1;
-		currHP = MinuteQuestButBetter.mc.getVit();
+		c = 1;
 		currPosition = 100;
-
+		healthMax = MinuteQuestButBetter.mc.getVit();
+		//currHealth = healthMax;
+		currHP = healthMax;
+		gameover = false;
+				
 		attackrn = false;
 
 		Graphic background = new Graphic(0, 0, 1364, 746, "symposium/battlebackground.png");
 
-		viewObjects.add(background);
+		// viewObjects.add(background);
 
-		strikeL = new AnimatedComponent(currPosition, 603, 102, 107); // create better movement and attack animation
+		hpBar = new TextArea(100, 100, 1000, 1000, "______________________________");
+
+		viewObjects.add(hpBar);
+
+		strikeL = new AnimatedComponent(currPosition, 585, 102, 107); // create better movement and attack animation
 		viewObjects.add(strikeL); // striking left
 
-		strikeR = new AnimatedComponent(currPosition, 600, 101, 101); // create better movement and attack animation
+		strikeR = new AnimatedComponent(currPosition, 585, 101, 101); // create better movement and attack animation
 		viewObjects.add(strikeR); // striking right
 
-		walkingR = new AnimatedComponent(100, 603, 91, 117);
+		walkingR = new AnimatedComponent(100, 585, 91, 117);
 		viewObjects.add(walkingR);
 
 		walkingR.addSequence("symposium/walkingsword.png", 200, 0, 0, 90, 116, 4); // create better movement and attack
@@ -69,7 +87,7 @@ public class Battle extends FullFunctionScreen {
 		Thread walkR = new Thread(walkingR); // animation for moving right
 		walkR.start();
 
-		walking = new AnimatedComponent(100, 603, 65, 83);
+		walking = new AnimatedComponent(100, 590, 65, 83);
 		viewObjects.add(walking);
 		walking.setVisible(false);
 
@@ -109,34 +127,37 @@ public class Battle extends FullFunctionScreen {
 		});
 
 		viewObjects.add(items);
+		
+		
 
+		
 	}
 
 	public void keyPressed(KeyEvent e) {
-		System.out.println(currPosition);
+		// System.out.println(currPosition);
 
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT && gameover == false) {
 			if (attackrn == false) {
 				walkingR.setVisible(true);
 				for (int i = 0; i < 1; i++) {
 
 					currPosition++;
 
-					walking.move(currPosition, 603, 1);
-					walkingR.move(currPosition, 603, 1);
+					walking.move(currPosition, 592, 1);
+					walkingR.move(currPosition, 585, 1);
 
 					walking.setVisible(false);
 
 					right = true;
 					left = false;
 
-					if (currPosition > 1360) {
+					if (currPosition > 1300) {
 						MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
 					}
 				}
 			}
 
-		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT && gameover == false) {
 
 			if (attackrn == false) {
 				walking.setVisible(true);
@@ -146,8 +167,8 @@ public class Battle extends FullFunctionScreen {
 
 						currPosition--;
 
-						walking.move(currPosition, 603, 1);
-						walkingR.move(currPosition, 603, 1);
+						walking.move(currPosition, 592, 1);
+						walkingR.move(currPosition, 585, 1);
 
 						walkingR.setVisible(false);
 
@@ -157,17 +178,17 @@ public class Battle extends FullFunctionScreen {
 				}
 			}
 
-		} else if (e.getKeyCode() == KeyEvent.VK_A) {
+		} else if (e.getKeyCode() == KeyEvent.VK_A && gameover == false) {
 
 			walking.setVisible(false);
 			walkingR.setVisible(false);
 
 			attackrn = true;
 
-			if (attackrn == true && left == true) {
+			if (attackrn == true && left == true ) {
 
 				strikeL.setVisible(true);
-				strikeL.move(currPosition - 20, 603, 1);
+				strikeL.move(currPosition - 20, 585, 1);
 
 				strikeL.addSequence("symposium/basicattack.png", 200, 0, 0, 97, 107, 7);
 				Thread striking = new Thread(strikeL); // animation for striking left
@@ -187,6 +208,7 @@ public class Battle extends FullFunctionScreen {
 						strikeL.setVisible(false);
 
 						walking.setVisible(true);
+						attackrn = false;
 
 					}
 				}.start();
@@ -198,12 +220,11 @@ public class Battle extends FullFunctionScreen {
 
 					if (mobs.get(0).dead() == true) {
 						welcomeText.setText("You kill the dragon.");
-						
 
 						if (MinuteQuestButBetter.bdragon.dead() == true) {
 
 							getViewObjects().remove(mob);
-							
+
 							System.out.println("asd");
 						}
 						mob.update();
@@ -212,8 +233,6 @@ public class Battle extends FullFunctionScreen {
 				} else {
 					welcomeText.setText("You swing your sword but hit nothing.");
 				}
-
-				attackrn = false;
 
 			} else {
 				attackrn = true;
@@ -238,6 +257,7 @@ public class Battle extends FullFunctionScreen {
 						strikeR.setVisible(false);
 
 						walkingR.setVisible(true);
+						attackrn = false;
 
 					}
 				}.start();
@@ -249,13 +269,12 @@ public class Battle extends FullFunctionScreen {
 
 					if (mobs.get(0).dead() == true) {
 						welcomeText.setText("You kill the dragon.");
-						
 
 						if (MinuteQuestButBetter.bdragon.dead() == true) {
 
 							getViewObjects().remove(mob);
+
 							
-							System.out.println("asd");
 						}
 						mob.update();
 					}
@@ -264,8 +283,26 @@ public class Battle extends FullFunctionScreen {
 					welcomeText.setText("You swing your sword but hit nothing.");
 				}
 
-				attackrn = false;
+			}
 
+		} else if (e.getKeyCode() == KeyEvent.VK_S && gameover == false) {
+			checkHealth();
+			
+
+			if (decreaseBar() == true && c < 31) {
+				hpBar.setText("______________________________".substring(0, 30 - c));
+				c++;
+				
+				
+				System.out.println("HP: "+currHP);
+
+				
+				
+			}
+			else
+			{
+				welcomeText.setText("You are dead.");
+				gameover = true;
 			}
 
 		}
@@ -312,6 +349,28 @@ public class Battle extends FullFunctionScreen {
 
 		System.out.println(mobs.get(0).img() + " " + mobs.get(1).img());
 
+	}
+
+	public int checkHealth() {
+
+		if (healthMax == currHP) {
+			currHP = healthMax - MinuteQuestButBetter.mc.getStr();
+			System.out.println(currHP);
+
+			return currHP;
+
+		} else {
+
+			currHP = currHP - MinuteQuestButBetter.mc.getStr();
+			return currHP;
+		}
+	}
+
+	public boolean decreaseBar() {
+		if (currHP < healthMax) {
+			return true;
+		}
+		return false;
 	}
 
 }
