@@ -6,7 +6,8 @@ import java.util.List;
 
 import com.sun.javafx.geom.Rectangle;
 import com.sun.prism.Graphics;
-import com.sun.prism.paint.Color;
+import java.awt.Color;
+
 
 import guiTeacher.components.Action;
 import guiTeacher.components.AnimatedComponent;
@@ -67,12 +68,19 @@ public class Battle extends FullFunctionScreen {
 
 		Graphic background = new Graphic(0, 0, 1364, 746, "symposium/battlebackground.png");
 
-		// viewObjects.add(background);
+		viewObjects.add(background);
 
 		hpBar = new TextArea(100, 100, 1000, 1000, "______________________________");
-
+		hpBar.setBodyColor(Color.RED);
+		hpBar.update();
+		
+		
+		
 		viewObjects.add(hpBar);
-
+		
+		
+		
+		hpBar.update();
 		strikeL = new AnimatedComponent(currPosition, 585, 102, 107); // create better movement and attack animation
 		viewObjects.add(strikeL); // striking left
 
