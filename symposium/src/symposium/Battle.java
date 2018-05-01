@@ -83,7 +83,7 @@ public class Battle extends FullFunctionScreen {
 		viewObjects.add(background);
 
 		hpBar = new TextArea(100, 100, 1000, 1000, "______________________________");
-		hpBar.setBodyColor(Color.RED);
+		hpBar.setTextColor(Color.RED);
 		hpBar.update();
 
 		viewObjects.add(hpBar);
