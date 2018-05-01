@@ -8,7 +8,7 @@ public class Weapon {
 	public int atkstats;
 	public int weaponweight;
 	public int cost;
-	
+
 	public Weapon(String img, String name, int atkstats, int weaponweight, String type, int cost) {
 		this.img = img;
 		this.name = name;
@@ -18,35 +18,28 @@ public class Weapon {
 		this.cost = cost;
 	}
 
-	
-	public String weaponType()
-	{
+	public String weaponType() {
 		return type;
 	}
-	
-	public int getCost()
-	{
+
+	public int getCost() {
 		return cost;
 	}
-	
-	public int getattackstats()
-	{
+
+	public int getattackstats() {
 		return atkstats;
 	}
-	
-	public int weight()
-	{
+
+	public int weight() {
 		return weaponweight;
 	}
-	public String name()
-	{
+
+	public String name() {
 		return name;
 	}
-	public String img()
-	{
+
+	public String img() {
 		return img;
 	}
-	
-	
 
 }

@@ -18,7 +18,6 @@ public class Inventory extends FullFunctionScreen {
 	private Graphic armorEquip;
 	private Graphic weaponEquip;
 
-
 	public Inventory(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -32,7 +31,7 @@ public class Inventory extends FullFunctionScreen {
 		// viewObjects.add(hero);
 
 		weaponEquip = new Graphic(600, 400, 60, 60, "symposium/white.png");
-		
+
 		stats = new TextArea(5, 675, 800, 100, "Your character has " + MinuteQuestButBetter.mc.getWeapon().name()
 				+ " equipped." + " Your character STR: " + MinuteQuestButBetter.mc.getStr() + "->"
 				+ MinuteQuestButBetter.mc.setStr() + " Your character has "
@@ -58,24 +57,24 @@ public class Inventory extends FullFunctionScreen {
 		displayInventory();
 
 		for (int i = 0; i < MinuteQuestButBetter.shop.getInventory().size(); i++) {
-			weapon = new Graphic(100, (50 * i)+50, 60, 60, MinuteQuestButBetter.shop.getInventory().get(i).img());
+			weapon = new Graphic(100, (50 * i) + 50, 60, 60, MinuteQuestButBetter.shop.getInventory().get(i).img());
 			viewObjects.add(weapon);
 
 		}
 		System.out.println(MinuteQuestButBetter.shop.getInventory().size());
 		for (int item = 0; item <= MinuteQuestButBetter.shop.getInventory().size(); item++) {
 			int number = item;
-			equip = new Button(100, (50 * item)+50, 60, 60, "", new Action() {
+			equip = new Button(100, (50 * item) + 50, 60, 60, "", new Action() {
 
 				public void act() {
 					// System.out.println(MinuteQuestButBetter.shop.getInventory().get(number));
 					MinuteQuestButBetter.mc.addWeapon(MinuteQuestButBetter.shop.getInventory().get(number));
 					updateEquip();
-					
+
 					viewObjects.remove(weaponEquip);
 
-					
-					weaponEquip = new Graphic(600, 400, 60, 60, MinuteQuestButBetter.shop.getInventory().get(number).img());
+					weaponEquip = new Graphic(600, 400, 60, 60,
+							MinuteQuestButBetter.shop.getInventory().get(number).img());
 					viewObjects.add(weaponEquip);
 				}
 
@@ -89,8 +88,6 @@ public class Inventory extends FullFunctionScreen {
 
 	}
 
-	
-	
 	public void updateEquip() {
 		stats.setText("Your character has a " + MinuteQuestButBetter.mc.getWeapon().name() + " equipped."
 				+ " Your character STR: " + MinuteQuestButBetter.mc.getStr() + "->" + MinuteQuestButBetter.mc.setStr()
@@ -101,8 +98,9 @@ public class Inventory extends FullFunctionScreen {
 	}
 
 	public void displayInventory() {
-		
-		//weaponEquip = new Graphic(100, 100 * i, 60, 60, MinuteQuestButBetter.shop.getInventory().get(i).img());
+
+		// weaponEquip = new Graphic(100, 100 * i, 60, 60,
+		// MinuteQuestButBetter.shop.getInventory().get(i).img());
 
 	}
 

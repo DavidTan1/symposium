@@ -1,11 +1,8 @@
 package symposium;
 
-import java.awt.Container;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.Color;
-
-import javax.swing.JFrame;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.AnimatedComponent;
@@ -45,8 +42,7 @@ public class Shop extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		
-		
+
 		currValue = MinuteQuestButBetter.mc.getGold();
 
 		i = 1;
@@ -76,7 +72,7 @@ public class Shop extends FullFunctionScreen {
 		Graphic firstitem = new Graphic(100, 100, 60, 60, weapons.get(0).img());
 
 		Graphic seconditem = new Graphic(100, 200, 60, 60, weapons.get(1).img());
-		
+
 		Graphic thirditem = new Graphic(100, 300, 60, 60, weapons.get(2).img());
 
 		Graphic fourthitem = new Graphic(100, 400, 60, 60, weapons.get(3).img());
@@ -109,10 +105,9 @@ public class Shop extends FullFunctionScreen {
 					ONE.setVisible(false);
 					check();
 					currValue = currValue - weapons.get(0).getCost();
-					
+
 					uinventory.add(weapons.get(0));
 					welcomeText.setText("You have " + currValue + " gold left.");
-
 
 				} else {
 					System.out.print("You don't have enough gold.");
@@ -147,9 +142,8 @@ public class Shop extends FullFunctionScreen {
 					check();
 
 					currValue = currValue - weapons.get(1).getCost();
-					
-					uinventory.add(weapons.get(1));
 
+					uinventory.add(weapons.get(1));
 
 					welcomeText.setText("You have " + currValue + " gold left.");
 
@@ -217,7 +211,7 @@ public class Shop extends FullFunctionScreen {
 
 					check();
 					currValue = currValue - weapons.get(3).getCost();
-					
+
 					uinventory.add(weapons.get(3));
 					welcomeText.setText("You have " + currValue + " gold left.");
 				} else {
@@ -235,7 +229,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.battle);
-				
+
 			}
 
 		});
@@ -247,19 +241,17 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
-				
-				//inventory = new Inventory(getWidth(),getHeight());
+
+				// inventory = new Inventory(getWidth(),getHeight());
 				System.out.println(uinventory.get(0).name());
-				MinuteQuestButBetter.gameGUI.setScreen(new Inventory(getWidth(),getHeight()));
+				MinuteQuestButBetter.gameGUI.setScreen(new Inventory(getWidth(), getHeight()));
 
 			}
 
 		});
 
 		viewObjects.add(inventoryb);
-		
-		
-		
+
 	}
 
 	protected void check() {
@@ -282,11 +274,9 @@ public class Shop extends FullFunctionScreen {
 		i++;
 
 	}
-	
-	public ArrayList<Weapon> getInventory()
-	{
+
+	public ArrayList<Weapon> getInventory() {
 		return uinventory;
 	}
 
-	
 }

@@ -1,7 +1,6 @@
 package symposium;
 
 import guiTeacher.GUIApplication;
-import javafx.scene.paint.Color;
 
 public class MinuteQuestButBetter extends GUIApplication {
 

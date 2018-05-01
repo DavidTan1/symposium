@@ -1,7 +1,7 @@
 package symposium;
 
 public class Hero {
-	
+
 	private Weapon weapon;
 	private Armor armor;
 	private int str;
@@ -10,7 +10,7 @@ public class Hero {
 	private int luk;
 	private int level;
 	private int gold;
-	
+
 	public Hero(Weapon weapon, Armor armor, int str, int agl, int vit, int luk, int level, int gold) {
 
 		this.weapon = weapon;
@@ -28,8 +28,7 @@ public class Hero {
 
 	}
 
-	public int getGold()
-	{
+	public int getGold() {
 		return gold;
 	}
 
@@ -50,14 +49,14 @@ public class Hero {
 	}
 
 	public int getStr() {
-		
+
 		return str;
 	}
 
 	public int setStr() {
-		
+
 		System.out.println(getWeapon());
-		int trueSTR = str*getWeapon().getattackstats();
+		int trueSTR = str * getWeapon().getattackstats();
 		return trueSTR;
 	}
 
@@ -67,8 +66,9 @@ public class Hero {
 
 	public int setAgl() {
 		System.out.println(getArmor());
-		int trueAGL = (int) (agl-(getArmor().getweight()*.75));
-		return trueAGL;	}
+		int trueAGL = (int) (agl - (getArmor().getweight() * .75));
+		return trueAGL;
+	}
 
 	public int getVit() {
 		return vit;
@@ -76,7 +76,7 @@ public class Hero {
 
 	public int setVit() {
 		System.out.println(getArmor());
-		int trueVIT = vit*(getArmor().getdefense()/10);
+		int trueVIT = vit * (getArmor().getdefense() / 10);
 		return trueVIT;
 	}
 
@@ -95,10 +95,9 @@ public class Hero {
 	public void setLevel(int level) {
 		this.level = level;
 	}
-	
-	public void addWeapon(Weapon asdf)
-	{
+
+	public void addWeapon(Weapon asdf) {
 		weapon = asdf;
 	}
-	
+
 }

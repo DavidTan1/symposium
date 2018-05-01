@@ -2,14 +2,12 @@ package symposium;
 
 public class Armor {
 
-	
 	private String name;
 	public int defensestats;
 	public int armorweight;
 	private String img;
 	public int cost;
-	
-	
+
 	public Armor(String name, int armorweight, int defensestats, int cost, String img) {
 		this.name = name;
 		this.cost = cost;
@@ -17,30 +15,25 @@ public class Armor {
 		this.defensestats = defensestats;
 		this.img = img;
 	}
-	
-	
 
-	public int getdefense()
-	{
+	public int getdefense() {
 		return defensestats;
 	}
-	
-	public int getweight()
-	{
+
+	public int getweight() {
 		return armorweight;
 	}
 
-	public String getArmorName()
-	{
+	public String getArmorName() {
 		return name;
 	}
-	public String img()
-	{
+
+	public String img() {
 		return img;
 	}
-	public int cost()
-	{
+
+	public int cost() {
 		return cost;
 	}
-	
+
 }
