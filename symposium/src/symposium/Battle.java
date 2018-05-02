@@ -27,7 +27,9 @@ public class Battle extends FullFunctionScreen {
 	private AnimatedComponent strikeR;
 	private AnimatedComponent strikeL;
 	private AnimatedComponent mob;
-
+	
+	private Sprite walklr;
+	
 	private TextArea stats;
 	private TextArea welcomeText;
 	private TextArea hpBar;
@@ -43,6 +45,10 @@ public class Battle extends FullFunctionScreen {
 
 	private boolean gameover;
 
+	private TextArea asdf;
+
+	private boolean textD;
+
 	public Battle(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -50,7 +56,29 @@ public class Battle extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		setBackground(Color.BLACK);
+		
+
+		
+																							
+		
+		
+		
+		walklr = new Sprite(100,585,57,76);
+		viewObjects.add(walklr);
+		
+		
+		
+		walklr.addSequence("symposium/walkingsword.png", 200, 0, 0, 40, 100, 8);
+		Thread walkrl = new Thread(walklr);
+		walkrl.start();
+		
+		
+		
+		
+		
+		
+		
+		//setBackground(Color.BLACK);
 
 		welcomeText = new TextArea(5, 800, 800, 100,
 				"Kill the dragon to reach the next town." + "PRO TIP: Pressed 'A' to attack.");
@@ -58,6 +86,16 @@ public class Battle extends FullFunctionScreen {
 		viewObjects.add(welcomeText);
 		welcomeText.setTextColor(Color.WHITE);
 		welcomeText.update();
+		
+		
+
+		stats = new TextArea(1075, 800, 200, 500
+				, "");
+
+		viewObjects.add(stats);
+		
+		
+		
 		
 		asd = new TextArea(5, 800, 800, 100,
 				"Kill the dragon to reach the next town." + "PRO TIP: Pressed 'A' to attack.");
@@ -80,37 +118,42 @@ public class Battle extends FullFunctionScreen {
 
 		Graphic background = new Graphic(0, 0, 1364, 746, "symposium/battlebackground.png");
 
-		viewObjects.add(background);
+		//viewObjects.add(background);
 
-		hpBar = new TextArea(100, 100, 1000, 1000, "______________________________");
-		hpBar.setTextColor(Color.RED);
-		hpBar.update();
+		asdf = new TextArea(100, 100, 1000, 1000, "______________________________");
+		viewObjects.add(asdf);
+		asdf.setTextColor(Color.RED);
+		asdf.update();
+		
+		hpBar = new TextArea(100, 100, 1000, 100, "______________________________");
+
+		
 
 		viewObjects.add(hpBar);
 
 		hpBar.update();
-		strikeL = new AnimatedComponent(currPosition, 585, 102, 107); // create better movement and attack animation
-		viewObjects.add(strikeL); // striking left
+		//strikeL = new AnimatedComponent(currPosition, 585, 102, 107); // create better movement and attack animation
+		//viewObjects.add(strikeL); // striking left
 
-		strikeR = new AnimatedComponent(currPosition, 585, 101, 101); // create better movement and attack animation
-		viewObjects.add(strikeR); // striking right
+		//strikeR = new AnimatedComponent(currPosition, 585, 101, 101); // create better movement and attack animation
+		//viewObjects.add(strikeR); // striking right
 
-		walkingR = new AnimatedComponent(100, 585, 91, 117);
-		viewObjects.add(walkingR);
+		//walkingR = new AnimatedComponent(100, 585, 91, 117);
+		//viewObjects.add(walkingR);
 
-		walkingR.addSequence("symposium/walkingsword.png", 200, 0, 0, 90, 116, 4); // create better movement and attack
+		//walkingR.addSequence("symposium/walkingsword.png", 200, 0, 0, 90, 116, 4); // create better movement and attack
 																					// animation
-		Thread walkR = new Thread(walkingR); // animation for moving right
-		walkR.start();
+		//Thread walkR = new Thread(walkingR); // animation for moving right
+		//walkR.start();
 
-		walking = new AnimatedComponent(100, 590, 65, 83);
-		viewObjects.add(walking);
-		walking.setVisible(false);
+		//walking = new AnimatedComponent(100, 590, 65, 83);
+		//viewObjects.add(walking);
+		//walking.setVisible(false);
 
-		walking.addSequence("symposium/walking.png", 200, 0, 0, 64, 82, 8); // create better movement and attack
+		//walking.addSequence("symposium/walking.png", 200, 0, 0, 64, 82, 8); // create better movement and attack
 																			// animation
-		Thread walk = new Thread(walking); // animation for moving left
-		walk.start();
+		//Thread walk = new Thread(walking); // animation for moving left
+		//walk.start();
 
 		mob = new AnimatedComponent(500, 603, 74, 82);
 		viewObjects.add(mob);
@@ -118,21 +161,10 @@ public class Battle extends FullFunctionScreen {
 		mob.addSequence("symposium/blackdragonstand.png", 200, 0, 0, 73, 81, 5);
 		Thread mobbdragon = new Thread(mob);
 		mobbdragon.start();
-
-		stats = new TextArea(1375, 100, 200, 1000, "Your character has " + MinuteQuestButBetter.mc.getWeapon().name()
-				+ " equipped." + " Your character STR: " + MinuteQuestButBetter.mc.getStr() + "->"
-				+ MinuteQuestButBetter.mc.setStr() + " Your character has "
-				+ MinuteQuestButBetter.mc.getArmor().getArmorName() + " equipped." + " Your character VIT: "
-				+ MinuteQuestButBetter.mc.getVit() + " -> " + MinuteQuestButBetter.mc.setVit() + " Your character AGL: "
-				+ MinuteQuestButBetter.mc.getAgl() + " -> " + MinuteQuestButBetter.mc.setAgl());
-
-		viewObjects.add(stats);
-
-
 		
 		
 		
-		items = new Button(1000, 800, 60, 60, "Skills", new Action() {
+		items = new Button(1000, 800, 60, 60, "Skills/Items", new Action() {
 
 			@Override
 			public void act() {
@@ -143,24 +175,40 @@ public class Battle extends FullFunctionScreen {
 		});
 			
 		viewObjects.add(items);
-			
+		items.setBackground(Color.WHITE);
+		items.update();
 		
 	}
 
+	public void keyReleased(KeyEvent e) {
+		if(e.getKeyCode() == KeyEvent.VK_RIGHT) {
+			//walkingR.setVx(0);
+			walklr.setVx(0);
+
+		}
+		else if(e.getKeyCode() == KeyEvent.VK_LEFT)
+		{
+			//walking.setVx(0);
+			walklr.setVx(0);
+
+		}
+			
+	}
+	
 	public void keyPressed(KeyEvent e) {
 		// System.out.println(currPosition);
 
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT && gameover == false) {
 			if (attackrn == false) {
-				walkingR.setVisible(true);
+				//walkingR.setVisible(true);
 				for (int i = 0; i < 1; i++) {
 
 					currPosition++;
+					walklr.setVx(3.0);
+//					walking.move(currPosition, 592, 1);
+//					walkingR.move(currPosition, 585, 1);
 
-					walking.move(currPosition, 592, 1);
-					walkingR.move(currPosition, 585, 1);
-
-					walking.setVisible(false);
+					//walking.setVisible(false);
 
 					right = true;
 					left = false;
@@ -174,17 +222,21 @@ public class Battle extends FullFunctionScreen {
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT && gameover == false) {
 
 			if (attackrn == false) {
-				walking.setVisible(true);
+				//walking.setVisible(true);
 				for (int i = 0; i < 1; i++) {
 
 					if (currPosition >= 1) {
 
 						currPosition--;
+						
+						walklr.setVx(3.0);
 
-						walking.move(currPosition, 592, 1);
-						walkingR.move(currPosition, 585, 1);
+						//walkingR.setVx(3.0);
 
-						walkingR.setVisible(false);
+						//walking.move(currPosition, 592, 1);
+						//walkingR.move(currPosition, 585, 1);
+
+						//walkingR.setVisible(false);
 
 						left = true;
 						right = false;
@@ -307,6 +359,30 @@ public class Battle extends FullFunctionScreen {
 
 		} else if (e.getKeyCode() == KeyEvent.VK_S && gameover == false) {
 
+			
+			if(textD == false)
+			{
+			
+					stats.setText("Your character has " + MinuteQuestButBetter.mc.getWeapon().name()
+					+ " equipped." + " Your character STR: " + MinuteQuestButBetter.mc.getStr() + "->"
+					+ MinuteQuestButBetter.mc.setStr() + " Your character has "
+					+ MinuteQuestButBetter.mc.getArmor().getArmorName() + " equipped." + " Your character VIT: "
+					+ MinuteQuestButBetter.mc.getVit() + " -> " + MinuteQuestButBetter.mc.setVit() + " Your character AGL: "
+					+ MinuteQuestButBetter.mc.getAgl() + " -> " + MinuteQuestButBetter.mc.setAgl());
+					
+					textD = true;
+			}
+			else
+			{
+				stats.setText("");
+				textD = false;
+			}
+			
+				
+			
+			
+			
+			
 		}
 		repaint();
 

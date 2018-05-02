@@ -74,7 +74,8 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static void main(String[] args) {
 
 		gameGUI = new MinuteQuestButBetter(800, 800);
-		Thread runner = new Thread(gameGUI);
+		Thread runner =
+				new Thread(gameGUI);
 		runner.start();
 
 	}
