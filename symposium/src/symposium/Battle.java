@@ -68,7 +68,7 @@ public class Battle extends FullFunctionScreen {
 		
 		
 		
-		walklr.addSequence("symposium/walkingsword.png", 200, 0, 0, 40, 100, 8);
+		walklr.addSequence("symposium/walkl&r.png", 200, 0, 0, 55, 75, 8);
 		Thread walkrl = new Thread(walklr);
 		walkrl.start();
 		

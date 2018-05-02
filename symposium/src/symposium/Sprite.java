@@ -26,9 +26,9 @@ public class Sprite extends AnimatedComponent {
 
 			//increase the currentFrameIndex but don't exceed size()
 			currentFrame = (currentFrame+1)%4;
-			if (!right) {
+			//if (!right) {
 				currentFrame += 4;
-			}
+			//}
 			//end animation if not on repeat
 			if(currentFrame == 0 && !repeat){
 				setRunning(false);
