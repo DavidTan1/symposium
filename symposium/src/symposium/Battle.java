@@ -68,7 +68,7 @@ public class Battle extends FullFunctionScreen {
 		
 		
 		
-		walklr.addSequence("symposium/walkl&r.png", 200, 0, 0, 55, 75, 8);
+		walklr.addSequence("symposium/walkl&r.png", 200, 0, 0, 56, 75, 8);
 		Thread walkrl = new Thread(walklr);
 		walkrl.start();
 		
@@ -204,7 +204,8 @@ public class Battle extends FullFunctionScreen {
 				for (int i = 0; i < 1; i++) {
 
 					currPosition++;
-					walklr.setVx(3.0);
+					walklr.setVx(-
+							3.0);
 //					walking.move(currPosition, 592, 1);
 //					walkingR.move(currPosition, 585, 1);
 
