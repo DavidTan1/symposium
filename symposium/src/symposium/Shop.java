@@ -34,6 +34,7 @@ public class Shop extends FullFunctionScreen {
 	public int currValue;
 	private Graphic bob;
 	private Button inventoryb;
+	private TextArea welcomeTextS;
 
 	public Shop(int width, int height) {
 		super(width, height);
@@ -43,6 +44,9 @@ public class Shop extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
+		setBackground(Color.BLACK);
+
+		
 		currValue = MinuteQuestButBetter.mc.getGold();
 
 		i = 1;
@@ -64,10 +68,18 @@ public class Shop extends FullFunctionScreen {
 		weapons.add(MinuteQuestButBetter.shotgun);
 		weapons.add(MinuteQuestButBetter.spear);
 		weapons.add(MinuteQuestButBetter.stick);
-
+		
+		welcomeTextS = new TextArea(5, 675, 800, 100, "Welcome to armory! We sell the finest weapons. "
+				+ "PRO TIP: Click on the weapon you would like to buy.");
+		viewObjects.add(welcomeTextS);
+		
+		welcomeTextS.setTextColor(Color.WHITE);
+		
 		welcomeText = new TextArea(5, 675, 800, 100, "Welcome to armory! We sell the finest weapons. "
 				+ "PRO TIP: Click on the weapon you would like to buy.");
 		viewObjects.add(welcomeText);
+		
+		welcomeText.setTextColor(Color.WHITE);
 
 		Graphic firstitem = new Graphic(100, 100, 60, 60, weapons.get(0).img());
 

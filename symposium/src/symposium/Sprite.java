@@ -7,10 +7,10 @@ import guiTeacher.components.AnimatedComponent;
 
 public class Sprite extends AnimatedComponent {
 
-	boolean right;
-	boolean left;
-	boolean striker;
-	boolean strikel;
+	public boolean right;
+	public boolean left;
+	public boolean striker;
+	public boolean strikel;
 	
 	public Sprite(int x, int y, int w, int h) {
 		super(x, y, w, h);
@@ -26,9 +26,11 @@ public class Sprite extends AnimatedComponent {
 
 			//increase the currentFrameIndex but don't exceed size()
 			currentFrame = (currentFrame+1)%4;
-			if (!right) {
+			if (!left) {
 				currentFrame += 4;
 			}
+			
+			
 			//end animation if not on repeat
 			if(currentFrame == 0 && !repeat){
 				setRunning(false);
@@ -40,5 +42,10 @@ public class Sprite extends AnimatedComponent {
 			g.drawImage(newFrame, 0,0,getWidth(),getHeight(),0,0,newFrame.getWidth(),newFrame.getHeight(),null);
 		}
 	}
+	
+	
+	
+	
+	
 
 }

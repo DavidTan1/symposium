@@ -67,7 +67,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 		shop = new Shop(getWidth(), getHeight());
 		battle = new Battle(getWidth(), getHeight());
 		// inventory = new Inventory(getWidth(),getHeight());
-		setScreen(battle);
+		setScreen(shop);
 
 	}
 
