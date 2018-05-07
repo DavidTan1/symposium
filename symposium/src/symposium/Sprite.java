@@ -31,6 +31,12 @@ public class Sprite extends AnimatedComponent {
 			}
 			
 			
+			if(!strikel)
+			{
+				currentFrame += 5;
+
+			}
+			
 			//end animation if not on repeat
 			if(currentFrame == 0 && !repeat){
 				setRunning(false);

@@ -46,7 +46,6 @@ public class Shop extends FullFunctionScreen {
 
 		setBackground(Color.BLACK);
 
-		
 		currValue = MinuteQuestButBetter.mc.getGold();
 
 		i = 1;
@@ -68,17 +67,17 @@ public class Shop extends FullFunctionScreen {
 		weapons.add(MinuteQuestButBetter.shotgun);
 		weapons.add(MinuteQuestButBetter.spear);
 		weapons.add(MinuteQuestButBetter.stick);
-		
+
 		welcomeTextS = new TextArea(5, 675, 800, 100, "Welcome to armory! We sell the finest weapons. "
 				+ "PRO TIP: Click on the weapon you would like to buy.");
 		viewObjects.add(welcomeTextS);
-		
+
 		welcomeTextS.setTextColor(Color.WHITE);
-		
+
 		welcomeText = new TextArea(5, 675, 800, 100, "Welcome to armory! We sell the finest weapons. "
 				+ "PRO TIP: Click on the weapon you would like to buy.");
 		viewObjects.add(welcomeText);
-		
+
 		welcomeText.setTextColor(Color.WHITE);
 
 		Graphic firstitem = new Graphic(100, 100, 60, 60, weapons.get(0).img());
@@ -236,7 +235,7 @@ public class Shop extends FullFunctionScreen {
 
 		viewObjects.add(FOUR);
 
-		battleb = new Button(700, 625, 60, 60, "Battle", new Action() {
+		battleb = new Button(700, 620, 60, 40, "Battle", new Action() {
 
 			@Override
 			public void act() {
@@ -247,8 +246,10 @@ public class Shop extends FullFunctionScreen {
 		});
 
 		viewObjects.add(battleb);
+		battleb.setBackground(Color.WHITE);
+		battleb.update();
 
-		inventoryb = new Button(700, 675, 60, 60, "inventory", new Action() {
+		inventoryb = new Button(700, 680, 60, 40, "Inventory", new Action() {
 
 			@Override
 			public void act() {
@@ -261,6 +262,9 @@ public class Shop extends FullFunctionScreen {
 			}
 
 		});
+
+		inventoryb.setBackground(Color.WHITE);
+		inventoryb.update();
 
 		viewObjects.add(inventoryb);
 

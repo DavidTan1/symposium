@@ -29,6 +29,7 @@ public class Battle extends FullFunctionScreen {
 	private AnimatedComponent mob;
 
 	private Sprite walklr;
+	private Sprite punchlr;
 
 	private TextArea stats;
 	private TextArea welcomeText;
@@ -48,6 +49,7 @@ public class Battle extends FullFunctionScreen {
 	private TextArea asdf;
 
 	private boolean textD;
+
 
 	public Battle(int width, int height) {
 		super(width, height);
@@ -157,6 +159,21 @@ public class Battle extends FullFunctionScreen {
 		Thread walkrl = new Thread(walklr);
 		walkrl.start();
 
+		checkcollision();
+		mobAttack();
+		
+		
+		
+		punchlr = new Sprite(walklr.getX(), 603, 61, 76);
+		viewObjects.add(punchlr);
+		punchlr.setVisible(false);
+		
+		punchlr.addSequence("symposium/punchlr.png", 200, 0, 0, 62, 90, 10);
+		Thread punchrl = new Thread(punchlr);
+		punchrl.start();
+		
+		
+		
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -164,6 +181,9 @@ public class Battle extends FullFunctionScreen {
 			// walkingR.setVx(0);
 			walklr.setVx(0);
 
+			if (walklr.getX() > 1300) {
+				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
+			}
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 			// walking.setVx(0);
 			walklr.setVx(0);
@@ -190,75 +210,81 @@ public class Battle extends FullFunctionScreen {
 	}
 
 	public void keyPressed(KeyEvent e) {
-		// System.out.println(currPosition);
 
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT && gameover == false) {
+
 			if (attackrn == false) {
 				// walkingR.setVisible(true);
 				for (int i = 0; i < 1; i++) {
 
-					walklr.left = true;
+					if (checkcollision() == false) {
 
-					currPosition++;
-					System.out.println(currPosition);
-					walklr.setVx(3.0); //parameter should be agl/weight
-					// walking.move(currPosition, 592, 1);
-					// walkingR.move(currPosition, 585, 1);
+						walklr.left = true;
 
-					// walking.setVisible(false);
-
-					rightw = true;
-					leftw = false;
-
-					if (currPosition > 470) {
-						MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
-					}
-				}
-			}
-
-		} else if (e.getKeyCode() == KeyEvent.VK_LEFT && gameover == false) {
-
-			if (attackrn == false) {
-				// walking.setVisible(true);
-				for (int i = 0; i < 1; i++) {
-
-					
-
-						walklr.left = false;
-						currPosition--;
-
-						walklr.setVx(-3.0);
-
-						// walkingR.setVx(3.0);
+						System.out.println(walklr.getX());
+						// currPosition++;
+						// System.out.println(currPosition);
+						walklr.setVx(3.0); // parameter should be agl/weight
 
 						// walking.move(currPosition, 592, 1);
 						// walkingR.move(currPosition, 585, 1);
 
-						// walkingR.setVisible(false);
+						// walking.setVisible(false);
 
-						leftw = true;
-						rightw = false;
-					
+						rightw = true;
+						leftw = false;
+
+					}
+				}
+			}
+
+			mobAttack();
+
+		} else if (e.getKeyCode() == KeyEvent.VK_LEFT && gameover == false) {
+
+			if (attackrn == false && walklr.getX() > 1) {
+				// walking.setVisible(true);
+				for (int i = 0; i < 1; i++) {
+
+					walklr.left = false;
+					// currPosition--;
+					// System.out.println(currPosition);
+
+					walklr.setVx(-3.0);
+
+					// walkingR.setVx(3.0);
+
+					// walking.move(currPosition, 592, 1);
+					// walkingR.move(currPosition, 585, 1);
+
+					// walkingR.setVisible(false);
+
+					leftw = true;
+					rightw = false;
+
 				}
 			}
 
 		} else if (e.getKeyCode() == KeyEvent.VK_A && gameover == false) {
 
-			walking.setVisible(false);
-			walkingR.setVisible(false);
+			//walking.setVisible(false);
+			//walkingR.setVisible(false);
 
 			attackrn = true;
 
 			if (attackrn == true && leftw == true) {
 
-				strikeL.setVisible(true);
+				dasssssadasd
+				
+				
+				/*strikeL.setVisible(true);
 				strikeL.move(currPosition - 20, 585, 1);
 
 				strikeL.addSequence("symposium/basicattack.png", 200, 0, 0, 97, 107, 7);
 				Thread striking = new Thread(strikeL); // animation for striking left
-				striking.start();
+				striking.start();*/
 
-				new Thread() {
+				/*new Thread() {
 
 					public void run() {
 
@@ -275,7 +301,7 @@ public class Battle extends FullFunctionScreen {
 						attackrn = false;
 
 					}
-				}.start();
+				}.start();*/
 
 				if (checkMob() == true) {
 					mobs.get(0).currHealth();
@@ -361,13 +387,13 @@ public class Battle extends FullFunctionScreen {
 
 		if (mobs.get(0).dead() == false) {
 
-			if (currPosition < mobs.get(0).getPositionx()) {
-				for (int i = currPosition; i <= mobs.get(0).getPositionx(); i++) {
+			if (walklr.getX() < mobs.get(0).getPositionx()) {
+				for (int i = walklr.getX(); i <= mobs.get(0).getPositionx(); i++) {
 					count++;
 				}
 			} else {
 
-				for (int i = mobs.get(0).getPositionx(); i <= currPosition; i--) {
+				for (int i = mobs.get(0).getPositionx(); i <= walklr.getX(); i--) {
 					count++;
 				}
 			}
@@ -385,15 +411,9 @@ public class Battle extends FullFunctionScreen {
 
 	private void createMobs() {
 		mobs = new ArrayList<Mobs>();
-		// System.out.println(bannerNum);
 
 		mobs.add(MinuteQuestButBetter.bdragon);
-		mobs.add(MinuteQuestButBetter.robot);
-		// mobs.add();
-		// mobs.add();
-		// mobs.add();
-
-		System.out.println(mobs.get(0).img() + " " + mobs.get(1).img());
+		// mobs.add(MinuteQuestButBetter.robot);
 
 	}
 
@@ -412,10 +432,19 @@ public class Battle extends FullFunctionScreen {
 		}
 	}
 
-	public void mobAttack() {
-		if (mobs.get(0).getcurrHealth() < mobs.get(0).getVit()) {
+	public boolean checkcollision() {
 
-			System.out.println("dragon hp: " + currHP);
+		if (0 > ((mobs.get(0).getPositionx()) - 74) - walklr.getX()) {
+			return true;
+		}
+
+		return false;
+	}
+
+	public void mobAttack() {
+		while (checkcollision() == true && currHP >= 0) {
+			System.out.println(currHP);
+
 			checkHealth();
 
 			if (decreaseBar() == true && c < 31) {
@@ -428,21 +457,8 @@ public class Battle extends FullFunctionScreen {
 				welcomeText.setText("You are dead.");
 				gameover = true;
 			}
-		} else {
-
 		}
 
-	}
-
-	public boolean checkcollision() {
-
-		for (int i = 0; i < mobs.size(); i++) {
-			if (mobs.get(i).getPositionx() == currPosition) {
-				return true;
-			}
-
-		}
-		return false;
 	}
 
 	public boolean decreaseBar() {
