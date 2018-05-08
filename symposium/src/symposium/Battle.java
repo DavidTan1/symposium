@@ -22,10 +22,6 @@ public class Battle extends FullFunctionScreen {
 	public int count;
 	public int currPosition;
 
-	private AnimatedComponent walking;
-	private AnimatedComponent walkingR;
-	private AnimatedComponent strikeR;
-	private AnimatedComponent strikeL;
 	private AnimatedComponent mob;
 
 	private Sprite walklr;
@@ -50,7 +46,6 @@ public class Battle extends FullFunctionScreen {
 
 	private boolean textD;
 
-
 	public Battle(int width, int height) {
 		super(width, height);
 		// TODO Auto-generated constructor stub
@@ -72,7 +67,7 @@ public class Battle extends FullFunctionScreen {
 
 		viewObjects.add(stats);
 
-		asd = new TextArea(5, 800, 800, 100,"");
+		asd = new TextArea(5, 800, 800, 100, "");
 		viewObjects.add(asd);
 
 		// TODO Auto-generated method stub
@@ -103,9 +98,6 @@ public class Battle extends FullFunctionScreen {
 		viewObjects.add(hpBar);
 
 		hpBar.update();
-		
-
-		
 
 		mob = new AnimatedComponent(500, 603, 74, 82);
 		viewObjects.add(mob);
@@ -137,31 +129,27 @@ public class Battle extends FullFunctionScreen {
 
 		checkcollision();
 		mobAttack();
-		
-		
-		
+
 		punchlr = new SpriteAttack(walklr.getX(), 590, 51, 90);
 		viewObjects.add(punchlr);
 		punchlr.setVisible(false);
-		
-		//punchlr.addSequence("symposium/punchlr.png", 200, 0, 0, 62, 90, 10);
-		//Thread punchrl = new Thread(punchlr);
-		//punchrl.start();
-		
-		
-		
+
+		punchlr.addSequence("symposium/punchlr.png", 200, 0, 0, 62, 90, 10);
+		Thread punchrl = new Thread(punchlr);
+		punchrl.start();
+
 	}
 
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-			
+
 			walklr.setVx(0);
 
 			if (walklr.getX() > 1300) {
 				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
 			}
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
-			
+
 			walklr.setVx(0);
 
 		} else if (e.getKeyCode() == KeyEvent.VK_S) {
@@ -181,6 +169,9 @@ public class Battle extends FullFunctionScreen {
 				stats.setText("");
 				textD = false;
 			}
+		}else if(e.getKeyCode() == KeyEvent.VK_A)
+		{
+			
 		}
 
 	}
@@ -190,16 +181,25 @@ public class Battle extends FullFunctionScreen {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT && gameover == false) {
 
 			if (attackrn == false) {
-				
+
 				for (int i = 0; i < 1; i++) {
 
 					if (checkcollision() == false) {
 
 						walklr.left = true;
 						System.out.println(walklr.getX());
-						
-						walklr.setVx(3.0); // parameter should be agl/weight
 
+						if(checkcollision()==true)
+						{
+							walklr.setVx(0); 
+
+						}
+						else
+						{
+							walklr.setVx(3.0); // parameter should be agl/weight
+
+						}
+							
 						
 
 						rightw = true;
@@ -214,14 +214,12 @@ public class Battle extends FullFunctionScreen {
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT && gameover == false) {
 
 			if (attackrn == false && walklr.getX() > 1) {
-			
+
 				for (int i = 0; i < 1; i++) {
 
 					walklr.left = false;
 
 					walklr.setVx(-3.0);
-
-
 
 					leftw = true;
 					rightw = false;
@@ -231,7 +229,6 @@ public class Battle extends FullFunctionScreen {
 
 		} else if (e.getKeyCode() == KeyEvent.VK_A && gameover == false) {
 
-			
 			walklr.setVisible(false);
 			attackrn = true;
 
@@ -239,16 +236,12 @@ public class Battle extends FullFunctionScreen {
 
 				punchlr.striker = false;
 
-				
 				punchlr.setVisible(true);
 				punchlr.move(walklr.getX(), 590, 1);
-				
-				
-				
-				
-				punchlr.addSequence("symposium/punchlr.png", 200, 0, 0, 50, 90, 10);
-				Thread strike = new Thread(punchlr);
-				strike.start();
+
+				// punchlr.addSequence("symposium/punchlr.png", 200, 0, 0, 50, 90, 10);
+				// Thread strike = new Thread(punchlr);
+				// strike.start();
 
 				new Thread() {
 
@@ -271,7 +264,8 @@ public class Battle extends FullFunctionScreen {
 
 				if (checkMob() == true) {
 					mobs.get(0).currHealth();
-					welcomeText.setText("Black Dragon health: " + mobs.get(0).currHealth() + "/" + mobs.get(0).getVit());
+					welcomeText
+							.setText("Black Dragon health: " + mobs.get(0).currHealth() + "/" + mobs.get(0).getVit());
 
 					System.out.println("check ");
 					mobAttack();
@@ -293,18 +287,15 @@ public class Battle extends FullFunctionScreen {
 
 			} else {
 				attackrn = true;
-				
 
 				punchlr.striker = true;
 
-				
-				
 				punchlr.setVisible(true);
 				punchlr.move(walklr.getX() - 20, 590, 1);
 
-				punchlr.addSequence("symposium/punchlr.png", 200, 0, 0, 50, 90, 10);
-				Thread strikingR = new Thread(punchlr); 
-				strikingR.start();
+				// punchlr.addSequence("symposium/punchlr.png", 200, 0, 0, 50, 90, 10);
+				// Thread strikingR = new Thread(punchlr);
+				// strikingR.start();
 
 				new Thread() {
 
@@ -384,7 +375,6 @@ public class Battle extends FullFunctionScreen {
 		mobs = new ArrayList<Mobs>();
 
 		mobs.add(MinuteQuestButBetter.bdragon);
-		// mobs.add(MinuteQuestButBetter.robot);
 
 	}
 
