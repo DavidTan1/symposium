@@ -73,7 +73,7 @@ public class MainGame {
 		hammer = new Weapon("symposium/deathislikethewind/hammertime.png","HAMMER",100,10,"STAB",50);
 		shotgun = new Weapon("symposium/deathislikethewind/shotgun.png","SHOTGUN",800,10,"STAB",210);
 		spear = new Weapon("symposium/deathislikethewind/spear.png","SPEAR",100,5,"STAB",50);
-		rags = new Armor("RAGS", 10, 5);
+		//rags = new Armor("RAGS", 10, 5);
 		mc = new Hero(IronSword,rags,1,1,1,1,1,100);
 		
 		

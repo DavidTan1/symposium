@@ -18,6 +18,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static Weapon LongSword;
 	public static Weapon nonew;
 
+
 	public static Armor nonea;
 	public static Armor beginnerrobe;
 	public static Armor bronzearmor;

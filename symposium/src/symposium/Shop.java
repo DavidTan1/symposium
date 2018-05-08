@@ -63,10 +63,12 @@ public class Shop extends FullFunctionScreen {
 		Graphic background = new Graphic(0, 0, getWidth(), getHeight(), "symposium/weaponshopbackground.png");
 		viewObjects.add(background);
 
-		weapons.add(MinuteQuestButBetter.axe);
-		weapons.add(MinuteQuestButBetter.shotgun);
-		weapons.add(MinuteQuestButBetter.spear);
-		weapons.add(MinuteQuestButBetter.stick);
+		
+		
+		weapons.add(MinuteQuestButBetter.crossBow);
+		weapons.add(MinuteQuestButBetter.IronSword);
+		weapons.add(MinuteQuestButBetter.cane);
+		weapons.add(MinuteQuestButBetter.LongSword);
 
 		welcomeTextS = new TextArea(5, 675, 800, 100, "Welcome to armory! We sell the finest weapons. "
 				+ "PRO TIP: Click on the weapon you would like to buy.");
