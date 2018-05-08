@@ -9,8 +9,7 @@ public class Sprite extends AnimatedComponent {
 
 	public boolean right;
 	public boolean left;
-	public boolean striker;
-	public boolean strikel;
+
 	
 	public Sprite(int x, int y, int w, int h) {
 		super(x, y, w, h);
@@ -26,16 +25,20 @@ public class Sprite extends AnimatedComponent {
 
 			//increase the currentFrameIndex but don't exceed size()
 			currentFrame = (currentFrame+1)%4;
+			
+			
 			if (!left) {
 				currentFrame += 4;
 			}
 			
 			
-			if(!strikel)
-			{
-				currentFrame += 5;
-
-			}
+			
+			
+			
+			
+			
+			
+			
 			
 			//end animation if not on repeat
 			if(currentFrame == 0 && !repeat){
