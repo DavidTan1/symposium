@@ -23,6 +23,7 @@ public class Battle extends FullFunctionScreen {
 	public int currPosition;
 
 	private AnimatedComponent mob;
+	private BlastSprite blast;
 
 	private Sprite walklr;
 	private SpriteAttack punchlr;
@@ -41,10 +42,10 @@ public class Battle extends FullFunctionScreen {
 	public int c;
 
 	private boolean gameover;
-
 	private TextArea asdf;
-
 	private boolean textD;
+
+	private Graphic blasts;
 
 	public Battle(int width, int height) {
 		super(width, height);
@@ -138,6 +139,19 @@ public class Battle extends FullFunctionScreen {
 		Thread punchrl = new Thread(punchlr);
 		punchrl.start();
 
+		blasts = new Graphic(walklr.getX() + 44, 603, 88, 65, "symposium/blast1.png");
+		viewObjects.add(blasts);
+		blasts.setVisible(false);
+
+		blast = new BlastSprite(walklr.getX() + 44, 573, 178, 135);
+		viewObjects.add(blast);
+
+		blast.addSequence("symposium/blastc.png", 200, 0, 0, 178, 135, 2);
+		Thread ki = new Thread(blast);
+		ki.start();
+
+		blast.setVisible(false);
+
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -169,9 +183,29 @@ public class Battle extends FullFunctionScreen {
 				stats.setText("");
 				textD = false;
 			}
-		}else if(e.getKeyCode() == KeyEvent.VK_A)
-		{
-			
+		} else if (e.getKeyCode() == KeyEvent.VK_B) {
+
+			blast.setVx(0);
+			blast.fired = false;
+
+			blast.setVisible(false);
+			blasts.setVisible(false);
+
+			blast.move(walklr.getX() + 44, 573, 1);
+			attackrn = false;
+
+			/*
+			 * if (blast.getX() >= mobs.get(0).getPositionx() - 177) { blast.fired = false;
+			 * 
+			 * blast.setVisible(false); blasts.setVisible(false);
+			 * 
+			 * blast.setVx(0);
+			 * 
+			 * 
+			 * 
+			 * 
+			 * }
+			 */
 		}
 
 	}
@@ -189,18 +223,13 @@ public class Battle extends FullFunctionScreen {
 						walklr.left = true;
 						System.out.println(walklr.getX());
 
-						if(checkcollision()==true)
-						{
-							walklr.setVx(0); 
+						if (checkcollision() == true) {
+							walklr.setVx(0);
 
-						}
-						else
-						{
+						} else {
 							walklr.setVx(3.0); // parameter should be agl/weight
 
 						}
-							
-						
 
 						rightw = true;
 						leftw = false;
@@ -337,6 +366,20 @@ public class Battle extends FullFunctionScreen {
 				}
 
 			}
+
+		} else if (e.getKeyCode() == KeyEvent.VK_B && gameover == false && hpBar.getText().isEmpty() == false) {
+
+			attackrn = true;
+
+			blast.fired = true;
+
+			blast.setVisible(true);
+			blasts.setVisible(true);
+
+			blast.setVx(3.0);
+
+			welcomeText.setText("You used a energy blast.");
+			hpBar.setText("");
 
 		}
 

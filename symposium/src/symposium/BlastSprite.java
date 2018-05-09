@@ -6,13 +6,12 @@ import java.awt.image.BufferedImage;
 
 import guiTeacher.components.AnimatedComponent;
 
-public class SpriteAttack extends AnimatedComponent {
+public class BlastSprite extends AnimatedComponent {
 
 	
-	public boolean striker;
-	public boolean strikel;
+	public boolean fired;
 
-	public SpriteAttack(int x, int y, int w, int h) {
+	public BlastSprite(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
@@ -26,11 +25,11 @@ public class SpriteAttack extends AnimatedComponent {
 			displayTime = currentTime;
 
 			// increase the currentFrameIndex but don't exceed size()
-			currentFrame = (currentFrame + 1) % 5;
+			currentFrame = (currentFrame + 1) % 2;
 
-			if (striker) {
+			if(fired){
 
-				currentFrame += 5;
+				currentFrame += 1;
 			}
 			
 			
