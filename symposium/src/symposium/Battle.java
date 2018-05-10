@@ -17,6 +17,7 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class Battle extends FullFunctionScreen {
 
 	public ArrayList<Mobs> mobs;
+	public ArrayList<Integer> mobsX;
 
 	public int currHP;
 	public int count;
@@ -100,7 +101,7 @@ public class Battle extends FullFunctionScreen {
 
 		hpBar.update();
 
-		mob = new AnimatedComponent(500, 603, 74, 82);
+		mob = new AnimatedComponent(mobs.get(0).getPositionx(), 603, 74, 82);
 		viewObjects.add(mob);
 
 		mob.addSequence("symposium/blackdragonstand.png", 200, 0, 0, 73, 81, 5);
@@ -216,6 +217,10 @@ public class Battle extends FullFunctionScreen {
 
 			if (attackrn == false) {
 
+				
+				blast.move(walklr.getX(), 573, 1);
+				blasts.move(walklr.getX(), 603, 1);
+
 				for (int i = 0; i < 1; i++) {
 
 					if (checkcollision() == false) {
@@ -243,6 +248,10 @@ public class Battle extends FullFunctionScreen {
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT && gameover == false) {
 
 			if (attackrn == false && walklr.getX() > 1) {
+				
+				
+				blast.move(walklr.getX()+44, 573, 1);
+				blasts.move(walklr.getX()+44, 603, 1);
 
 				for (int i = 0; i < 1; i++) {
 
@@ -367,7 +376,7 @@ public class Battle extends FullFunctionScreen {
 
 			}
 
-		} else if (e.getKeyCode() == KeyEvent.VK_B && gameover == false && hpBar.getText().isEmpty() == false) {
+		} else if (e.getKeyCode() == KeyEvent.VK_B && gameover == false) {
 
 			attackrn = true;
 
@@ -379,7 +388,7 @@ public class Battle extends FullFunctionScreen {
 			blast.setVx(3.0);
 
 			welcomeText.setText("You used a energy blast.");
-			hpBar.setText("");
+			//hpBar.setText("");
 
 		}
 
@@ -387,7 +396,26 @@ public class Battle extends FullFunctionScreen {
 
 	}
 
+	public void calcCollsion(int x, int y)
+	{
+		
+		
+		
+		if(x == y)
+		{
+			
+		}
+	}
+	
 	public boolean checkMob() {
+		
+mobsX = new ArrayList<Integer>();
+		
+		for(int i=0; i<mobs.size(); i++)
+		{
+			System.out.println(mobs.get(i).getPositionx());
+			mobsX.add(mobs.get(i).getPositionx());
+		}
 		int count = 0;
 
 		if (mobs.get(0).dead() == false) {
@@ -418,7 +446,10 @@ public class Battle extends FullFunctionScreen {
 		mobs = new ArrayList<Mobs>();
 
 		mobs.add(MinuteQuestButBetter.bdragon);
-
+		mobs.add(MinuteQuestButBetter.slime);
+		mobs.add(MinuteQuestButBetter.beast);
+		mobs.add(MinuteQuestButBetter.vampire);
+		mobs.add(MinuteQuestButBetter.devil);
 	}
 
 	public int checkHealth() {

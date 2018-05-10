@@ -25,11 +25,11 @@ public class BlastSprite extends AnimatedComponent {
 			displayTime = currentTime;
 
 			// increase the currentFrameIndex but don't exceed size()
-			currentFrame = (currentFrame + 1) % 2;
+			currentFrame = (currentFrame+1) % 2;
 
 			if(fired){
 
-				currentFrame += 1;
+				currentFrame = 1;
 			}
 			
 			

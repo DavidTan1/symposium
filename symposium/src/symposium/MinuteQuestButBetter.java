@@ -78,12 +78,11 @@ public class MinuteQuestButBetter extends GUIApplication {
 		diamondarmor = new Armor("diamondarmor", 40, 100, 800, "symposium/armor/diamondarmor.png");
 		
 
-		//slime = new Mobs("symposium/.png", 50, 10, 25, 100, 1, 500, 603);
-		//zombie = new Mobs("symposium/.png", 50, 10, 25, 100, 1, 500, 603);
-		//beast = new Mobs("symposium/.png", 50, 10, 25, 100, 1, 500, 603);
-		//vampire = new Mobs("symposium/.png", 50, 10, 25, 100, 1, 500, 603);
-		
-		bdragon = new Mobs("symposium/bdragon.png", 50, 10, 25, 100, 1, 500, 603);
+		slime = new Mobs("symposium/.png", 50, 10, 25, 100, 1, 150, 603);
+		zombie = new Mobs("symposium/.png", 50, 10, 25, 100, 1, 300, 603);
+		beast = new Mobs("symposium/.png", 50, 10, 25, 100, 1, 450, 603);
+		vampire = new Mobs("symposium/.png", 50, 10, 25, 100, 1, 600, 603);
+		bdragon = new Mobs("symposium/bdragon.png", 50, 10, 25, 100, 1, 750, 603);
 
 		mc = new Hero(nonew, nonea, 10, 10, 10, 10, 10, 100);
 
