@@ -186,6 +186,24 @@ public class Battle extends FullFunctionScreen {
 			}
 		} else if (e.getKeyCode() == KeyEvent.VK_B) {
 
+			
+			mobsX = new ArrayList<Integer>();
+			
+			for(int i=0; i<mobs.size(); i++)
+			{
+				System.out.println(mobs.get(i).getPositionx());
+				mobsX.add(mobs.get(i).getPositionx());
+			}
+			
+			
+			for(int x = 0; x<mobsX.size(); x++)
+			{
+				calcCollision(walklr.getX(),mobsX.get(x));
+
+			}
+			
+			
+			
 			blast.setVx(0);
 			blast.fired = false;
 
@@ -195,18 +213,7 @@ public class Battle extends FullFunctionScreen {
 			blast.move(walklr.getX() + 44, 573, 1);
 			attackrn = false;
 
-			/*
-			 * if (blast.getX() >= mobs.get(0).getPositionx() - 177) { blast.fired = false;
-			 * 
-			 * blast.setVisible(false); blasts.setVisible(false);
-			 * 
-			 * blast.setVx(0);
-			 * 
-			 * 
-			 * 
-			 * 
-			 * }
-			 */
+			
 		}
 
 	}
@@ -396,26 +403,25 @@ public class Battle extends FullFunctionScreen {
 
 	}
 
-	public void calcCollsion(int x, int y)
+	public boolean calcCollision(int x, int y)
 	{
 		
-		
-		
+		//x is x coord of player
+		//y is x coord of mobs
 		if(x == y)
 		{
-			
+			return true;
 		}
+		return false;
 	}
 	
 	public boolean checkMob() {
 		
-mobsX = new ArrayList<Integer>();
 		
-		for(int i=0; i<mobs.size(); i++)
-		{
-			System.out.println(mobs.get(i).getPositionx());
-			mobsX.add(mobs.get(i).getPositionx());
-		}
+		
+		
+		
+		
 		int count = 0;
 
 		if (mobs.get(0).dead() == false) {
