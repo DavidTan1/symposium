@@ -26,9 +26,8 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static Armor diamondarmor;
 
 	public static Mobs slime;
-	public static Mobs zombie;
+	public static Mobs demon;
 	public static Mobs beast;
-	public static Mobs devil;
 	public static Mobs vampire;
 	public static Mobs bdragon;
 	public static Mobs deadMob;
@@ -79,7 +78,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 		
 
 		slime = new Mobs("symposium/.png", "Slime",50, 10, 25, 100, 1, 150, 603);
-		zombie = new Mobs("symposium/demonmetus.png", "Zombie",50, 10, 25, 100, 1, 300, 603);
+		demon = new Mobs("symposium/demonmetus.png", "Demon",50, 10, 25, 100, 1, 300, 603);
 		beast = new Mobs("symposium/.png", "Wild Beast",50, 10, 25, 100, 1, 450, 603);
 		vampire = new Mobs("symposium/.png", "Vampire",50, 10, 25, 100, 1, 600, 603);
 		bdragon = new Mobs("symposium/bdragon.png", "Black Dragon",50, 10, 25, 100, 1, 750, 603);
