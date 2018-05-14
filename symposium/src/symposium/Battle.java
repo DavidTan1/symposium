@@ -365,7 +365,7 @@ public class Battle extends FullFunctionScreen {
 				welcomeText.setText("You kill the " + a.name());
 
 				mobs.remove(a);
-				
+				//make sure to remove dead mobs
 			}
 
 		} else {
