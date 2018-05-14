@@ -3,6 +3,7 @@ package symposium;
 public class Mobs {
 
 	private String img;
+	private String name;
 	private int str;
 	private int agl;
 	private int vit;
@@ -14,8 +15,9 @@ public class Mobs {
 	private int maxHealth;
 	private boolean isAttack;
 
-	public Mobs(String img, int str, int agl, int vit, int luk, int level, int positionx, int positiony) {
+	public Mobs(String img, String name ,int str, int agl, int vit, int luk, int level, int positionx, int positiony) {
 		this.img = img;
+		this.name = name;
 		this.str = str;
 		this.agl = agl;
 		this.vit = vit;
@@ -33,6 +35,12 @@ public class Mobs {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
+	}
+	
+	
+	public String name()
+	{
+		return name;
 	}
 
 	public boolean isattack() {
