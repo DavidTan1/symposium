@@ -76,13 +76,15 @@ public class MinuteQuestButBetter extends GUIApplication {
 		devilarmor = new Armor("devilarmor", 30, 75, 750, "symposium/armor/devilarmor.png");
 		diamondarmor = new Armor("diamondarmor", 40, 100, 800, "symposium/armor/diamondarmor.png");
 		
+		//mobs parameters: String img, String name ,int str, int agl, int vit, int luk, int level, int positionx, int positiony
+		slime = new Mobs(	"symposium/.png", 			"Slime",		10, 10, 50, 15, 1, 150, 603);
+		demon = new Mobs(	"symposium/demonmetus.png", "Demon",		10, 10, 50, 15, 1, 300, 603);
+		beast = new Mobs(	"symposium/.png", 			"Wild Beast",	10, 10, 50, 15, 1, 450, 603);
+		vampire = new Mobs(	"symposium/.png", 			"Vampire",		10, 10, 50, 15, 1, 600, 603);
+		bdragon = new Mobs(	"symposium/bdragon.png", 	"Black Dragon",	10, 10, 50, 15, 1, 750, 603);
 
-		slime = new Mobs("symposium/.png", "Slime",50, 10, 25, 100, 1, 150, 603);
-		demon = new Mobs("symposium/demonmetus.png", "Demon",50, 10, 25, 100, 1, 300, 603);
-		beast = new Mobs("symposium/.png", "Wild Beast",50, 10, 25, 100, 1, 450, 603);
-		vampire = new Mobs("symposium/.png", "Vampire",50, 10, 25, 100, 1, 600, 603);
-		bdragon = new Mobs("symposium/bdragon.png", "Black Dragon",50, 10, 25, 100, 1, 750, 603);
-
+		
+		//hero parameters: Weapon weapon, Armor armor, int str, int agl, int vit, int luk, int level, int gold
 		mc = new Hero(nonew, nonea, 10, 10, 10, 10, 10, 100);
 
 	}

@@ -92,9 +92,7 @@ public class Hero {
 		return level;
 	}
 
-	public void setLevel(int level) {
-		this.level = level;
-	}
+	
 
 	public void addWeapon(Weapon asdf) {
 		weapon = asdf;
