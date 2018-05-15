@@ -65,6 +65,10 @@ public class Mobs {
 	}
 	
 	
+	public int getLevel() {
+		level = MinuteQuestButBetter.mc.getLevel();
+		return level;
+	}
 	
 	public String name()
 	{
@@ -128,10 +132,7 @@ public class Mobs {
 	}
 
 
-	public int getLevel() {
-		level = MinuteQuestButBetter.mc.getLevel();
-		return level;
-	}
+
 
 	public String img() {
 		return img;

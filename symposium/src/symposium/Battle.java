@@ -45,8 +45,10 @@ public class Battle extends FullFunctionScreen {
 	private boolean gameover;
 	private TextArea asdf;
 	private boolean textD;
-	private Graphic a;
 	private Graphic demon;
+	private Graphic slime;
+	private Graphic beast;
+	private Graphic vampire;
 
 	public Battle(int width, int height) {
 		super(width, height);
@@ -144,9 +146,10 @@ public class Battle extends FullFunctionScreen {
 
 		blast.setVisible(false);
 
-		// viewObjects.add(a);
 		viewObjects.add(demon);
-
+		viewObjects.add(slime);
+		viewObjects.add(beast);
+		viewObjects.add(vampire);
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -454,19 +457,17 @@ public class Battle extends FullFunctionScreen {
 		mobs = new ArrayList<Mobs>();
 
 		mobs.add(MinuteQuestButBetter.bdragon);
-		// mobs.add(MinuteQuestButBetter.slime);
-		// mobs.add(MinuteQuestButBetter.beast);
-		// mobs.add(MinuteQuestButBetter.vampire);
+		mobs.add(MinuteQuestButBetter.slime);
+		mobs.add(MinuteQuestButBetter.beast);
+		mobs.add(MinuteQuestButBetter.vampire);
 		mobs.add(MinuteQuestButBetter.demon);
 
 		// a = new Graphic(mobs.get(0).getPositionx(), 603, 74, 82, mobs.get(0).img());
-		demon = new Graphic(mobs.get(1).getPositionx(), 603, 93, 70, mobs.get(1).img());
-		// Graphic a = new Graphic(mobs.get(2).getPositionx(), 603, 74, 82,
-		// mobs.get(2).img());
-		// Graphic a = new Graphic(mobs.get(3).getPositionx(), 603, 74, 82,
-		// mobs.get(3).img());
-		// Graphic a = new Graphic(mobs.get(4).getPositionx(), 603, 74, 82,
-		// mobs.get(4).img());
+		demon = new Graphic(mobs.get(4).getPositionx(), 603, 93, 70, mobs.get(4).img());
+		slime = new Graphic(mobs.get(1).getPositionx(), 603, 93, 70, mobs.get(1).img());
+		beast = new Graphic(mobs.get(2).getPositionx(), 603, 93, 70, mobs.get(2).img());
+		vampire = new Graphic(mobs.get(3).getPositionx(), 603, 93, 70, mobs.get(3).img());
+		
 
 	}
 
