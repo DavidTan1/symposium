@@ -24,16 +24,17 @@ public class Armor {
 		return armorweight;
 	}
 
-	public String getArmorName() {
-		return name;
-	}
 
 	public String img() {
 		return img;
 	}
 
-	public int cost() {
+	
+	public int getCost() {
 		return cost;
 	}
 
+	public String name() {
+		return name;
+	}
 }

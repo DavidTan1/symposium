@@ -98,4 +98,8 @@ public class Hero {
 		weapon = asdf;
 	}
 
+	
+	public void addArmor(Armor asdf) {
+		armor = asdf;
+	}
 }

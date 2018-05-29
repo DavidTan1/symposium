@@ -18,7 +18,9 @@ public class Battle extends FullFunctionScreen {
 
 	public ArrayList<Mobs> mobs;
 	public ArrayList<Integer> mobsX;
-
+	public ArrayList<Hero> hero;
+	
+	
 	public int currHP;
 	public int count;
 	public int currPosition;
@@ -57,6 +59,22 @@ public class Battle extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+		
+		
+		
+		if(MinuteQuestButBetter.mc.getWeapon().name().equals("FIST")){
+			
+		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("SWORD")){
+			
+		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("AXE")){
+			
+		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("ROD")){
+			
+		}
+	
+			
+		
+		
 
 		setBackground(Color.BLACK);
 
@@ -171,7 +189,7 @@ public class Battle extends FullFunctionScreen {
 				stats.setText("Your character has " + MinuteQuestButBetter.mc.getWeapon().name() + " equipped."
 						+ " Your character STR: " + MinuteQuestButBetter.mc.getStr() + "->"
 						+ MinuteQuestButBetter.mc.setStr() + " Your character has "
-						+ MinuteQuestButBetter.mc.getArmor().getArmorName() + " equipped." + " Your character VIT: "
+						+ MinuteQuestButBetter.mc.getArmor().name() + " equipped." + " Your character VIT: "
 						+ MinuteQuestButBetter.mc.getVit() + " -> " + MinuteQuestButBetter.mc.setVit()
 						+ " Your character AGL: " + MinuteQuestButBetter.mc.getAgl() + " -> "
 						+ MinuteQuestButBetter.mc.setAgl());

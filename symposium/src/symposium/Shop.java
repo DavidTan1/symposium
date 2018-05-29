@@ -22,8 +22,10 @@ public class Shop extends FullFunctionScreen {
 	private Button battleb;
 	private Graphic userinventory;
 	private TextArea welcomeText;
-	private AnimatedComponent armor;
+
+	public ArrayList<Armor> armor;
 	public ArrayList<Weapon> weapons;
+	public ArrayList<Armor> ainventory;
 	public ArrayList<Weapon> uinventory;
 	public ArrayList<Graphic> asf;
 	public int stock1;
@@ -35,6 +37,10 @@ public class Shop extends FullFunctionScreen {
 	private Graphic bob;
 	private Button inventoryb;
 	private TextArea welcomeTextS;
+	private Visible FIVE;
+	private Button SIX;
+	private Visible SEVEN;
+	private Visible EIGHT;
 
 	public Shop(int width, int height) {
 		super(width, height);
@@ -53,7 +59,9 @@ public class Shop extends FullFunctionScreen {
 		stock2 = 1;
 		stock3 = 1;
 		stock4 = 1;
-
+		
+		ainventory = new ArrayList<Armor>();
+		armor = new ArrayList<Armor>();
 		weapons = new ArrayList<Weapon>();
 		uinventory = new ArrayList<Weapon>();
 
@@ -65,10 +73,20 @@ public class Shop extends FullFunctionScreen {
 
 		
 		
-		weapons.add(MinuteQuestButBetter.crossBow);
-		weapons.add(MinuteQuestButBetter.IronSword);
-		weapons.add(MinuteQuestButBetter.cane);
-		weapons.add(MinuteQuestButBetter.LongSword);
+		
+		armor.add(MinuteQuestButBetter.advancerobe);
+		armor.add(MinuteQuestButBetter.advancebasicarmor);
+		armor.add(MinuteQuestButBetter.robe);
+		armor.add(MinuteQuestButBetter.basicarmor);
+
+		
+		weapons.add(MinuteQuestButBetter.rod);
+		weapons.add(MinuteQuestButBetter.sword);
+		weapons.add(MinuteQuestButBetter.axe);
+		weapons.add(MinuteQuestButBetter.fist);
+		
+		
+		
 
 		welcomeTextS = new TextArea(5, 675, 800, 100, "Welcome to armory! We sell the finest weapons. "
 				+ "PRO TIP: Click on the weapon you would like to buy.");
@@ -90,10 +108,28 @@ public class Shop extends FullFunctionScreen {
 
 		Graphic fourthitem = new Graphic(100, 400, 60, 60, weapons.get(3).img());
 
+		
+		
+		Graphic item5 = new Graphic(300, 100, 60, 60, armor.get(0).img());
+
+		Graphic item6 = new Graphic(300, 200, 60, 60, armor.get(1).img());
+
+		Graphic item7 = new Graphic(300, 300, 60, 60, armor.get(2).img());
+
+		Graphic item8 = new Graphic(300, 400, 60, 60, armor.get(3).img());
+		
+		
 		viewObjects.add(firstitem);
 		viewObjects.add(seconditem);
 		viewObjects.add(thirditem);
 		viewObjects.add(fourthitem);
+		
+		
+		viewObjects.add(item5);
+		viewObjects.add(item6);
+		viewObjects.add(item7);
+		viewObjects.add(item8);
+		
 
 		ONE = new Button(100, 100, 60, 60, "", new Action() {
 
@@ -236,6 +272,157 @@ public class Shop extends FullFunctionScreen {
 		});
 
 		viewObjects.add(FOUR);
+		
+		
+		
+		
+		FIVE = new Button(300, 100, 60, 60, "", new Action() {
+
+			@Override
+			public void act() {
+
+				if (stock1 == 1 && armor.get(0).getCost() <= currValue) {
+
+					System.out.println("Add to inventory.");
+
+					displayInventory(armor.get(0));
+					update();
+
+					viewObjects.add(userinventory);
+
+					update();
+					stock1--;
+
+					System.out.println(armor.get(0).name() + " cost " + armor.get(0).getCost());
+
+					//FIVE.setEnabled(false);
+					FIVE.setVisible(false);
+					check();
+					currValue = currValue - armor.get(0).getCost();
+
+					ainventory.add(armor.get(0));
+					welcomeText.setText("You have " + currValue + " gold left.");
+
+				} else {
+					System.out.print("You don't have enough gold.");
+				}
+
+			}
+		});
+
+		viewObjects.add(FIVE);
+
+		
+		
+		SIX = new Button(300, 200, 60, 60, "", new Action() {
+
+			@Override
+			public void act() {
+
+				if (stock1 == 1 && armor.get(1).getCost() <= currValue) {
+
+					System.out.println("Add to inventory.");
+
+					displayInventory(armor.get(1));
+					update();
+
+					viewObjects.add(userinventory);
+
+					update();
+					stock1--;
+
+					System.out.println(armor.get(1).name() + " cost " + armor.get(1).getCost());
+
+					//SIX.setEnabled(false);
+					SIX.setVisible(false);
+					check();
+					currValue = currValue - armor.get(1).getCost();
+
+					ainventory.add(armor.get(1));
+					welcomeText.setText("You have " + currValue + " gold left.");
+
+				} else {
+					System.out.print("You don't have enough gold.");
+				}
+
+			}
+		});
+
+		viewObjects.add(SIX);
+		
+		
+		SEVEN = new Button(300, 300, 60, 60, "", new Action() {
+
+			@Override
+			public void act() {
+
+				if (stock1 == 1 && armor.get(2).getCost() <= currValue) {
+
+					System.out.println("Add to inventory.");
+
+					displayInventory(armor.get(2));
+					update();
+
+					viewObjects.add(userinventory);
+
+					update();
+					stock1--;
+
+					System.out.println(armor.get(2).name() + " cost " + armor.get(2).getCost());
+
+					//SIX.setEnabled(false);
+					SEVEN.setVisible(false);
+					check();
+					currValue = currValue - armor.get(2).getCost();
+
+					ainventory.add(armor.get(2));
+					welcomeText.setText("You have " + currValue + " gold left.");
+
+				} else {
+					System.out.print("You don't have enough gold.");
+				}
+
+			}
+		});
+
+		viewObjects.add(SEVEN);
+		
+		EIGHT = new Button(300, 400, 60, 60, "", new Action() {
+
+			@Override
+			public void act() {
+
+				if (stock1 == 1 && armor.get(3).getCost() <= currValue) {
+
+					System.out.println("Add to inventory.");
+
+					displayInventory(armor.get(3));
+					update();
+
+					viewObjects.add(userinventory);
+
+					update();
+					stock1--;
+
+					System.out.println(armor.get(3).name() + " cost " + armor.get(3).getCost());
+
+					//SIX.setEnabled(false);
+					EIGHT.setVisible(false);
+					check();
+					currValue = currValue - armor.get(3).getCost();
+
+					ainventory.add(armor.get(3));
+					welcomeText.setText("You have " + currValue + " gold left.");
+
+				} else {
+					System.out.print("You don't have enough gold.");
+				}
+
+			}
+		});
+
+		viewObjects.add(EIGHT);
+		
 
 		battleb = new Button(700, 620, 60, 40, "Battle", new Action() {
 
@@ -257,8 +444,22 @@ public class Shop extends FullFunctionScreen {
 			public void act() {
 				// TODO Auto-generated method stub
 
+				
 				// inventory = new Inventory(getWidth(),getHeight());
-				System.out.println(uinventory.get(0).name());
+				
+				
+				/*if(!uinventory.get(0).name().isEmpty()){
+				
+					System.out.println(uinventory.get(0).name());
+
+				}
+				else if(!ainventory.get(0).name().isEmpty())
+				{
+					
+					System.out.println(ainventory.get(0).name());
+
+				}*/
+
 				MinuteQuestButBetter.gameGUI.setScreen(new Inventory(getWidth(), getHeight()));
 
 			}
@@ -292,9 +493,24 @@ public class Shop extends FullFunctionScreen {
 		i++;
 
 	}
+	
+	
+	public void displayInventory(Armor armor) {
+
+		userinventory = new Graphic(700, 50 * i, 30, 30, armor.img());
+		i++;
+
+	}
+	
 
 	public ArrayList<Weapon> getInventory() {
 		return uinventory;
+	}
+	
+	
+	
+	public ArrayList<Armor> getAInventory() {
+		return ainventory;
 	}
 
 }
