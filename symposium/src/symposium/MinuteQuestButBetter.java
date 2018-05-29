@@ -9,15 +9,13 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static Battle battle;
 	public static Shop shop;
 	public static Hero mc;
-	
-	
-	//public static Weapon knife;
+
+	// public static Weapon knife;
 	public static Weapon axe;
 	public static Weapon rod;
 	public static Weapon sword;
 	public static Weapon fist;
 	public static Weapon nonew;
-
 
 	public static Armor nonea;
 	public static Armor advancerobe;
@@ -53,26 +51,25 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static void main(String[] args) {
 
 		gameGUI = new MinuteQuestButBetter(800, 800);
-		Thread runner =
-				new Thread(gameGUI);
+		Thread runner = new Thread(gameGUI);
 		runner.start();
 
 	}
 
 	public static void creation() {
 		
-		axe = new Weapon("symposium/deathislikethewind/axe.png", "AXE", 400, 320, "STAB", 75);
-		rod = new Weapon("symposium/deathislikethewind/firerod.png", "ROD", 100, 140, "STAB", 150);
-		sword = new Weapon("symposium/deathislikethewind/longsword.png", "SWORD", 700, 50, "STAB", 175);
-		fist = new Weapon("symposium/deathislikethewind/hook.png", "FIST", 700, 50, "STAB", 175);
-		nonew = new Weapon("", "no weapon", 0, 0, "", 0);
+		axe = new Weapon("symposium/deathislikethewind/axe.png", "AXE", 400, 320, 10);
+		rod = new Weapon("symposium/deathislikethewind/firerod.png", "ROD", 100, 140, 10);
+		sword = new Weapon("symposium/deathislikethewind/longsword.png", "SWORD", 700, 50, 10);
+		fist = new Weapon("symposium/deathislikethewind/hook.png", "FIST", 700, 50, 10);
+		nonew = new Weapon("", "no weapon", 0, 0, 0);
 
 		
 		nonea = new Armor("no armor", 0, 0, 0, "symposium/white.png");
-		advancerobe = new Armor("ADVANCE ROBE", 10, 25, 80, "symposium/armor/beginnerrobe.png");
-		advancebasicarmor = new Armor("ADVANCE ARMOR", 20, 50, 400, "symposium/armor/bronzearmor.png");
-		basicarmor = new Armor("BASIC ARMOR", 30, 75, 750, "symposium/armor/devilarmor.png");
-		robe = new Armor("BASIC ROBE", 40, 100, 800, "symposium/armor/diamondarmor.png");
+		advancerobe = new Armor("ADVANCE ROBE", 10, 25, 1000, "symposium/armor/beginnerrobe.png");
+		advancebasicarmor = new Armor("ADVANCE ARMOR", 20, 50, 1000, "symposium/armor/bronzearmor.png");
+		basicarmor = new Armor("BASIC ARMOR", 30, 75, 10, "symposium/armor/devilarmor.png");
+		robe = new Armor("BASIC ROBE", 40, 100, 10, "symposium/armor/diamondarmor.png");
 		
 		mc = new Hero(nonew, nonea, 10, 10, 10, 10, 1, 100);
 

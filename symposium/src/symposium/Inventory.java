@@ -1,5 +1,7 @@
 package symposium;
 
+import java.awt.Color;
+import java.awt.Font;
 import java.util.List;
 
 import guiTeacher.components.Action;
@@ -10,6 +12,10 @@ import guiTeacher.interfaces.Visible;
 import guiTeacher.userInterfaces.FullFunctionScreen;
 
 public class Inventory extends FullFunctionScreen {
+
+	private TextArea asdf;
+	private TextArea asd;
+	private TextArea as;
 
 	private Button back;
 	private Button equip;
@@ -26,6 +32,23 @@ public class Inventory extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
+
+		Font fontsize50 = new Font("serif", Font.PLAIN, 50);
+		Font fontsize25 = new Font("serif", Font.PLAIN, 25);
+
+		asdf.setTextColor(Color.BLACK);
+
+		asdf = new TextArea(100, 25, 1000, 1000, "Inventory");
+		viewObjects.add(asdf);
+		asdf.setFont(fontsize50);
+
+		asd = new TextArea(100, 125, 1000, 1000, "Weapon");
+		asd.setFont(fontsize25);
+		viewObjects.add(asd);
+
+		as = new TextArea(300, 125, 1000, 1000, "Armor");
+		as.setFont(fontsize25);
+		viewObjects.add(as);
 
 		weaponEquip = new Graphic(600, 400, 60, 60, "symposium/white.png");
 		armorEquip = new Graphic(600, 800, 60, 60, "symposium/white.png");
@@ -80,14 +103,14 @@ public class Inventory extends FullFunctionScreen {
 
 	public void armor() {
 		for (int i = 0; i < MinuteQuestButBetter.shop.getAInventory().size(); i++) {
-			armor = new Graphic(100, (50 * i) + 50, 60, 60, MinuteQuestButBetter.shop.getAInventory().get(i).img());
+			armor = new Graphic(300, (50 * i) + 200, 60, 60, MinuteQuestButBetter.shop.getAInventory().get(i).img());
 			getViewObjects().add(armor);
 
 		}
 		System.out.println(MinuteQuestButBetter.shop.getAInventory().size());
 		for (int item = 0; item <= MinuteQuestButBetter.shop.getAInventory().size(); item++) {
 			int number = item;
-			equip = new Button(100, (50 * item) + 50, 60, 60, "", new Action() {
+			equip = new Button(300, (50 * item) + 200, 60, 60, "", new Action() {
 
 				public void act() {
 
@@ -111,7 +134,7 @@ public class Inventory extends FullFunctionScreen {
 
 	public void weapon() {
 		for (int i = 0; i < MinuteQuestButBetter.shop.getInventory().size(); i++) {
-			weapon = new Graphic(100, (50 * i) + 50, 60, 60, MinuteQuestButBetter.shop.getInventory().get(i).img());
+			weapon = new Graphic(100, (50 * i) + 200, 60, 60, MinuteQuestButBetter.shop.getInventory().get(i).img());
 			getViewObjects().add(weapon);
 
 		}
@@ -119,7 +142,7 @@ public class Inventory extends FullFunctionScreen {
 		System.out.println(MinuteQuestButBetter.shop.getInventory().size());
 		for (int item = 0; item <= MinuteQuestButBetter.shop.getInventory().size(); item++) {
 			int number = item;
-			equip = new Button(100, (50 * item) + 50, 60, 60, "", new Action() {
+			equip = new Button(100, (50 * item) + 200, 60, 60, "", new Action() {
 
 				public void act() {
 					// System.out.println(MinuteQuestButBetter.shop.getInventory().get(number));
