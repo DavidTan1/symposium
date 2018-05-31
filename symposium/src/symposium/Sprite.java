@@ -9,7 +9,6 @@ public class Sprite extends AnimatedComponent {
 
 	public boolean right;
 	public boolean left;
-
 	
 	public Sprite(int x, int y, int w, int h) {
 		super(x, y, w, h);

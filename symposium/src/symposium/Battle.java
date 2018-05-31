@@ -29,6 +29,8 @@ public class Battle extends FullFunctionScreen {
 	private BlastSprite blast;
 
 	private Sprite walklr;
+	private Sprite swordlr;
+
 	private SpriteAttack punchlr;
 
 	private TextArea stats;
@@ -61,15 +63,15 @@ public class Battle extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		
 		
-		
 		if(MinuteQuestButBetter.mc.getWeapon().name().equals("FIST")){
-			
+			swordlr.setVisible(false);
 		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("SWORD")){
-			
+			swordlr.setVisible(true);
 		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("AXE")){
-			
+			swordlr.setVisible(false);
 		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("ROD")){
-			
+			swordlr.setVisible(false);
+
 		}
 	
 			
@@ -143,10 +145,23 @@ public class Battle extends FullFunctionScreen {
 		walklr = new Sprite(currPosition, 603, 61, 76);
 		viewObjects.add(walklr);
 
-		walklr.addSequence("symposium/walkl&r.png", 200, 0, 0, 60, 75, 8);
+		walklr.addSequence("symposium/walkl&r.png", 200, 0, 0, 60, 75, 16);
 		Thread walkrl = new Thread(walklr);
 		walkrl.start();
 
+		
+		
+		swordlr = new Sprite(currPosition, 603,71,85);
+		viewObjects.add(swordlr);
+
+		
+		
+		swordlr.addSequence("symposium/walkinggsword.png", 200, 0, 0, 70, 84, 8);
+		Thread swordrl = new Thread(swordlr);
+		swordrl.start();
+		
+
+		
 		punchlr = new SpriteAttack(walklr.getX(), 590, 51, 90);
 		viewObjects.add(punchlr);
 		punchlr.setVisible(false);

@@ -32,6 +32,14 @@ public class Shop extends FullFunctionScreen {
 	public int stock2;
 	public int stock3;
 	public int stock4;
+	public int stock5;
+	public int stock6;
+	public int stock7;
+	public int stock8;
+	
+	
+	
+	
 	public int i;
 	public int currValue;
 	private Graphic bob;
@@ -59,7 +67,11 @@ public class Shop extends FullFunctionScreen {
 		stock2 = 1;
 		stock3 = 1;
 		stock4 = 1;
-
+		stock5 = 1;
+		stock6 = 1;
+		stock7 = 1;
+		stock8 = 1;
+		
 		ainventory = new ArrayList<Armor>();
 		armor = new ArrayList<Armor>();
 		weapons = new ArrayList<Weapon>();
@@ -266,7 +278,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock1 == 1 && armor.get(0).getCost() <= currValue) {
+				if (stock5 == 1 && armor.get(0).getCost() <= currValue) {
 
 					System.out.println("Add to inventory.");
 
@@ -276,7 +288,7 @@ public class Shop extends FullFunctionScreen {
 					viewObjects.add(userinventory);
 
 					update();
-					stock1--;
+					stock5--;
 
 					System.out.println(armor.get(0).name() + " cost " + armor.get(0).getCost());
 
@@ -302,7 +314,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock1 == 1 && armor.get(1).getCost() <= currValue) {
+				if (stock6 == 1 && armor.get(1).getCost() <= currValue) {
 
 					System.out.println("Add to inventory.");
 
@@ -312,7 +324,7 @@ public class Shop extends FullFunctionScreen {
 					viewObjects.add(userinventory);
 
 					update();
-					stock1--;
+					stock6--;
 
 					System.out.println(armor.get(1).name() + " cost " + armor.get(1).getCost());
 
@@ -338,7 +350,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock1 == 1 && armor.get(2).getCost() <= currValue) {
+				if (stock7 == 1 && armor.get(2).getCost() <= currValue) {
 
 					System.out.println("Add to inventory.");
 
@@ -348,7 +360,7 @@ public class Shop extends FullFunctionScreen {
 					viewObjects.add(userinventory);
 
 					update();
-					stock1--;
+					stock7--;
 
 					System.out.println(armor.get(2).name() + " cost " + armor.get(2).getCost());
 
@@ -374,7 +386,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock1 == 1 && armor.get(3).getCost() <= currValue) {
+				if (stock8 == 1 && armor.get(3).getCost() <= currValue) {
 
 					System.out.println("Add to inventory.");
 
@@ -384,7 +396,7 @@ public class Shop extends FullFunctionScreen {
 					viewObjects.add(userinventory);
 
 					update();
-					stock1--;
+					stock8--;
 
 					System.out.println(armor.get(3).name() + " cost " + armor.get(3).getCost());
 
@@ -440,6 +452,7 @@ public class Shop extends FullFunctionScreen {
 				 */
 
 				MinuteQuestButBetter.gameGUI.setScreen(new Inventory(getWidth(), getHeight()));
+				//MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.inventory);
 
 			}
 

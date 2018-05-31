@@ -5,7 +5,7 @@ import guiTeacher.GUIApplication;
 public class MinuteQuestButBetter extends GUIApplication {
 
 	public static MinuteQuestButBetter gameGUI;
-	// public static Inventory inventory;
+	public static Inventory inventory;
 	public static Battle battle;
 	public static Shop shop;
 	public static Hero mc;
@@ -43,7 +43,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 		// TODO Auto-generated method stub
 		shop = new Shop(getWidth(), getHeight());
 		battle = new Battle(getWidth(), getHeight());
-		// inventory = new Inventory(getWidth(),getHeight());
+		inventory = new Inventory(getWidth(),getHeight());
 		setScreen(shop);
 
 	}

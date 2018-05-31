@@ -16,6 +16,7 @@ public class Inventory extends FullFunctionScreen {
 	private TextArea asdf;
 	private TextArea asd;
 	private TextArea as;
+	private TextArea a;
 
 	private Button back;
 	private Button equip;
@@ -33,6 +34,8 @@ public class Inventory extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
+		
+		
 		Font fontsize50 = new Font("serif", Font.PLAIN, 50);
 		Font fontsize25 = new Font("serif", Font.PLAIN, 25);
 
@@ -50,8 +53,13 @@ public class Inventory extends FullFunctionScreen {
 		as.setFont(fontsize25);
 		viewObjects.add(as);
 
-		weaponEquip = new Graphic(600, 400, 60, 60, "symposium/white.png");
-		armorEquip = new Graphic(600, 800, 60, 60, "symposium/white.png");
+		a = new TextArea(500, 125, 1000, 1000, "Equipped");
+		a.setFont(fontsize25);
+		viewObjects.add(a);
+		
+		
+		weaponEquip = new Graphic(500, 200, 60, 60, "symposium/white.png");
+		armorEquip = new Graphic(500, 275, 60, 60, "symposium/white.png");
 
 		stats = new TextArea(5, 675, 800, 100, "Your character has " + MinuteQuestButBetter.mc.getWeapon().name()
 				+ " equipped." + " Your character STR: " + MinuteQuestButBetter.mc.getStr() + "->"
@@ -67,6 +75,8 @@ public class Inventory extends FullFunctionScreen {
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
+				
+				
 				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
 
 			}
@@ -119,10 +129,9 @@ public class Inventory extends FullFunctionScreen {
 
 					getViewObjects().remove(armorEquip);
 
-					armorEquip = new Graphic(600, 400, 60, 60,
+					armorEquip = new Graphic(500, 200, 60, 60,
 							MinuteQuestButBetter.shop.getAInventory().get(number).img());
 					getViewObjects().add(armorEquip);
-
 				}
 
 			});
@@ -152,7 +161,7 @@ public class Inventory extends FullFunctionScreen {
 
 					getViewObjects().remove(weaponEquip);
 
-					weaponEquip = new Graphic(600, 400, 60, 60,
+					weaponEquip = new Graphic(500, 275, 60, 60,
 							MinuteQuestButBetter.shop.getInventory().get(number).img());
 					getViewObjects().add(weaponEquip);
 
