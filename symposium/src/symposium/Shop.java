@@ -421,6 +421,7 @@ public class Shop extends FullFunctionScreen {
 
 			@Override
 			public void act() {
+				MinuteQuestButBetter.battle.updateW();
 				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.battle);
 
 			}

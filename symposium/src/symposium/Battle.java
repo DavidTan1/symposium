@@ -32,6 +32,7 @@ public class Battle extends FullFunctionScreen {
 	private Sprite swordlr;
 
 	private SpriteAttack punchlr;
+	private SpriteAttack swordslr;
 
 	private TextArea stats;
 	private TextArea welcomeText;
@@ -63,16 +64,7 @@ public class Battle extends FullFunctionScreen {
 	public void initAllObjects(List<Visible> viewObjects) {
 		
 		
-		if(MinuteQuestButBetter.mc.getWeapon().name().equals("FIST")){
-			swordlr.setVisible(false);
-		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("SWORD")){
-			swordlr.setVisible(true);
-		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("AXE")){
-			swordlr.setVisible(false);
-		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("ROD")){
-			swordlr.setVisible(false);
-
-		}
+		updateW();
 	
 			
 		
@@ -153,6 +145,9 @@ public class Battle extends FullFunctionScreen {
 		
 		swordlr = new Sprite(currPosition, 603,71,85);
 		viewObjects.add(swordlr);
+		swordlr.setVisible(false);
+
+		
 
 		
 		
@@ -169,6 +164,21 @@ public class Battle extends FullFunctionScreen {
 		punchlr.addSequence("symposium/punchlr.png", 200, 0, 0, 62, 90, 10);
 		Thread punchrl = new Thread(punchlr);
 		punchrl.start();
+		
+		
+		
+		
+		/*swordslr = new SpriteAttack(swordlr.getX(), 590, 51, 90);
+		viewObjects.add(swordslr);
+		swordslr.setVisible(false);
+
+		swordslr.addSequence("symposium/swordswing.png", 200, 0, 0, 62, 90, 12);
+		Thread swordsrl = new Thread(swordslr);
+		swordsrl.start();*/
+		
+		
+		
+		
 
 		blast = new BlastSprite(walklr.getX() + 44, 573, 178, 135);
 		viewObjects.add(blast);
@@ -183,6 +193,26 @@ public class Battle extends FullFunctionScreen {
 		viewObjects.add(slime);
 		viewObjects.add(beast);
 		viewObjects.add(vampire);
+	}
+
+	public void updateW() {
+		if(MinuteQuestButBetter.mc.getWeapon().name().equals("FIST")){
+			swordlr.setVisible(false);
+			walklr.setVisible(false);
+		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("SWORD")){
+			swordlr.setVisible(true);
+			walklr.setVisible(false);
+
+		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("AXE")){
+			swordlr.setVisible(false);
+			walklr.setVisible(false);
+
+		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("ROD")){
+			swordlr.setVisible(false);
+			walklr.setVisible(false);
+
+
+		}		
 	}
 
 	public void keyReleased(KeyEvent e) {
