@@ -36,10 +36,7 @@ public class Shop extends FullFunctionScreen {
 	public int stock6;
 	public int stock7;
 	public int stock8;
-	
-	
-	
-	
+
 	public int i;
 	public int currValue;
 	private Graphic bob;
@@ -71,7 +68,7 @@ public class Shop extends FullFunctionScreen {
 		stock6 = 1;
 		stock7 = 1;
 		stock8 = 1;
-		
+
 		ainventory = new ArrayList<Armor>();
 		armor = new ArrayList<Armor>();
 		weapons = new ArrayList<Weapon>();
@@ -453,7 +450,7 @@ public class Shop extends FullFunctionScreen {
 				 */
 
 				MinuteQuestButBetter.gameGUI.setScreen(new Inventory(getWidth(), getHeight()));
-				//MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.inventory);
+				// MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.inventory);
 
 			}
 

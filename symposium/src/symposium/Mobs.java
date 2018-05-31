@@ -15,10 +15,7 @@ public class Mobs {
 	private int maxHealth;
 	private boolean isAttack;
 
-	
-	
-	
-	public Mobs(String img, String name ,int str, int agl, int vit, int luk, int level, int positionx, int positiony) {
+	public Mobs(String img, String name, int str, int agl, int vit, int luk, int level, int positionx, int positiony) {
 		this.img = img;
 		this.name = name;
 		this.str = str;
@@ -33,45 +30,36 @@ public class Mobs {
 		maxHealth = getVit();
 		currHealth = maxHealth;
 
-		
-		
-		
-		
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 
 	}
-	
-	
+
 	public int multiplier() {
-		
-		
-		if(name().equals("Demon"))
-		return 2;
-		
-		if(name().equals("Wild Beast"))
-		return 3;
-		
-		if(name().equals("Vampire"))
-		return 4;
-		
-		if(name().equals("Black Dragon"))
-		return 5;
-		
-		
+
+		if (name().equals("Demon"))
+			return 2;
+
+		if (name().equals("Wild Beast"))
+			return 3;
+
+		if (name().equals("Vampire"))
+			return 4;
+
+		if (name().equals("Black Dragon"))
+			return 5;
+
 		return 1;
 	}
-	
-	
+
 	public int getLevel() {
 		level = MinuteQuestButBetter.mc.getLevel();
 		return level;
 	}
-	
-	public String name()
-	{
+
+	public String name() {
 		return name;
 	}
 
@@ -116,23 +104,20 @@ public class Mobs {
 	}
 
 	public int getStr() {
-		return str*getLevel()*multiplier();
+		return str * getLevel() * multiplier();
 	}
 
 	public int getAgl() {
-		return agl*getLevel()*multiplier();
+		return agl * getLevel() * multiplier();
 	}
 
 	public int getVit() {
-		return vit*getLevel()*multiplier();
+		return vit * getLevel() * multiplier();
 	}
 
 	public int getLuk() {
 		return luk;
 	}
-
-
-
 
 	public String img() {
 		return img;

@@ -19,8 +19,7 @@ public class Battle extends FullFunctionScreen {
 	public ArrayList<Mobs> mobs;
 	public ArrayList<Integer> mobsX;
 	public ArrayList<Hero> hero;
-	
-	
+
 	public int currHP;
 	public int count;
 	public int currPosition;
@@ -62,13 +61,8 @@ public class Battle extends FullFunctionScreen {
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-		
-		
+
 		updateW();
-	
-			
-		
-		
 
 		setBackground(Color.BLACK);
 
@@ -141,22 +135,14 @@ public class Battle extends FullFunctionScreen {
 		Thread walkrl = new Thread(walklr);
 		walkrl.start();
 
-		
-		
-		swordlr = new Sprite(currPosition, 603,71,85);
+		swordlr = new Sprite(currPosition, 603, 71, 85);
 		viewObjects.add(swordlr);
 		swordlr.setVisible(false);
 
-		
-
-		
-		
 		swordlr.addSequence("symposium/walkinggsword.png", 200, 0, 0, 70, 84, 8);
 		Thread swordrl = new Thread(swordlr);
 		swordrl.start();
-		
 
-		
 		punchlr = new SpriteAttack(walklr.getX(), 590, 51, 90);
 		viewObjects.add(punchlr);
 		punchlr.setVisible(false);
@@ -164,21 +150,14 @@ public class Battle extends FullFunctionScreen {
 		punchlr.addSequence("symposium/punchlr.png", 200, 0, 0, 62, 90, 10);
 		Thread punchrl = new Thread(punchlr);
 		punchrl.start();
-		
-		
-		
-		
-		/*swordslr = new SpriteAttack(swordlr.getX(), 590, 51, 90);
-		viewObjects.add(swordslr);
-		swordslr.setVisible(false);
 
-		swordslr.addSequence("symposium/swordswing.png", 200, 0, 0, 62, 90, 12);
-		Thread swordsrl = new Thread(swordslr);
-		swordsrl.start();*/
-		
-		
-		
-		
+		/*
+		 * swordslr = new SpriteAttack(swordlr.getX(), 590, 51, 90);
+		 * viewObjects.add(swordslr); swordslr.setVisible(false);
+		 * 
+		 * swordslr.addSequence("symposium/swordswing.png", 200, 0, 0, 62, 90, 12);
+		 * Thread swordsrl = new Thread(swordslr); swordsrl.start();
+		 */
 
 		blast = new BlastSprite(walklr.getX() + 44, 573, 178, 135);
 		viewObjects.add(blast);
@@ -196,23 +175,22 @@ public class Battle extends FullFunctionScreen {
 	}
 
 	public void updateW() {
-		if(MinuteQuestButBetter.mc.getWeapon().name().equals("FIST")){
+		if (MinuteQuestButBetter.mc.getWeapon().name().equals("FIST")) {
 			swordlr.setVisible(false);
 			walklr.setVisible(false);
-		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("SWORD")){
+		} else if (MinuteQuestButBetter.mc.getWeapon().name().equals("SWORD")) {
 			swordlr.setVisible(true);
 			walklr.setVisible(false);
 
-		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("AXE")){
+		} else if (MinuteQuestButBetter.mc.getWeapon().name().equals("AXE")) {
 			swordlr.setVisible(false);
 			walklr.setVisible(false);
 
-		}else if(MinuteQuestButBetter.mc.getWeapon().name().equals("ROD")){
+		} else if (MinuteQuestButBetter.mc.getWeapon().name().equals("ROD")) {
 			swordlr.setVisible(false);
 			walklr.setVisible(false);
 
-
-		}		
+		}
 	}
 
 	public void keyReleased(KeyEvent e) {
@@ -332,16 +310,12 @@ public class Battle extends FullFunctionScreen {
 			}
 
 		} else if (e.getKeyCode() == KeyEvent.VK_A && gameover == false) {
-			
-			System.out.println("Dragon Multiplier is: "+MinuteQuestButBetter.bdragon.multiplier()+" ");
-			System.out.println("Dragon Attack is: "+MinuteQuestButBetter.bdragon.getStr()+" ");
 
-			System.out.println("Demon Multiplier is: "+MinuteQuestButBetter.demon.multiplier()+" ");
-			System.out.println("Demon Attack is: "+MinuteQuestButBetter.demon.getStr()+" ");
+			System.out.println("Dragon Multiplier is: " + MinuteQuestButBetter.bdragon.multiplier() + " ");
+			System.out.println("Dragon Attack is: " + MinuteQuestButBetter.bdragon.getStr() + " ");
 
-			
-			
-			
+			System.out.println("Demon Multiplier is: " + MinuteQuestButBetter.demon.multiplier() + " ");
+			System.out.println("Demon Attack is: " + MinuteQuestButBetter.demon.getStr() + " ");
 
 			walklr.setVisible(false);
 			attackrn = true;
@@ -530,7 +504,6 @@ public class Battle extends FullFunctionScreen {
 		slime = new Graphic(mobs.get(1).getPositionx(), 603, 93, 70, mobs.get(1).img());
 		beast = new Graphic(mobs.get(2).getPositionx(), 603, 93, 70, mobs.get(2).img());
 		vampire = new Graphic(mobs.get(3).getPositionx(), 603, 93, 70, mobs.get(3).img());
-		
 
 	}
 
