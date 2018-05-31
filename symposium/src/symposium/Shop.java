@@ -103,20 +103,28 @@ public class Shop extends FullFunctionScreen {
 		welcomeText.setTextColor(Color.WHITE);
 
 		Graphic firstitem = new Graphic(100, 100, 60, 60, weapons.get(0).img());
+		TextArea one = new TextArea(150, 100, 60, 60, "" + weapons.get(0).getCost());
 
 		Graphic seconditem = new Graphic(100, 200, 60, 60, weapons.get(1).img());
+		TextArea two = new TextArea(150, 200, 60, 60, "" + weapons.get(1).getCost());
 
 		Graphic thirditem = new Graphic(100, 300, 60, 60, weapons.get(2).img());
+		TextArea three = new TextArea(150, 300, 60, 60, "" + weapons.get(2).getCost());
 
 		Graphic fourthitem = new Graphic(100, 400, 60, 60, weapons.get(3).img());
+		TextArea four = new TextArea(150, 400, 60, 60, "" + weapons.get(3).getCost());
 
 		Graphic item5 = new Graphic(300, 100, 60, 60, armor.get(0).img());
+		TextArea five = new TextArea(375, 100, 60, 60, "" + armor.get(0).getCost());
 
 		Graphic item6 = new Graphic(300, 200, 60, 60, armor.get(1).img());
+		TextArea six = new TextArea(375, 200, 60, 60, "" + armor.get(1).getCost());
 
 		Graphic item7 = new Graphic(300, 300, 60, 60, armor.get(2).img());
+		TextArea seven = new TextArea(375, 300, 60, 60, "" + armor.get(2).getCost());
 
 		Graphic item8 = new Graphic(300, 400, 60, 60, armor.get(3).img());
+		TextArea eight = new TextArea(375, 400, 60, 60, "" + armor.get(3).getCost());
 
 		viewObjects.add(firstitem);
 		viewObjects.add(seconditem);
@@ -127,6 +135,15 @@ public class Shop extends FullFunctionScreen {
 		viewObjects.add(item6);
 		viewObjects.add(item7);
 		viewObjects.add(item8);
+
+		viewObjects.add(one);
+		viewObjects.add(two);
+		viewObjects.add(three);
+		viewObjects.add(four);
+		viewObjects.add(five);
+		viewObjects.add(six);
+		viewObjects.add(seven);
+		viewObjects.add(eight);
 
 		ONE = new Button(100, 100, 60, 60, "", new Action() {
 

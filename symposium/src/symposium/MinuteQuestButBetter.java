@@ -65,10 +65,10 @@ public class MinuteQuestButBetter extends GUIApplication {
 		nonew = new Weapon("", "no weapon", 0, 0, 0);
 
 		nonea = new Armor("no armor", 0, 0, 0, "symposium/white.png");
-		advancerobe = new Armor("ADVANCE ROBE", 10, 25, 1000, "symposium/armor/beginnerrobe.png");
-		advancebasicarmor = new Armor("ADVANCE ARMOR", 20, 50, 1000, "symposium/armor/bronzearmor.png");
-		basicarmor = new Armor("BASIC ARMOR", 30, 75, 10, "symposium/armor/devilarmor.png");
-		robe = new Armor("BASIC ROBE", 40, 100, 10, "symposium/armor/diamondarmor.png");
+		advancerobe = new Armor("ADVANCE ROBE", 10, 25, 1000, "symposium/armor/diamondarmor.png");
+		advancebasicarmor = new Armor("ADVANCE ARMOR", 20, 50, 1000, "symposium/armor/devilarmor.png");
+		basicarmor = new Armor("BASIC ARMOR", 30, 75, 10, "symposium/armor/bronzearmor.png");
+		robe = new Armor("BASIC ROBE", 40, 100, 10, "symposium/armor/beginnerrobe.png");
 
 		mc = new Hero(nonew, nonea, 10, 10, 10, 10, 1, 100);
 

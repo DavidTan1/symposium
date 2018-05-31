@@ -195,7 +195,6 @@ public class Battle extends FullFunctionScreen {
 
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-
 			walklr.setVx(0);
 
 			if (walklr.getX() > 1300) {
