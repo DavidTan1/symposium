@@ -173,7 +173,6 @@ public class Battle extends FullFunctionScreen {
 
 			walklr = new Sprite(currPosition, 603, 64, 83);
 			getViewObjects().add(walklr);
-			swordlr.setVisible(false);
 
 			walklr.addSequence("symposium/walkglove.png", 200, 0, 0, 63, 82, 8);
 			Thread walkrl = new Thread(walklr);
@@ -187,7 +186,6 @@ public class Battle extends FullFunctionScreen {
 
 			walklr = new Sprite(currPosition, 603, 71, 85);
 			getViewObjects().add(walklr);
-			swordlr.setVisible(false);
 
 			walklr.addSequence("symposium/walkinggsword.png", 200, 0, 0, 70, 84, 8);
 			Thread walkrl = new Thread(walklr);
