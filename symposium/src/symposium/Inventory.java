@@ -34,8 +34,6 @@ public class Inventory extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
-		
-		
 		Font fontsize50 = new Font("serif", Font.PLAIN, 50);
 		Font fontsize25 = new Font("serif", Font.PLAIN, 25);
 
@@ -56,8 +54,7 @@ public class Inventory extends FullFunctionScreen {
 		a = new TextArea(500, 125, 1000, 1000, "Equipped");
 		a.setFont(fontsize25);
 		viewObjects.add(a);
-		
-		
+
 		weaponEquip = new Graphic(500, 200, 60, 60, "symposium/white.png");
 		armorEquip = new Graphic(500, 275, 60, 60, "symposium/white.png");
 
@@ -75,8 +72,7 @@ public class Inventory extends FullFunctionScreen {
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
-				
-				
+
 				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
 
 			}

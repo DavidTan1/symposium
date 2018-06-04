@@ -20,6 +20,7 @@ public class Battle extends FullFunctionScreen {
 	public ArrayList<Integer> mobsX;
 	public ArrayList<Hero> hero;
 
+	private int roundlevel;
 	public int currHP;
 	public int count;
 	public int currPosition;
@@ -128,17 +129,12 @@ public class Battle extends FullFunctionScreen {
 		items.setBackground(Color.WHITE);
 		items.update();
 
-		
-		
-		
 		walklr = new Sprite(currPosition, 603, 61, 76);
 		viewObjects.add(walklr);
 
 		walklr.addSequence("symposium/walkl&r.png", 200, 0, 0, 60, 75, 16);
 		Thread walkrl = new Thread(walklr);
 		walkrl.start();
-
-		
 
 		punchlr = new SpriteAttack(walklr.getX(), 590, 75, 83);
 		viewObjects.add(punchlr);
@@ -174,7 +170,7 @@ public class Battle extends FullFunctionScreen {
 	public void updateW() {
 		if (MinuteQuestButBetter.mc.getWeapon().name().equals("FIST")) {
 			walklr.setVisible(false);
-			
+
 			walklr = new Sprite(currPosition, 603, 64, 83);
 			getViewObjects().add(walklr);
 			swordlr.setVisible(false);
@@ -182,18 +178,13 @@ public class Battle extends FullFunctionScreen {
 			walklr.addSequence("symposium/walkglove.png", 200, 0, 0, 63, 82, 8);
 			Thread walkrl = new Thread(walklr);
 			walkrl.start();
-			
-			
-			
-			
-			//punchglove
-			
-			
+
+			// punchglove
+
 		} else if (MinuteQuestButBetter.mc.getWeapon().name().equals("SWORD")) {
-			
-			
+
 			walklr.setVisible(false);
-			
+
 			walklr = new Sprite(currPosition, 603, 71, 85);
 			getViewObjects().add(walklr);
 			swordlr.setVisible(false);
@@ -201,9 +192,6 @@ public class Battle extends FullFunctionScreen {
 			walklr.addSequence("symposium/walkinggsword.png", 200, 0, 0, 70, 84, 8);
 			Thread walkrl = new Thread(walklr);
 			walkrl.start();
-			
-			
-			
 
 		} else if (MinuteQuestButBetter.mc.getWeapon().name().equals("AXE")) {
 			walklr.setVisible(false);
@@ -219,6 +207,7 @@ public class Battle extends FullFunctionScreen {
 			walklr.setVx(0);
 
 			if (walklr.getX() > 1300) {
+				roundlevel++;
 				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
 			}
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -449,9 +438,6 @@ public class Battle extends FullFunctionScreen {
 		}
 	}
 
-	
-
-	
 	private void removeMob(Mobs a) {
 
 		int z = 0;
