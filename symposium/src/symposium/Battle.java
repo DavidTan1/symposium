@@ -128,6 +128,9 @@ public class Battle extends FullFunctionScreen {
 		items.setBackground(Color.WHITE);
 		items.update();
 
+		
+		
+		
 		walklr = new Sprite(currPosition, 603, 61, 76);
 		viewObjects.add(walklr);
 
@@ -135,19 +138,13 @@ public class Battle extends FullFunctionScreen {
 		Thread walkrl = new Thread(walklr);
 		walkrl.start();
 
-		swordlr = new Sprite(currPosition, 603, 71, 85);
-		viewObjects.add(swordlr);
-		swordlr.setVisible(false);
+		
 
-		swordlr.addSequence("symposium/walkinggsword.png", 200, 0, 0, 70, 84, 8);
-		Thread swordrl = new Thread(swordlr);
-		swordrl.start();
-
-		punchlr = new SpriteAttack(walklr.getX(), 590, 51, 90);
+		punchlr = new SpriteAttack(walklr.getX(), 590, 75, 83);
 		viewObjects.add(punchlr);
 		punchlr.setVisible(false);
 
-		punchlr.addSequence("symposium/punchlr.png", 200, 0, 0, 62, 90, 10);
+		punchlr.addSequence("symposium/punchlr.png", 200, 0, 0, 74, 82, 6);
 		Thread punchrl = new Thread(punchlr);
 		punchrl.start();
 
@@ -176,18 +173,42 @@ public class Battle extends FullFunctionScreen {
 
 	public void updateW() {
 		if (MinuteQuestButBetter.mc.getWeapon().name().equals("FIST")) {
+			walklr.setVisible(false);
+			
+			walklr = new Sprite(currPosition, 603, 64, 83);
+			getViewObjects().add(walklr);
 			swordlr.setVisible(false);
-			walklr.setVisible(false);
+
+			walklr.addSequence("symposium/walkglove.png", 200, 0, 0, 63, 82, 8);
+			Thread walkrl = new Thread(walklr);
+			walkrl.start();
+			
+			
+			
+			
+			//punchglove
+			
+			
 		} else if (MinuteQuestButBetter.mc.getWeapon().name().equals("SWORD")) {
-			swordlr.setVisible(true);
+			
+			
 			walklr.setVisible(false);
+			
+			walklr = new Sprite(currPosition, 603, 71, 85);
+			getViewObjects().add(walklr);
+			swordlr.setVisible(false);
+
+			walklr.addSequence("symposium/walkinggsword.png", 200, 0, 0, 70, 84, 8);
+			Thread walkrl = new Thread(walklr);
+			walkrl.start();
+			
+			
+			
 
 		} else if (MinuteQuestButBetter.mc.getWeapon().name().equals("AXE")) {
-			swordlr.setVisible(false);
 			walklr.setVisible(false);
 
 		} else if (MinuteQuestButBetter.mc.getWeapon().name().equals("ROD")) {
-			swordlr.setVisible(false);
 			walklr.setVisible(false);
 
 		}
@@ -428,6 +449,9 @@ public class Battle extends FullFunctionScreen {
 		}
 	}
 
+	
+
+	
 	private void removeMob(Mobs a) {
 
 		int z = 0;
