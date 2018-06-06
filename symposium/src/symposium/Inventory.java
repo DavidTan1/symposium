@@ -169,5 +169,27 @@ public class Inventory extends FullFunctionScreen {
 
 		}
 	}
+	
+	
+	public void displayequip()
+	{
+		if(!MinuteQuestButBetter.mc.getWeapon().name().equals("nonew"))
+		{
+		
+			weaponEquip = new Graphic(500, 275, 60, 60, MinuteQuestButBetter.mc.getWeapon().img());
+			getViewObjects().add(weaponEquip);
+
+		}
+		
+		if(!MinuteQuestButBetter.mc.getArmor().name().equals("nonea"))
+		{
+		
+			armorEquip = new Graphic(500, 200, 60, 60, MinuteQuestButBetter.mc.getArmor().img());
+			getViewObjects().add(armorEquip);
+
+		}
+
+		
+	}
 
 }

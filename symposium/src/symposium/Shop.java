@@ -452,6 +452,10 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
+				MinuteQuestButBetter.inventory.displayequip();
+				
+				
+				
 				MinuteQuestButBetter.gameGUI.setScreen(new Inventory(getWidth(), getHeight()));
 				// MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.inventory);
 

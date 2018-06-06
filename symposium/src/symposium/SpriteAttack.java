@@ -26,11 +26,11 @@ public class SpriteAttack extends AnimatedComponent {
 			displayTime = currentTime;
 
 			// increase the currentFrameIndex but don't exceed size()
-			currentFrame = (currentFrame + 1) % 3;
+			currentFrame = (currentFrame + 1) % 2;
 
 			if (striker) {
 
-				currentFrame += 3;
+				currentFrame += 2;
 			}
 			
 			

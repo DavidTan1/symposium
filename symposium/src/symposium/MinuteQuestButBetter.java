@@ -62,7 +62,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 		rod = new Weapon("symposium/deathislikethewind/firerod.png", "ROD", 100, 140, 10);
 		sword = new Weapon("symposium/deathislikethewind/longsword.png", "SWORD", 700, 50, 10);
 		fist = new Weapon("symposium/deathislikethewind/hook.png", "FIST", 700, 50, 10);
-		nonew = new Weapon("", "no weapon", 0, 0, 0);
+		nonew = new Weapon("symposium/white.png", "no weapon", 0, 0, 0);
 
 		nonea = new Armor("no armor", 0, 0, 0, "symposium/white.png");
 		advancerobe = new Armor("ADVANCE ROBE", 10, 25, 1000, "symposium/armor/diamondarmor.png");
