@@ -11,13 +11,17 @@ public class SpriteAttack extends AnimatedComponent {
 	
 	public boolean striker;
 	public boolean strikel;
-
+	
+	public int punchg;
+	
 	public SpriteAttack(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
 	}
 
 	public void drawImage(Graphics2D g) {
+		
+		
 		long currentTime = System.currentTimeMillis();// gets time now
 		// check if it's time to change the frame
 		// and make sure that there are images in the frame list
@@ -26,11 +30,11 @@ public class SpriteAttack extends AnimatedComponent {
 			displayTime = currentTime;
 
 			// increase the currentFrameIndex but don't exceed size()
-			currentFrame = (currentFrame + 1) % 2;
+			currentFrame = (currentFrame + 1) % punchg;
 
 			if (striker) {
 
-				currentFrame += 2;
+				currentFrame += punchg;
 			}
 			
 			

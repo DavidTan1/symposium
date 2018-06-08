@@ -10,6 +10,8 @@ public class Hero {
 	private int luk;
 	private int level;
 	private int gold;
+	private int maxHealth;
+	private int currHealth;
 
 	public Hero(Weapon weapon, Armor armor, int str, int agl, int vit, int luk, int level, int gold) {
 
@@ -21,6 +23,10 @@ public class Hero {
 		this.luk = luk;
 		this.level = level;
 		this.gold = gold;
+		
+		maxHealth = getHealth();
+		currHealth = maxHealth;
+
 	}
 
 	public static void main(String[] args) {
@@ -70,10 +76,43 @@ public class Hero {
 		return trueAGL;
 	}
 
+	
+	
 	public int getVit() {
 		return vit;
 	}
+	
+	public int getHealth()
+	{
+		return getVit()*100;
+	}
+	
+	
+	public boolean dead() {
+		if (currHealth <= 0) {
+			return true;
+		}
+		return false;
+	}
+	
+	public int currHealth() {
+		if (maxHealth == currHealth) {
+			currHealth = maxHealth - MinuteQuestButBetter.mc.getStr();
+			System.out.println(currHealth);
 
+			return currHealth;
+
+		} else {
+
+			currHealth = currHealth - MinuteQuestButBetter.mc.getStr();
+			return currHealth;
+		}
+
+	}
+	
+	
+	
+	
 	public int setVit() {
 		System.out.println(getArmor());
 		int trueVIT = vit * (getArmor().getdefense() / 10);
@@ -91,9 +130,7 @@ public class Hero {
 	public int getLevel() {
 		return level;
 	}
-
 	
-
 	public void addWeapon(Weapon asdf) {
 		weapon = asdf;
 	}
