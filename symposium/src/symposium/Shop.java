@@ -435,9 +435,13 @@ public class Shop extends FullFunctionScreen {
 
 			@Override
 			public void act() {
-				// MinuteQuestButBetter.battle.roundlevel;
 				MinuteQuestButBetter.battle.updateW();
-				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.battle);
+				//MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.battle);
+				//System.out.print("Shop Round "+MinuteQuestButBetter.battle.roundlevel);
+				
+				int round = MinuteQuestButBetter.battle.roundlevel;
+				MinuteQuestButBetter.gameGUI
+						.setScreen(new Battle(getWidth(), getHeight(), round));
 
 			}
 
@@ -453,9 +457,7 @@ public class Shop extends FullFunctionScreen {
 			public void act() {
 
 				MinuteQuestButBetter.inventory.displayequip();
-				
-				
-				
+
 				MinuteQuestButBetter.gameGUI.setScreen(new Inventory(getWidth(), getHeight()));
 				// MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.inventory);
 

@@ -95,16 +95,15 @@ public class Hero {
 		return false;
 	}
 	
-	public int currHealth() {
+	public int currHealth(Mobs a) {
 		if (maxHealth == currHealth) {
-			currHealth = maxHealth - MinuteQuestButBetter.mc.getStr();
-			System.out.println(currHealth);
+			currHealth = maxHealth - MinuteQuestButBetter.battle.mobs(a);
 
 			return currHealth;
 
 		} else {
 
-			currHealth = currHealth - MinuteQuestButBetter.mc.getStr();
+			currHealth = currHealth - MinuteQuestButBetter.battle.mobs(a);
 			return currHealth;
 		}
 
