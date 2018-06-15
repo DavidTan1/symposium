@@ -17,7 +17,6 @@ import guiTeacher.userInterfaces.FullFunctionScreen;
 public class Battle extends FullFunctionScreen {
 
 	public ArrayList<Mobs> mobs;
-	public ArrayList<Integer> mobsX;
 	public ArrayList<Hero> hero;
 
 	public int roundlevel;
@@ -50,6 +49,7 @@ public class Battle extends FullFunctionScreen {
 	private Graphic beast;
 	private Graphic vampire;
 	private int x;
+	private int y;
 
 	public Battle(int width, int height, int round) {
 		super(width, height);
@@ -61,7 +61,7 @@ public class Battle extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
-		System.out.print("Round "+roundlevel);
+		System.out.print("Round " + roundlevel);
 
 		setBackground(Color.BLACK);
 
@@ -91,10 +91,6 @@ public class Battle extends FullFunctionScreen {
 		Graphic background = new Graphic(0, 0, 1364, 746, "symposium/battlebackground.png");
 
 		viewObjects.add(background);
-
-		
-
-		
 
 		dragon = new AnimatedComponent(mobs.get(0).getPositionx(), 603, 74, 82);
 		viewObjects.add(dragon);
@@ -147,9 +143,8 @@ public class Battle extends FullFunctionScreen {
 		viewObjects.add(slime);
 		viewObjects.add(beast);
 		viewObjects.add(vampire);
-		
-		
-		health = new TextArea(walklr.getX(), walklr.getY() - 50, 93,70, "");
+
+		health = new TextArea(walklr.getX(), walklr.getY() - 50, 93, 70, "");
 
 		viewObjects.add(health);
 	}
@@ -246,24 +241,24 @@ public class Battle extends FullFunctionScreen {
 
 				public void run() {
 
-					System.out.println(blast.getX());
-
-					kill(blast.getX() + dragon.getX(), MinuteQuestButBetter.bdragon);
-					kill(blast.getX() + demon.getX(), MinuteQuestButBetter.demon);
-
 					try {
-						Thread.sleep((long) (blast.getVx() * 750));
+						Thread.sleep((long) (blast.getVx() * 150));
 
 					} catch (InterruptedException a) {
 						// TODO Auto-generated catch block
 						a.printStackTrace();
 					}
+
+					System.out.println("aaaaaaa");
+					contact(blast.getX() + 50, MinuteQuestButBetter.bdragon);
+					contact(blast.getX() + 50, MinuteQuestButBetter.demon);
+					contact(blast.getX() + 50, MinuteQuestButBetter.slime);
+					contact(blast.getX() + 50, MinuteQuestButBetter.beast);
+					contact(blast.getX() + 50, MinuteQuestButBetter.vampire);
+
 					blast.fired = true;
 					blast.setVisible(false);
 					blast.setVx(0);
-
-					kill(blast.getX(), MinuteQuestButBetter.bdragon);
-					kill(blast.getX(), MinuteQuestButBetter.demon);
 
 					blast.move(walklr.getX(), 573, 1);
 					update();
@@ -283,7 +278,7 @@ public class Battle extends FullFunctionScreen {
 			if (attackrn == false) {
 
 				blast.move(walklr.getX(), 573, 1);
-				health.move(walklr.getX(), walklr.getY() - 50,1);
+				health.move(walklr.getX(), walklr.getY() - 50, 1);
 
 				for (int i = 0; i < 1; i++) {
 
@@ -327,9 +322,8 @@ public class Battle extends FullFunctionScreen {
 			if (attackrn == false && walklr.getX() > 1) {
 
 				blast.move(walklr.getX() + 44, 573, 1);
-				health.move(walklr.getX(), walklr.getY() - 50,1);
-				
-				
+				health.move(walklr.getX(), walklr.getY() - 50, 1);
+
 				for (int i = 0; i < 1; i++) {
 
 					walklr.left = false;
@@ -473,17 +467,6 @@ public class Battle extends FullFunctionScreen {
 
 	}
 
-	public void calcCollision(int x, int y) {
-
-		mobsX = new ArrayList<Integer>();
-
-		for (int i = 0; i < mobs.size(); i++) {
-			// System.out.println(mobs.get(i).getPositionx());
-			mobsX.add(mobs.get(i).getPositionx());
-		}
-
-	}
-
 	public boolean checkMob(int position, Mobs a) {
 
 		int count = 0;
@@ -496,7 +479,7 @@ public class Battle extends FullFunctionScreen {
 				}
 
 				if (count <= 102) {
-					System.out.println("Range is " + count);
+					// System.out.println("Range is " + count);
 
 					return true;
 				}
@@ -508,7 +491,7 @@ public class Battle extends FullFunctionScreen {
 				}
 
 				if (count <= 102) {
-					System.out.println("Range is " + count);
+					// System.out.println("Range is " + count);
 
 					return true;
 				}
@@ -535,8 +518,6 @@ public class Battle extends FullFunctionScreen {
 		demon = new Graphic(mobs.get(4).getPositionx(), 603, 93, 70, mobs.get(4).img());
 
 	}
-
-	
 
 	public boolean checkcollision(int x, Mobs a) {
 
@@ -568,9 +549,7 @@ public class Battle extends FullFunctionScreen {
 
 			getViewObjects().add(health);
 
-			
-
-		}else {
+		} else {
 			if (MinuteQuestButBetter.mc.dead() == true) {
 				welcomeText.setText("You have been slain.");
 				gameover = true;
@@ -583,14 +562,14 @@ public class Battle extends FullFunctionScreen {
 
 	public void kill(int xcoord, Mobs a) {
 		if (checkMob(xcoord, a) == true) {
-			a.currHealth();
 
-			if (x == 1) {
+			if (y == 1) {
 				getViewObjects().remove(one);
-				x = 0;
+				y = 0;
+
 			}
 
-			x = 1;
+			y = 1;
 
 			one = new TextArea(a.getPositionx(), 553, 93, 70, a.name() + ":" + a.currHealth() + "/" + a.getVit());
 
@@ -602,18 +581,36 @@ public class Battle extends FullFunctionScreen {
 			mobAttack(xcoord, a);
 
 			if (a.dead() == true) {
+
+				getViewObjects().remove(one);
+
 				welcomeText.setText("You kill the " + a.name());
 
 				removeMob(a);
 
-				getViewObjects().remove(one);
-				//x = 0;
 				update();
-				// make sure to remove dead mobs
+
 			}
 
 		} else {
 			welcomeText.setText("You attack nothing. Try moving closer");
+		}
+	}
+
+	public void contact(int xcoord, Mobs a) {
+		if (xcoord > a.getPositionx()) {
+			if (y == 1) {
+				getViewObjects().remove(one);
+				y = 0;
+
+			}
+
+			y = 1;
+			one = new TextArea(a.getPositionx(), 553, 93, 70, a.name() + ":" + a.currHealth() + "/" + a.getVit());
+			getViewObjects().add(one);
+
+			System.out.println(a.name() + "just got hit");
+
 		}
 	}
 
