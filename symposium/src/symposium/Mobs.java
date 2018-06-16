@@ -11,8 +11,8 @@ public class Mobs {
 	private int level;
 	private int positionx;
 	private int positiony;
-	private int currHealth;
-	private int maxHealth;
+	public int currHealth;
+	public int maxHealth;
 	private boolean isAttack;
 
 	public Mobs(String img, String name, int str, int agl, int vit, int luk, int level, int positionx, int positiony) {
@@ -85,6 +85,7 @@ public class Mobs {
 
 	public boolean dead() {
 		if (currHealth <= 0) {
+			
 			return true;
 		}
 		return false;
