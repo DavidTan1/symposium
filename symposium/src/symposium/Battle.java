@@ -467,24 +467,18 @@ public class Battle extends FullFunctionScreen {
 				if (mobs.size() == 4) {
 
 					kill(walklr.getX(), mobs.get(0), mob1);
-					kill(walklr.getX(), mobs.get(1), mob2);
-					kill(walklr.getX(), mobs.get(2), mob3);
-					//kill(walklr.getX(), mobs.get(3), mob4);
 
 				}
 
 				if (mobs.size() == 3) {
 
 					kill(walklr.getX(), mobs.get(0), mob2);
-					kill(walklr.getX(), mobs.get(1), mob3);
-					kill(walklr.getX(), mobs.get(2), mob4);
 
 				}
 
 				if (mobs.size() == 2) {
 
 					kill(walklr.getX(), mobs.get(0), mob3);
-					kill(walklr.getX(), mobs.get(1), mob4); //
 
 				}
 
@@ -527,6 +521,8 @@ public class Battle extends FullFunctionScreen {
 
 			getViewObjects().remove(mob1);
 			mobs.remove(0);
+			a.currHealth = a.maxHealth;
+
 			update();
 
 		}
@@ -622,9 +618,9 @@ public class Battle extends FullFunctionScreen {
 		
 		if(mobs.size()==3)
 		{
-			if(checkcollision(walklr.getX(), mob1, mobs.get(0)) == false
-					&& checkcollision(walklr.getX(), mob2, mobs.get(1)) == false
-					&& checkcollision(walklr.getX(), mob3, mobs.get(2)) == false) {
+			if(checkcollision(walklr.getX(), mob2, mobs.get(0)) == false
+					&& checkcollision(walklr.getX(), mob3, mobs.get(1)) == false
+					&& checkcollision(walklr.getX(), mob4, mobs.get(2)) == false) {
 				return false;
 
 			}
@@ -632,8 +628,8 @@ public class Battle extends FullFunctionScreen {
 		
 		if(mobs.size()==2)
 		{
-			if(checkcollision(walklr.getX(), mob1, mobs.get(0)) == false
-					&& checkcollision(walklr.getX(), mob2, mobs.get(1)) == false) {
+			if(checkcollision(walklr.getX(), mob3, mobs.get(0)) == false
+					&& checkcollision(walklr.getX(), mob4, mobs.get(1)) == false) {
 				return false;
 
 			}
@@ -641,11 +637,18 @@ public class Battle extends FullFunctionScreen {
 		
 		if(mobs.size()==1)
 		{
-			if(checkcollision(walklr.getX(), mob1, mobs.get(0)) == false) {
+			if(checkcollision(walklr.getX(), mob4, mobs.get(0)) == false) {
 				return false;
 
 			}
 		}
+		
+		
+		if(mobs.size()==0)
+		{
+				return false;
+		}
+		
 		return true;
 		
 	}
@@ -723,7 +726,6 @@ public class Battle extends FullFunctionScreen {
 				
 				System.out.println("Mob size is currently "+mobs.size());
 				
-				//mob.currHealth = mob.maxHealth;
 				update();
 
 			}
