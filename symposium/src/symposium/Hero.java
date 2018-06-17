@@ -23,7 +23,7 @@ public class Hero {
 		this.luk = luk;
 		this.level = level;
 		this.gold = gold;
-		
+
 		maxHealth = getHealth();
 		currHealth = maxHealth;
 
@@ -76,25 +76,21 @@ public class Hero {
 		return trueAGL;
 	}
 
-	
-	
 	public int getVit() {
 		return vit;
 	}
-	
-	public int getHealth()
-	{
-		return getVit()*100;
+
+	public int getHealth() {
+		return getVit() * 100;
 	}
-	
-	
+
 	public boolean dead() {
 		if (currHealth <= 0) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	public int currHealth(Mobs a) {
 		if (maxHealth == currHealth) {
 			currHealth = maxHealth - MinuteQuestButBetter.battle.mobs(a);
@@ -108,10 +104,7 @@ public class Hero {
 		}
 
 	}
-	
-	
-	
-	
+
 	public int setVit() {
 		System.out.println(getArmor());
 		int trueVIT = vit * (getArmor().getdefense() / 10);
@@ -129,12 +122,11 @@ public class Hero {
 	public int getLevel() {
 		return level;
 	}
-	
+
 	public void addWeapon(Weapon asdf) {
 		weapon = asdf;
 	}
 
-	
 	public void addArmor(Armor asdf) {
 		armor = asdf;
 	}

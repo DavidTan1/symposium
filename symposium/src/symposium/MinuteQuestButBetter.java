@@ -10,7 +10,6 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static Shop shop;
 	public static Hero mc;
 
-	// public static Weapon knife;
 	public static Weapon axe;
 	public static Weapon rod;
 	public static Weapon sword;
@@ -30,6 +29,8 @@ public class MinuteQuestButBetter extends GUIApplication {
 	public static Mobs bdragon;
 	public static Mobs deadMob;
 
+	private static int roundlevel;
+
 	public MinuteQuestButBetter(int width, int height) {
 		super(width, height);
 		setVisible(true);
@@ -38,11 +39,11 @@ public class MinuteQuestButBetter extends GUIApplication {
 
 	@Override
 	public void initScreen() {
-
+		// roundlevel = 0;
 		creation();
 		// TODO Auto-generated method stub
 		shop = new Shop(getWidth(), getHeight());
-		battle = new Battle(getWidth(), getHeight(), 0);
+		battle = new Battle(getWidth(), getHeight(), roundlevel);
 		inventory = new Inventory(getWidth(), getHeight());
 		setScreen(shop);
 
@@ -83,6 +84,14 @@ public class MinuteQuestButBetter extends GUIApplication {
 		// hero parameters: Weapon weapon, Armor armor, int str, int agl, int vit, int
 		// luk, int level, int gold
 
+	}
+
+	public static int round() {
+		return roundlevel;
+	}
+
+	public static int increaseround() {
+		return roundlevel++;
 	}
 
 }

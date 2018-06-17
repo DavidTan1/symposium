@@ -19,7 +19,7 @@ public class Battle extends FullFunctionScreen {
 	public ArrayList<Mobs> mobs;
 	public ArrayList<Hero> hero;
 
-	public int roundlevel;
+	// public int roundlevel;
 	public int currHP;
 	public int count;
 	public int currPosition;
@@ -53,15 +53,14 @@ public class Battle extends FullFunctionScreen {
 
 	public Battle(int width, int height, int round) {
 		super(width, height);
-		roundlevel = round;
+		// roundlevel = round;
+		// System.out.println("Round " + roundlevel);
 
 		// TODO Auto-generated constructor stub
 	}
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
-
-		System.out.println("Round " + roundlevel);
 
 		setBackground(Color.BLACK);
 
@@ -211,7 +210,9 @@ public class Battle extends FullFunctionScreen {
 			walklr.setVx(0);
 
 			if (walklr.getX() > 1300) {
-				roundlevel++;
+
+				MinuteQuestButBetter.increaseround();
+
 				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
 			}
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -309,7 +310,7 @@ public class Battle extends FullFunctionScreen {
 					if (c() == false) {
 
 						walklr.left = true;
-						System.out.println(walklr.getX());
+						// System.out.println(walklr.getX());
 
 						if (c() == true) {
 							walklr.setVx(0);
@@ -510,42 +511,40 @@ public class Battle extends FullFunctionScreen {
 
 	public void removeMob(Mobs a, Graphic pic) {
 
-		if (a.name().equals("Black Dragon")) {
-
-			MinuteQuestButBetter.bdragon.dead();
-			getViewObjects().remove(dragon);
-			update();
-
-		}
-		if (a.name().equals("Slime")) {
-
-			getViewObjects().remove(mob1);
+		if (pic.getImage().toString().contains("slime")) {
+			getViewObjects().remove(pic);
 			mobs.remove(0);
 			a.currHealth = a.maxHealth;
 
 			update();
-
 		}
-		if (a.name().equals("Wild Beast")) {
+		if (pic.getImage().toString().contains("demon")) {
+			getViewObjects().remove(pic);
+			mobs.remove(0);
+			a.currHealth = a.maxHealth;
 
-			MinuteQuestButBetter.beast.dead();
-			getViewObjects().remove(mob3);
 			update();
-
 		}
-		if (a.name().equals("Vampire")) {
+		if (pic.getImage().toString().contains("beast")) {
+			getViewObjects().remove(pic);
+			mobs.remove(0);
+			a.currHealth = a.maxHealth;
 
-			MinuteQuestButBetter.vampire.dead();
-			getViewObjects().remove(mob4);
 			update();
-
 		}
-		if (a.name().equals("Demon")) {
+		if (pic.getImage().toString().contains("mage")) {
+			getViewObjects().remove(pic);
+			mobs.remove(0);
+			a.currHealth = a.maxHealth;
 
-			MinuteQuestButBetter.demon.dead();
-			getViewObjects().remove(mob2);
 			update();
+		}
+		if (pic.getImage().toString().contains("dragon")) {
+			getViewObjects().remove(pic);
+			mobs.remove(0);
+			a.currHealth = a.maxHealth;
 
+			update();
 		}
 
 	}
@@ -589,7 +588,7 @@ public class Battle extends FullFunctionScreen {
 	public void createMobs() {
 		mobs = new ArrayList<Mobs>();
 
-		if (roundlevel == 0) {
+		if (MinuteQuestButBetter.round() == 0) {
 			// mobs.add(MinuteQuestButBetter.bdragon);
 			mobs.add(MinuteQuestButBetter.slime);
 			mobs.add(MinuteQuestButBetter.slime);
@@ -602,59 +601,63 @@ public class Battle extends FullFunctionScreen {
 			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
 		}
 
+		if (MinuteQuestButBetter.round() == 1) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.slime);
+			mobs.add(MinuteQuestButBetter.slime);
+			mobs.add(MinuteQuestButBetter.slime);
+			mobs.add(MinuteQuestButBetter.demon);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
 	}
 
 	public boolean c() {
-		
-		if(mobs.size()==4)
-		{
-			if(checkcollision(walklr.getX(), mob1, mobs.get(0)) == false
+
+		if (mobs.size() == 4) {
+			if (checkcollision(walklr.getX(), mob1, mobs.get(0)) == false
 					&& checkcollision(walklr.getX(), mob2, mobs.get(1)) == false
 					&& checkcollision(walklr.getX(), mob3, mobs.get(2)) == false
 					&& checkcollision(walklr.getX(), mob4, mobs.get(3)) == false) {
 				return false;
 			}
 		}
-		
-		if(mobs.size()==3)
-		{
-			if(checkcollision(walklr.getX(), mob2, mobs.get(0)) == false
+
+		if (mobs.size() == 3) {
+			if (checkcollision(walklr.getX(), mob2, mobs.get(0)) == false
 					&& checkcollision(walklr.getX(), mob3, mobs.get(1)) == false
 					&& checkcollision(walklr.getX(), mob4, mobs.get(2)) == false) {
 				return false;
 
 			}
 		}
-		
-		if(mobs.size()==2)
-		{
-			if(checkcollision(walklr.getX(), mob3, mobs.get(0)) == false
+
+		if (mobs.size() == 2) {
+			if (checkcollision(walklr.getX(), mob3, mobs.get(0)) == false
 					&& checkcollision(walklr.getX(), mob4, mobs.get(1)) == false) {
 				return false;
 
 			}
 		}
-		
-		if(mobs.size()==1)
-		{
-			if(checkcollision(walklr.getX(), mob4, mobs.get(0)) == false) {
+
+		if (mobs.size() == 1) {
+			if (checkcollision(walklr.getX(), mob4, mobs.get(0)) == false) {
 				return false;
 
 			}
 		}
-		
-		
-		if(mobs.size()==0)
-		{
-				return false;
+
+		if (mobs.size() == 0) {
+			return false;
 		}
-		
+
 		return true;
-		
+
 	}
-	
-	
-	
+
 	public boolean checkcollision(int x, Graphic pic, Mobs mob) {
 
 		if ((0 > ((pic.getX()) - 74) - x) && !mob.dead()) {
@@ -723,9 +726,9 @@ public class Battle extends FullFunctionScreen {
 				welcomeText.setText("You kill the " + mob.name());
 
 				removeMob(mob, pic);
-				
-				System.out.println("Mob size is currently "+mobs.size());
-				
+
+				System.out.println("Mob size is currently " + mobs.size());
+
 				update();
 
 			}

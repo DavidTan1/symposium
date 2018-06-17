@@ -85,7 +85,7 @@ public class Mobs {
 
 	public boolean dead() {
 		if (currHealth <= 0) {
-			
+
 			return true;
 		}
 		return false;
