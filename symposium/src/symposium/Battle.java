@@ -496,7 +496,7 @@ public class Battle extends FullFunctionScreen {
 			}
 
 		} else if (e.getKeyCode() == KeyEvent.VK_B && gameover == false) {
-
+			//add a timer for the blast
 			attackrn = true;
 
 			blast.fired = true;
