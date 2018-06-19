@@ -34,6 +34,7 @@ public class Battle extends FullFunctionScreen {
 	private TextArea asd;
 	private TextArea one;
 	private TextArea health;
+	private Money money;
 
 	private Button items;
 
@@ -224,11 +225,11 @@ public class Battle extends FullFunctionScreen {
 			if (textD == false) {
 
 				stats.setText("Your character has " + MinuteQuestButBetter.mc.getWeapon().name() + " equipped."
-						+ " Your character STR: " + MinuteQuestButBetter.mc.getStr() + "->"
+						+ " Your character Attack: " + MinuteQuestButBetter.mc.getStr() + "->"
 						+ MinuteQuestButBetter.mc.setStr() + " Your character has "
-						+ MinuteQuestButBetter.mc.getArmor().name() + " equipped." + " Your character VIT: "
+						+ MinuteQuestButBetter.mc.getArmor().name() + " equipped." + " Your character Defense: "
 						+ MinuteQuestButBetter.mc.getVit() + " -> " + MinuteQuestButBetter.mc.setVit()
-						+ " Your character AGL: " + MinuteQuestButBetter.mc.getAgl() + " -> "
+						+ " Your character Speed: " + MinuteQuestButBetter.mc.getAgl() + " -> "
 						+ MinuteQuestButBetter.mc.setAgl());
 
 				textD = true;
@@ -250,14 +251,14 @@ public class Battle extends FullFunctionScreen {
 						a.printStackTrace();
 					}
 
+					
+					
 					System.out.println("aaaaaaa");
 
 					if (mobs.size() == 4) {
 
 						contact(blast.getX() + 50, mob1, mobs.get(0));
-						contact(blast.getX() + 50, mob2, mobs.get(1));
-						contact(blast.getX() + 50, mob3, mobs.get(2));
-						contact(blast.getX() + 50, mob4, mobs.get(3));
+
 
 					}
 
@@ -265,14 +266,12 @@ public class Battle extends FullFunctionScreen {
 
 						contact(blast.getX() + 50, mob2, mobs.get(0));
 						contact(blast.getX() + 50, mob3, mobs.get(1));
-						contact(blast.getX() + 50, mob4, mobs.get(2));
 
 					}
 
 					if (mobs.size() == 2) {
 
 						contact(blast.getX() + 50, mob3, mobs.get(0));
-						contact(blast.getX() + 50, mob4, mobs.get(1));
 
 					}
 
@@ -292,6 +291,11 @@ public class Battle extends FullFunctionScreen {
 				}
 			}.start();
 
+			
+			
+			
+			
+			
 		}
 
 	}
@@ -503,6 +507,29 @@ public class Battle extends FullFunctionScreen {
 
 			welcomeText.setText("You used a energy blast.");
 
+		} else if(e.getKeyCode() == KeyEvent.VK_X && gameover == false) {
+			
+			
+			if(money.getX()-20 <= walklr.getX() && walklr.getX() <= money.getX()+20){
+				
+				System.out.println(money.getX());
+				System.out.println(walklr.getX());
+
+				
+				MinuteQuestButBetter.mc.increaseGold(money.moneyAmount());
+				
+				getViewObjects().remove(money);
+				System.out.println(MinuteQuestButBetter.mc.getGold());
+
+			}
+			
+			
+			
+			
+			
+			//money
+			
+			
 		}
 
 		repaint();
@@ -729,6 +756,13 @@ public class Battle extends FullFunctionScreen {
 
 				System.out.println("Mob size is currently " + mobs.size());
 
+				
+				
+				money = new Money(pic.getX(),pic.getY(), 25,25,"X",mob.multiplier());
+				getViewObjects().add(money);
+
+				
+				
 				update();
 
 			}
@@ -747,11 +781,30 @@ public class Battle extends FullFunctionScreen {
 			// }
 			//
 			// y = 1;
-			one = new TextArea(pic.getX(), 553, 93, 70, mob.name() + ":" + mob.currHealth() + "/" + mob.getVit());
+			one = new TextArea(pic.getX(), 553, 93, 70, mob.name() + ":" + mob.currHealthBlast() + "/" + mob.getVit());
 			getViewObjects().add(one);
 
 			System.out.println(mob.name() + " just got hit");
+			if (mob.dead() == true) {
 
+				getViewObjects().remove(one);
+
+				welcomeText.setText("You kill the " + mob.name());
+
+				removeMob(mob, pic);
+
+				System.out.println("Mob size is currently " + mobs.size());
+
+				
+				
+				money = new Money(pic.getX(),pic.getY(), 25,25,"X",mob.multiplier());
+				getViewObjects().add(money);
+
+				
+				
+				update();
+
+			}
 		}
 	}
 

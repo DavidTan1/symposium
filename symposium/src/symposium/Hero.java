@@ -34,10 +34,23 @@ public class Hero {
 
 	}
 
+	public int increaseGold(int amount)
+	{
+		return gold = gold + amount;
+	}
+	
+	
+	
+	public int subGold(int amount)
+	{
+		return gold = gold - amount;
+
+	}
+
 	public int getGold() {
 		return gold;
 	}
-
+	
 	public Armor getArmor() {
 		return armor;
 	}
