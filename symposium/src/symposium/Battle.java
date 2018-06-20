@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.List;
 import java.awt.Color;
+import java.awt.Font;
 
 import guiTeacher.components.Action;
 import guiTeacher.components.AnimatedComponent;
@@ -23,7 +24,7 @@ public class Battle extends FullFunctionScreen {
 	public int currPosition;
 
 	private AnimatedComponent dragon;
-	private BlastSprite blast;
+	public BlastSprite blast;
 	private Sprite walklr;
 	private SpriteAttack punchlr;
 
@@ -50,11 +51,11 @@ public class Battle extends FullFunctionScreen {
 	private int x;
 	private int y;
 	private TextArea energy;
+	private boolean stop;
 
 	public Battle(int width, int height, int round) {
 		super(width, height);
 		// roundlevel = round;
-		// System.out.println("Round " + roundlevel);
 
 		// TODO Auto-generated constructor stub
 
@@ -85,7 +86,7 @@ public class Battle extends FullFunctionScreen {
 		c = 10;
 		currPosition = 10;
 		gameover = false;
-
+		stop = true;
 		attackrn = false;
 
 		Graphic background = new Graphic(0, 0, 1364, 746, "symposium/battlebackground.png");
@@ -144,17 +145,21 @@ public class Battle extends FullFunctionScreen {
 		viewObjects.add(mob3);
 		viewObjects.add(mob4);
 
-		health = new TextArea(walklr.getX(), walklr.getY() - 50, 100, 5,
+		health = new TextArea(walklr.getX(), walklr.getY() - 50, 500, 50,
 				"Health: " + MinuteQuestButBetter.mc.getHealth() + "/" + MinuteQuestButBetter.mc.getHealth());
 
 		viewObjects.add(health);
 
-		energy = new TextArea(walklr.getX(), walklr.getY() - 25, 100, 5,
+		energy = new TextArea(walklr.getX(), walklr.getY() - 100, 500, 50,
 				"Energy: " + MinuteQuestButBetter.mc.getEnergy() + "/" + MinuteQuestButBetter.mc.getEnergy());
 
 		viewObjects.add(energy);
-
 		updateW();
+
+		Font fontsize12 = new Font("serif", Font.PLAIN, 12);
+
+		energy.setFont(fontsize12);
+		health.setFont(fontsize12);
 
 	}
 
@@ -217,7 +222,6 @@ public class Battle extends FullFunctionScreen {
 
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
-
 			walklr.setVx(0);
 
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -242,55 +246,7 @@ public class Battle extends FullFunctionScreen {
 				textD = false;
 			}
 		} else if (e.getKeyCode() == KeyEvent.VK_B) {
-
-			new Thread() {
-
-				public void run() {
-
-					try {
-						Thread.sleep((long) (blast.getVx() * 150));
-
-					} catch (InterruptedException a) {
-						// TODO Auto-generated catch block
-						a.printStackTrace();
-					}
-
-					System.out.println("aaaaaaa");
-
-					if (mobs.size() == 4) {
-
-						contact(blast.getX() + 50, mob1, mobs.get(0));
-
-					}
-
-					if (mobs.size() == 3) {
-
-						contact(blast.getX() + 50, mob2, mobs.get(0));
-						contact(blast.getX() + 50, mob3, mobs.get(1));
-
-					}
-
-					if (mobs.size() == 2) {
-
-						contact(blast.getX() + 50, mob3, mobs.get(0));
-
-					}
-
-					if (mobs.size() == 1) {
-
-						contact(blast.getX() + 50, mob4, mobs.get(0));
-					}
-
-					blast.fired = true;
-					blast.setVisible(false);
-					blast.setVx(0);
-
-					blast.move(walklr.getX(), 573, 1);
-					update();
-					attackrn = false;
-
-				}
-			}.start();
+			blast.move(walklr.getX(), 573, 1);
 
 		}
 
@@ -498,13 +454,14 @@ public class Battle extends FullFunctionScreen {
 
 				if (mobs.size() == 1) {
 
-					kill(walklr.getX(), mobs.get(0), mob4); //
+					kill(walklr.getX(), mobs.get(0), mob4);
 
 				}
 
 			}
 
-		} else if (e.getKeyCode() == KeyEvent.VK_B && gameover == false && MinuteQuestButBetter.mc.currEnergy() > 0) {
+		} else if (e.getKeyCode() == KeyEvent.VK_B && gameover == false && MinuteQuestButBetter.mc.energy() > 0) {
+
 			attackrn = true;
 
 			blast.fired = true;
@@ -513,10 +470,56 @@ public class Battle extends FullFunctionScreen {
 
 			blast.setVx(3.0);
 
-
-			energy.setText("Energy: " + MinuteQuestButBetter.mc.currEnergy() + "/" + MinuteQuestButBetter.mc.getEnergy());
+			energy.setText(
+					"Energy: " + MinuteQuestButBetter.mc.currEnergy() + "/" + MinuteQuestButBetter.mc.getEnergy());
 
 			welcomeText.setText("You used a energy blast.");
+
+			new Thread() {
+
+				public void run() {
+
+					try {
+						Thread.sleep((long) (blast.getVx() * 150));
+
+					} catch (InterruptedException a) {
+						// TODO Auto-generated catch block
+						a.printStackTrace();
+					}
+
+					if (mobs.size() == 4) {
+
+						contact(blast.getX() + 50, mob1, mobs.get(0));
+
+					}
+
+					if (mobs.size() == 3) {
+
+						contact(blast.getX() + 50, mob2, mobs.get(0));
+						contact(blast.getX() + 50, mob3, mobs.get(1));
+
+					}
+
+					if (mobs.size() == 2) {
+
+						contact(blast.getX() + 50, mob3, mobs.get(0));
+
+					}
+
+					if (mobs.size() == 1) {
+
+						contact(blast.getX() + 50, mob4, mobs.get(0));
+					}
+
+					blast.fired = true;
+					blast.setVisible(false);
+					blast.setVx(0);
+
+					update();
+					attackrn = false;
+
+				}
+			}.start();
 
 		} else if (e.getKeyCode() == KeyEvent.VK_X && gameover == false) {
 
@@ -631,7 +634,8 @@ public class Battle extends FullFunctionScreen {
 			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
 			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
 
-			System.out.print("Mobs are level: " + mobs.get(1).getLevel() + " Attack stats is: " + mobs.get(1).getStr());
+			// System.out.print("Mobs are level: " + mobs.get(1).getLevel() + " Attack stats
+			// is: " + mobs.get(1).getStr());
 
 		}
 
@@ -648,7 +652,8 @@ public class Battle extends FullFunctionScreen {
 			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
 			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
 
-			System.out.print("Mobs are level: " + mobs.get(1).getLevel() + " Attack stats is: " + mobs.get(1).getStr());
+			// System.out.print("Mobs are level: " + mobs.get(1).getLevel() + " Attack stats
+			// is: " + mobs.get(1).getStr());
 
 		}
 
@@ -767,18 +772,16 @@ public class Battle extends FullFunctionScreen {
 	}
 
 	public void mobAttack(int position, Mobs mob, Graphic pic) {
+
+		// if (pic.getX() - 20 <= position && position <= pic.getX()&&
+		// MinuteQuestButBetter.mc.currHealth(mob) > 0
+		// && dodge(MinuteQuestButBetter.mc.setAgl(), mob.getAgl())) {
+
 		if (checkMob(position, pic, mob) == true && MinuteQuestButBetter.mc.currHealth(mob) > 0
 				&& dodge(MinuteQuestButBetter.mc.setAgl(), mob.getAgl())) {
 
-			if (x == 1) {
-				getViewObjects().remove(health);
-				x = 0;
-			}
-
-			x = 1;
-
-			health = new TextArea(walklr.getX(), walklr.getY() - 50, 93, 70,
-					"Health: "+MinuteQuestButBetter.mc.currHealth(mob) + "/" + MinuteQuestButBetter.mc.getHealth());
+			health.setText(
+					"Health: " + MinuteQuestButBetter.mc.currHealth(mob) + "/" + MinuteQuestButBetter.mc.getHealth());
 
 			health.setTextColor(Color.WHITE);
 
@@ -842,7 +845,7 @@ public class Battle extends FullFunctionScreen {
 
 				System.out.println("Mob size is currently " + mobs.size());
 
-				money = new Money(pic.getX(), pic.getY(), 25, 25, "X", mob.multiplier());
+				money = new Money(pic.getX(), 650, 25, 25, "X", mob.multiplier());
 				getViewObjects().add(money);
 
 				update();
@@ -875,9 +878,7 @@ public class Battle extends FullFunctionScreen {
 
 				removeMob(mob, pic);
 
-				System.out.println("Mob size is currently " + mobs.size());
-
-				money = new Money(pic.getX(), pic.getY(), 25, 25, "X", mob.multiplier());
+				money = new Money(pic.getX(), 650, 25, 25, "X", mob.multiplier());
 				getViewObjects().add(money);
 
 				update();

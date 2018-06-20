@@ -28,6 +28,7 @@ public class Hero {
 		this.str = str;
 		this.agl = agl;
 		this.vit = vit;
+		this.luk = luk;
 		this.level = level;
 		this.gold = gold;
 
@@ -36,8 +37,7 @@ public class Hero {
 
 		maxEnergy = getEnergy();
 		currEnergy = maxEnergy;
-		
-		
+
 		asdf = new ArrayList<Integer>();
 
 		int x = 10;
@@ -156,6 +156,7 @@ public class Hero {
 	}
 
 	public int currHealth(Mobs a) {
+		
 		if (maxHealth == currHealth) {
 			currHealth = maxHealth - MinuteQuestButBetter.battle.mobs(a);
 
@@ -228,7 +229,7 @@ public class Hero {
 	}
 
 	public int energy() {
-		System.out.println("Energy "+currEnergy);
+		System.out.println("Energy " + currEnergy);
 		return currEnergy;
 	}
 
