@@ -63,6 +63,8 @@ public class Battle extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
+		
+		
 		setBackground(Color.BLACK);
 
 		welcomeText = new TextArea(5, 800, 800, 100,
@@ -147,6 +149,8 @@ public class Battle extends FullFunctionScreen {
 		health = new TextArea(walklr.getX(), walklr.getY() - 50, 93, 70, "");
 
 		viewObjects.add(health);
+		
+		updateW();
 	}
 
 	public void updateW() {
