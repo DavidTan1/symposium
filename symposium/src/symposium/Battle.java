@@ -295,6 +295,8 @@ public class Battle extends FullFunctionScreen {
 
 			if (walklr.getX() > 1300) {
 
+				MinuteQuestButBetter.mc.exp(100);
+				MinuteQuestButBetter.mc.levelup();
 				MinuteQuestButBetter.increaseround();
 
 				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
@@ -898,5 +900,9 @@ public class Battle extends FullFunctionScreen {
 
 		return true;
 	}
+	
+	
+	
+	
 
 }

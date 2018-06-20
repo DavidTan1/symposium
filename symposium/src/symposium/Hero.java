@@ -1,9 +1,13 @@
 package symposium;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+
 public class Hero {
 
 	private Weapon weapon;
 	private Armor armor;
+	private ArrayList<Integer> asdf;
 	private int str;
 	private int agl;
 	private int vit;
@@ -12,6 +16,9 @@ public class Hero {
 	private int gold;
 	private int maxHealth;
 	private int currHealth;
+	private int exp;
+
+	public int points;
 
 	public Hero(Weapon weapon, Armor armor, int str, int agl, int vit, int luk, int level, int gold) {
 
@@ -20,29 +27,33 @@ public class Hero {
 		this.str = str;
 		this.agl = agl;
 		this.vit = vit;
-		this.luk = luk;
 		this.level = level;
 		this.gold = gold;
 
 		maxHealth = getHealth();
 		currHealth = maxHealth;
+		
+		asdf = new ArrayList<Integer>();
+
+		int x = 10;
+
+		for (int i = 1; i < 20; i++) {
+			asdf.add(x);
+			x = x * 2;
+			System.out.println("Level " + i + " " + asdf.get(i-1));
+		}
 
 	}
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-
+		
 	}
 
-	public int increaseGold(int amount)
-	{
+	public int increaseGold(int amount) {
 		return gold = gold + amount;
 	}
-	
-	
-	
-	public int subGold(int amount)
-	{
+
+	public int subGold(int amount) {
 		return gold = gold - amount;
 
 	}
@@ -50,7 +61,7 @@ public class Hero {
 	public int getGold() {
 		return gold;
 	}
-	
+
 	public Armor getArmor() {
 		return armor;
 	}
@@ -70,6 +81,19 @@ public class Hero {
 	public int getStr() {
 
 		return str;
+	}
+	
+	public int instr() {
+		return str++;
+	}
+	public int inagl() {
+		return agl++;
+	}
+	public int invit() {
+		return vit++;
+	}
+	public int inluk() {
+		return luk++;
 	}
 
 	public int setStr() {
@@ -134,6 +158,37 @@ public class Hero {
 
 	public int getLevel() {
 		return level;
+
+	}
+	public int inlevel() {
+		return level++;
+	}
+	
+	public int dispoint() {
+		return points;
+	}
+	public int points() {
+		return points += 3;
+
+	}
+	public int decreasepoints() {
+		return points--;
+	}
+	
+
+	public void levelup() {
+		if(exp>asdf.get(level-1))
+		{
+			System.out.println("You leveled up!");
+			inlevel();
+			points();
+		}
+
+	}
+	
+	public int exp(int x) {
+		exp+=x;
+		return x;
 	}
 
 	public void addWeapon(Weapon asdf) {
