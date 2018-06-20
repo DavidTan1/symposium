@@ -75,11 +75,11 @@ public class MinuteQuestButBetter extends GUIApplication {
 
 		// mobs parameters: String img, String name ,int str, int agl, int vit, int luk,
 		// int level, int positionx, int positiony
-		slime = new Mobs("symposium/slime.png", "Slime", 10, 10, 50, 15, 1, 150, 603);
-		demon = new Mobs("symposium/demonmetus.png", "Demon", 10, 10, 50, 15, 1, 300, 603);
-		beast = new Mobs("symposium/wildbeast.png", "Wild Beast", 10, 10, 50, 15, 1, 450, 603);
-		vampire = new Mobs("symposium/blackmage.png", "Vampire", 10, 10, 50, 15, 1, 600, 603);
-		bdragon = new Mobs("symposium/bdragon.png", "Black Dragon", 10, 10, 50, 15, 1, 750, 603);
+		slime = new Mobs("symposium/slime.png", "Slime", 10, 10, 50, 15, 150, 603);
+		demon = new Mobs("symposium/demonmetus.png", "Demon", 10, 10, 50, 15, 300, 603);
+		beast = new Mobs("symposium/wildbeast.png", "Wild Beast", 10, 10, 50, 15, 450, 603);
+		vampire = new Mobs("symposium/blackmage.png", "Vampire", 10, 10, 50, 15, 600, 603);
+		bdragon = new Mobs("symposium/bdragon.png", "Black Dragon", 10, 10, 50, 15, 750, 603);
 
 		// hero parameters: Weapon weapon, Armor armor, int str, int agl, int vit, int
 		// luk, int level, int gold

@@ -63,8 +63,6 @@ public class Battle extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
-		
-		
 		setBackground(Color.BLACK);
 
 		welcomeText = new TextArea(5, 800, 800, 100,
@@ -149,7 +147,7 @@ public class Battle extends FullFunctionScreen {
 		health = new TextArea(walklr.getX(), walklr.getY() - 50, 93, 70, "");
 
 		viewObjects.add(health);
-		
+
 		updateW();
 	}
 
@@ -212,6 +210,7 @@ public class Battle extends FullFunctionScreen {
 
 	public void keyReleased(KeyEvent e) {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
+
 			walklr.setVx(0);
 
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
@@ -292,41 +291,13 @@ public class Battle extends FullFunctionScreen {
 
 	public void keyPressed(KeyEvent e) {
 
-		if (e.getKeyCode() == KeyEvent.VK_RIGHT && gameover == false) {
+		if (e.getKeyCode() == KeyEvent.VK_RIGHT && gameover == false && !c()) {
 
 			if (walklr.getX() > 1300) {
 
 				MinuteQuestButBetter.increaseround();
 
 				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
-			}
-
-			if (attackrn == false) {
-
-				blast.move(walklr.getX(), 573, 1);
-				health.move(walklr.getX(), walklr.getY() - 50, 1);
-
-				for (int i = 0; i < 1; i++) {
-
-					if (c() == false) {
-
-						walklr.left = true;
-						// System.out.println(walklr.getX());
-
-						if (c() == true) {
-							walklr.setVx(0);
-
-						} else {
-							walklr.setVx(3.0); // parameter should be agl/weight
-
-						}
-
-						rightw = true;
-						leftw = false;
-
-					}
-
-				}
 			}
 
 			if (mobs.size() == 4) {
@@ -342,20 +313,43 @@ public class Battle extends FullFunctionScreen {
 
 				mobAttack(walklr.getX(), mobs.get(0), mob2);
 				mobAttack(walklr.getX(), mobs.get(1), mob3);
-				mobAttack(walklr.getX(), mobs.get(2), mob4); //
+				mobAttack(walklr.getX(), mobs.get(2), mob4);
 
 			}
 
 			if (mobs.size() == 2) {
 
 				mobAttack(walklr.getX(), mobs.get(0), mob3);
-				mobAttack(walklr.getX(), mobs.get(1), mob4); //
+				mobAttack(walklr.getX(), mobs.get(1), mob4);
 
 			}
 
 			if (mobs.size() == 1) {
 
-				mobAttack(walklr.getX(), mobs.get(0), mob4); //
+				mobAttack(walklr.getX(), mobs.get(0), mob4);
+
+			}
+
+			if (!c()) {
+
+				if (attackrn == false) {
+
+					blast.move(walklr.getX(), 573, 1);
+					health.move(walklr.getX(), walklr.getY() - 50, 1);
+
+					// if (c() == false) {
+
+					walklr.left = true;
+					// System.out.println(walklr.getX());
+
+					walklr.setVx(3.0); // parameter should be agl/weight
+
+					rightw = true;
+					leftw = false;
+
+					// }
+
+				}
 
 			}
 
@@ -376,6 +370,13 @@ public class Battle extends FullFunctionScreen {
 					rightw = false;
 
 				}
+			}
+
+			if (walklr.getX() < 1) {
+
+				// MinuteQuestButBetter.increaseround();
+				walklr.setVx(0);
+				// MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
 			}
 
 		} else if (e.getKeyCode() == KeyEvent.VK_A && gameover == false) {
@@ -577,7 +578,7 @@ public class Battle extends FullFunctionScreen {
 					count++;
 				}
 
-				if (count <= 102) {
+				if (count <= 65) {
 					// System.out.println("Range is " + count);
 
 					return true;
@@ -589,7 +590,7 @@ public class Battle extends FullFunctionScreen {
 					count++;
 				}
 
-				if (count <= 102) {
+				if (count <= 65) {
 					// System.out.println("Range is " + count);
 
 					return true;
@@ -616,9 +617,17 @@ public class Battle extends FullFunctionScreen {
 			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
 			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
 			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+			
+			
+			System.out.print("Mobs are level: "+mobs.get(1).getLevel()+" Attack stats is: "+mobs.get(1).getStr());
+
 		}
 
 		if (MinuteQuestButBetter.round() == 1) {
+			
+
+			
+			
 			// mobs.add(MinuteQuestButBetter.bdragon);
 			mobs.add(MinuteQuestButBetter.slime);
 			mobs.add(MinuteQuestButBetter.slime);
@@ -629,24 +638,91 @@ public class Battle extends FullFunctionScreen {
 			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
 			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
 			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+			
+			System.out.print("Mobs are level: "+mobs.get(1).getLevel()+" Attack stats is: "+mobs.get(1).getStr());
+
+			
+
 		}
+		
+		
+		if (MinuteQuestButBetter.round() == 2) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.slime);
+			mobs.add(MinuteQuestButBetter.slime);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.demon);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
+		
+		
+		if (MinuteQuestButBetter.round() == 3) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.slime);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.demon);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
+		
+		
+		
+		
+		if (MinuteQuestButBetter.round() == 4) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.demon);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+			
+			
+		}
+		
+		if (MinuteQuestButBetter.round() == 5) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.beast);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
+		
 	}
 
 	public boolean c() {
 
 		if (mobs.size() == 4) {
 			if (checkcollision(walklr.getX(), mob1, mobs.get(0)) == false
-					&& checkcollision(walklr.getX(), mob2, mobs.get(1)) == false
-					&& checkcollision(walklr.getX(), mob3, mobs.get(2)) == false
-					&& checkcollision(walklr.getX(), mob4, mobs.get(3)) == false) {
+			// && checkcollision(walklr.getX(), mob2, mobs.get(1)) == false
+			// && checkcollision(walklr.getX(), mob3, mobs.get(2)) == false
+			// && checkcollision(walklr.getX(), mob4, mobs.get(3)) == false
+			) {
 				return false;
 			}
 		}
 
 		if (mobs.size() == 3) {
 			if (checkcollision(walklr.getX(), mob2, mobs.get(0)) == false
-					&& checkcollision(walklr.getX(), mob3, mobs.get(1)) == false
-					&& checkcollision(walklr.getX(), mob4, mobs.get(2)) == false) {
+			// && checkcollision(walklr.getX(), mob3, mobs.get(1)) == false
+			// && checkcollision(walklr.getX(), mob4, mobs.get(2)) == false
+			) {
 				return false;
 
 			}
@@ -654,7 +730,8 @@ public class Battle extends FullFunctionScreen {
 
 		if (mobs.size() == 2) {
 			if (checkcollision(walklr.getX(), mob3, mobs.get(0)) == false
-					&& checkcollision(walklr.getX(), mob4, mobs.get(1)) == false) {
+			// && checkcollision(walklr.getX(), mob4, mobs.get(1)) == false
+			) {
 				return false;
 
 			}
@@ -705,6 +782,9 @@ public class Battle extends FullFunctionScreen {
 			health.setTextColor(Color.WHITE);
 
 			getViewObjects().add(health);
+
+			walklr.move(walklr.getX() - 3, walklr.getY(), 1000);
+			walklr.setVx(0);
 
 		} else {
 			if (MinuteQuestButBetter.mc.dead() == true) {

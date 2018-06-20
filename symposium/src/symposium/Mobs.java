@@ -15,14 +15,13 @@ public class Mobs {
 	public int maxHealth;
 	private boolean isAttack;
 
-	public Mobs(String img, String name, int str, int agl, int vit, int luk, int level, int positionx, int positiony) {
+	public Mobs(String img, String name, int str, int agl, int vit, int luk, int positionx, int positiony) {
 		this.img = img;
 		this.name = name;
 		this.str = str;
 		this.agl = agl;
 		this.vit = vit;
 		this.luk = luk;
-		this.level = level;
 		this.positionx = positionx;
 		this.positiony = positiony;
 
@@ -55,7 +54,7 @@ public class Mobs {
 	}
 
 	public int getLevel() {
-		level = MinuteQuestButBetter.mc.getLevel();
+		level = MinuteQuestButBetter.round()+1;
 		return level;
 	}
 
