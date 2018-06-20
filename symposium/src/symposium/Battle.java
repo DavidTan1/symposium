@@ -210,12 +210,6 @@ public class Battle extends FullFunctionScreen {
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT) {
 			walklr.setVx(0);
 
-			if (walklr.getX() > 1300) {
-
-				MinuteQuestButBetter.increaseround();
-
-				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
-			}
 		} else if (e.getKeyCode() == KeyEvent.VK_LEFT) {
 
 			walklr.setVx(0);
@@ -251,14 +245,11 @@ public class Battle extends FullFunctionScreen {
 						a.printStackTrace();
 					}
 
-					
-					
 					System.out.println("aaaaaaa");
 
 					if (mobs.size() == 4) {
 
 						contact(blast.getX() + 50, mob1, mobs.get(0));
-
 
 					}
 
@@ -291,11 +282,6 @@ public class Battle extends FullFunctionScreen {
 				}
 			}.start();
 
-			
-			
-			
-			
-			
 		}
 
 	}
@@ -303,6 +289,13 @@ public class Battle extends FullFunctionScreen {
 	public void keyPressed(KeyEvent e) {
 
 		if (e.getKeyCode() == KeyEvent.VK_RIGHT && gameover == false) {
+
+			if (walklr.getX() > 1300) {
+
+				MinuteQuestButBetter.increaseround();
+
+				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
+			}
 
 			if (attackrn == false) {
 
@@ -448,7 +441,7 @@ public class Battle extends FullFunctionScreen {
 				punchlr.striker = true;
 
 				punchlr.setVisible(true);
-				punchlr.move(walklr.getX() - 20, walklr.getY() - 5, 1);
+				punchlr.move(walklr.getX(), walklr.getY() - 5, 1);
 
 				new Thread() {
 
@@ -496,7 +489,7 @@ public class Battle extends FullFunctionScreen {
 			}
 
 		} else if (e.getKeyCode() == KeyEvent.VK_B && gameover == false) {
-			//add a timer for the blast
+			// add a timer for the blast
 			attackrn = true;
 
 			blast.fired = true;
@@ -507,29 +500,22 @@ public class Battle extends FullFunctionScreen {
 
 			welcomeText.setText("You used a energy blast.");
 
-		} else if(e.getKeyCode() == KeyEvent.VK_X && gameover == false) {
-			
-			
-			if(money.getX()-20 <= walklr.getX() && walklr.getX() <= money.getX()+20){
-				
+		} else if (e.getKeyCode() == KeyEvent.VK_X && gameover == false) {
+
+			if (money.getX() - 20 <= walklr.getX() && walklr.getX() <= money.getX() + 20) {
+
 				System.out.println(money.getX());
 				System.out.println(walklr.getX());
 
-				
 				MinuteQuestButBetter.mc.increaseGold(money.moneyAmount());
-				
+
 				getViewObjects().remove(money);
 				System.out.println(MinuteQuestButBetter.mc.getGold());
 
 			}
-			
-			
-			
-			
-			
-			//money
-			
-			
+
+			// money
+
 		}
 
 		repaint();
@@ -687,7 +673,7 @@ public class Battle extends FullFunctionScreen {
 
 	public boolean checkcollision(int x, Graphic pic, Mobs mob) {
 
-		if ((0 > ((pic.getX()) - 74) - x) && !mob.dead()) {
+		if ((0 > ((pic.getX()) - 60) - x) && !mob.dead()) {
 			return true;
 		}
 
@@ -699,7 +685,8 @@ public class Battle extends FullFunctionScreen {
 	}
 
 	public void mobAttack(int position, Mobs mob, Graphic pic) {
-		if (checkMob(position, pic, mob) == true && MinuteQuestButBetter.mc.currHealth(mob) >= 0) {
+		if (checkMob(position, pic, mob) == true && MinuteQuestButBetter.mc.currHealth(mob) > 0
+				&& dodge(MinuteQuestButBetter.mc.setAgl(), mob.getAgl())) {
 
 			if (x == 1) {
 				getViewObjects().remove(health);
@@ -726,8 +713,22 @@ public class Battle extends FullFunctionScreen {
 
 	}
 
+	public boolean dodge(int userspeed, int mobspeed) {
+		if (userspeed > mobspeed) {
+			int rate = (int) (Math.random() * 100) + 1;
+
+			if (rate > 90) {
+				return false;// dodge attack
+			}
+
+			return true;// fail to dodge attack
+		}
+
+		return true;
+	}
+
 	public void kill(int xcoord, Mobs mob, Graphic pic) {
-		if (checkMob(xcoord, pic, mob) == true) {
+		if (checkMob(xcoord, pic, mob) == true && speedOrder(MinuteQuestButBetter.mc.setAgl(), mob.getAgl())) {
 
 			if (y == 1) {
 				getViewObjects().remove(one);
@@ -756,24 +757,20 @@ public class Battle extends FullFunctionScreen {
 
 				System.out.println("Mob size is currently " + mobs.size());
 
-				
-				
-				money = new Money(pic.getX(),pic.getY(), 25,25,"X",mob.multiplier());
+				money = new Money(pic.getX(), pic.getY(), 25, 25, "X", mob.multiplier());
 				getViewObjects().add(money);
 
-				
-				
 				update();
 
 			}
 
 		} else {
-			welcomeText.setText("You attack nothing. Try moving closer");
+			welcomeText.setText("You swung, but your attack missed.");
 		}
 	}
 
 	public void contact(int xcoord, Graphic pic, Mobs mob) {
-		if (xcoord > pic.getX()) {
+		if (xcoord > pic.getX() && speedOrder(MinuteQuestButBetter.mc.setAgl(), mob.getAgl())) {
 			// if (y == 1) {
 			// getViewObjects().remove(one);
 			// y = 0;
@@ -795,17 +792,27 @@ public class Battle extends FullFunctionScreen {
 
 				System.out.println("Mob size is currently " + mobs.size());
 
-				
-				
-				money = new Money(pic.getX(),pic.getY(), 25,25,"X",mob.multiplier());
+				money = new Money(pic.getX(), pic.getY(), 25, 25, "X", mob.multiplier());
 				getViewObjects().add(money);
 
-				
-				
 				update();
 
 			}
 		}
+	}
+
+	public boolean speedOrder(int userspeed, int mobspeed) {
+		if (mobspeed > userspeed) {
+			int rate = (int) (Math.random() * 100) + 1;
+
+			if (rate > 90) {
+				return false;// dodge attack
+			}
+
+			return true;// fail to dodge attack
+		}
+
+		return true;
 	}
 
 }
