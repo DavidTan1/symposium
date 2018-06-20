@@ -16,6 +16,8 @@ public class Hero {
 	private int maxHealth;
 	private int currHealth;
 	private int exp;
+	private int maxEnergy;
+	public int currEnergy;
 
 	public int points;
 
@@ -31,6 +33,10 @@ public class Hero {
 
 		maxHealth = getHealth();
 		currHealth = maxHealth;
+
+		maxEnergy = getEnergy();
+		currEnergy = maxEnergy;
+		
 		
 		asdf = new ArrayList<Integer>();
 
@@ -39,13 +45,13 @@ public class Hero {
 		for (int i = 1; i < 20; i++) {
 			asdf.add(x);
 			x = x * 2;
-			System.out.println("Level " + i + " " + asdf.get(i-1));
+			System.out.println("Level " + i + " " + asdf.get(i - 1));
 		}
 
 	}
 
 	public static void main(String[] args) {
-		
+
 	}
 
 	public int increaseGold(int amount) {
@@ -81,16 +87,19 @@ public class Hero {
 
 		return str;
 	}
-	
+
 	public int instr() {
 		return str++;
 	}
+
 	public int inagl() {
 		return agl++;
 	}
+
 	public int invit() {
 		return vit++;
 	}
+
 	public int inluk() {
 		return luk++;
 	}
@@ -118,6 +127,25 @@ public class Hero {
 
 	public int getHealth() {
 		return getVit() * 100;
+	}
+
+	public int getEnergy() {
+		return getLuk() * 100;
+	}
+
+	public int currEnergy() {
+		if (maxEnergy == currEnergy) {
+			currEnergy = maxEnergy - 100;
+			System.out.println(currEnergy);
+			return currEnergy;
+
+		} else {
+
+			currEnergy = currEnergy - 100;
+			System.out.println(currEnergy);
+			return currEnergy;
+		}
+
 	}
 
 	public boolean dead() {
@@ -159,34 +187,35 @@ public class Hero {
 		return level;
 
 	}
+
 	public int inlevel() {
 		return level++;
 	}
-	
+
 	public int dispoint() {
 		return points;
 	}
+
 	public int points() {
 		return points += 3;
 
 	}
+
 	public int decreasepoints() {
 		return points--;
 	}
-	
 
 	public void levelup() {
-		if(exp>asdf.get(level-1))
-		{
+		if (exp > asdf.get(level - 1)) {
 			System.out.println("You leveled up!");
 			inlevel();
 			points();
 		}
 
 	}
-	
+
 	public int exp(int x) {
-		exp+=x;
+		exp += x;
 		return x;
 	}
 
@@ -196,5 +225,14 @@ public class Hero {
 
 	public void addArmor(Armor asdf) {
 		armor = asdf;
+	}
+
+	public int energy() {
+		System.out.println("Energy "+currEnergy);
+		return currEnergy;
+	}
+
+	public int refill() {
+		return currEnergy = getEnergy();
 	}
 }
