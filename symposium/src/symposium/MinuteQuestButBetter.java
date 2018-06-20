@@ -71,7 +71,7 @@ public class MinuteQuestButBetter extends GUIApplication {
 		basicarmor = new Armor("BASIC ARMOR", 30, 75, 10, "symposium/armor/bronzearmor.png");
 		robe = new Armor("BASIC ROBE", 40, 100, 10, "symposium/armor/beginnerrobe.png");
 
-		mc = new Hero(nonew, nonea, 10, 10, 10,10, 1, 100);
+		mc = new Hero(nonew, nonea, 10, 10, 10, 10, 1, 100);
 
 		// mobs parameters: String img, String name ,int str, int agl, int vit, int luk,
 		// int level, int positionx, int positiony

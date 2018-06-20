@@ -48,14 +48,11 @@ public class Battle extends FullFunctionScreen {
 	private Graphic mob1;
 	private Graphic mob3;
 	private Graphic mob4;
-	private int x;
 	private int y;
 	private TextArea energy;
-	private boolean stop;
 
 	public Battle(int width, int height, int round) {
 		super(width, height);
-		// roundlevel = round;
 
 		// TODO Auto-generated constructor stub
 
@@ -86,7 +83,6 @@ public class Battle extends FullFunctionScreen {
 		c = 10;
 		currPosition = 10;
 		gameover = false;
-		stop = true;
 		attackrn = false;
 
 		Graphic background = new Graphic(0, 0, 1364, 746, "symposium/battlebackground.png");
@@ -343,7 +339,7 @@ public class Battle extends FullFunctionScreen {
 
 				// MinuteQuestButBetter.increaseround();
 				walklr.setVx(0);
-				// MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
+				MinuteQuestButBetter.gameGUI.setScreen(MinuteQuestButBetter.shop);
 			}
 
 		} else if (e.getKeyCode() == KeyEvent.VK_A && gameover == false) {
@@ -708,6 +704,101 @@ public class Battle extends FullFunctionScreen {
 			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
 			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
 			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
+		if (MinuteQuestButBetter.round() == 6) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.beast);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
+		if (MinuteQuestButBetter.round() == 7) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.demon);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.beast);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
+		if (MinuteQuestButBetter.round() == 7) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.beast);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
+
+		if (MinuteQuestButBetter.round() == 7) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.vampire);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
+
+		if (MinuteQuestButBetter.round() == 8) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.vampire);
+			mobs.add(MinuteQuestButBetter.vampire);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
+		if (MinuteQuestButBetter.round() == 9) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.beast);
+			mobs.add(MinuteQuestButBetter.vampire);
+			mobs.add(MinuteQuestButBetter.vampire);
+			mobs.add(MinuteQuestButBetter.vampire);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
+
+		if (MinuteQuestButBetter.round() == 10) {
+			// mobs.add(MinuteQuestButBetter.bdragon);
+			mobs.add(MinuteQuestButBetter.vampire);
+			mobs.add(MinuteQuestButBetter.vampire);
+			mobs.add(MinuteQuestButBetter.vampire);
+			mobs.add(MinuteQuestButBetter.vampire);
+
+			mob1 = new Graphic(MinuteQuestButBetter.slime.getPositionx(), 603, 93, 70, mobs.get(0).img());
+			mob2 = new Graphic(MinuteQuestButBetter.demon.getPositionx(), 603, 93, 70, mobs.get(1).img());
+			mob3 = new Graphic(MinuteQuestButBetter.beast.getPositionx(), 603, 93, 70, mobs.get(2).img());
+			mob4 = new Graphic(MinuteQuestButBetter.vampire.getPositionx(), 603, 93, 70, mobs.get(3).img());
+		}
+
+		if (MinuteQuestButBetter.round() == 11) {
+
+			mobs.add(MinuteQuestButBetter.bdragon);
+
+			welcomeText.setText("Final Boss");
+			mob4 = new Graphic(MinuteQuestButBetter.bdragon.getPositionx(), 603, 93, 70, mobs.get(0).img());
 		}
 
 	}

@@ -39,8 +39,6 @@ public class Inventory extends FullFunctionScreen {
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
-		
-		
 		Font fontsize50 = new Font("serif", Font.PLAIN, 50);
 		Font fontsize25 = new Font("serif", Font.PLAIN, 25);
 
@@ -73,61 +71,59 @@ public class Inventory extends FullFunctionScreen {
 				+ MinuteQuestButBetter.mc.setAgl());
 
 		viewObjects.add(stats);
-		
-		points = new TextArea(500, 575, 100, 100, "Points Left: "+MinuteQuestButBetter.mc.dispoint());
 
-		
+		points = new TextArea(500, 575, 100, 100, "Points Left: " + MinuteQuestButBetter.mc.dispoint());
+
 		str = new Button(450, 600, 100, 100, "STR", new Action() {
 
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
 
-				if(MinuteQuestButBetter.mc.points>1) {
+				if (MinuteQuestButBetter.mc.points > 1) {
 					MinuteQuestButBetter.mc.instr();
 					MinuteQuestButBetter.mc.decreasepoints();
-					points.setText(""+MinuteQuestButBetter.mc.dispoint());
+					points.setText("" + MinuteQuestButBetter.mc.dispoint());
 
 				}
-				
+
 			}
 
 		});
-		
+
 		agl = new Button(550, 600, 100, 100, "AGL", new Action() {
 
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
 
-				if(MinuteQuestButBetter.mc.points>1) {
+				if (MinuteQuestButBetter.mc.points > 1) {
 					MinuteQuestButBetter.mc.inagl();
 					MinuteQuestButBetter.mc.decreasepoints();
-					points.setText(""+MinuteQuestButBetter.mc.dispoint());
+					points.setText("" + MinuteQuestButBetter.mc.dispoint());
 
 				}
-				
+
 			}
 
 		});
-		
+
 		vit = new Button(450, 675, 100, 100, "VIT", new Action() {
 
 			@Override
 			public void act() {
 				// TODO Auto-generated method stub
 
-				if(MinuteQuestButBetter.mc.points>1) {
+				if (MinuteQuestButBetter.mc.points > 1) {
 					MinuteQuestButBetter.mc.invit();
 					MinuteQuestButBetter.mc.decreasepoints();
-					points.setText(""+MinuteQuestButBetter.mc.dispoint());
+					points.setText("" + MinuteQuestButBetter.mc.dispoint());
 
 				}
-				
+
 			}
 
 		});
-		
 
 		luk = new Button(550, 675, 100, 100, "LUK", new Action() {
 
@@ -135,23 +131,22 @@ public class Inventory extends FullFunctionScreen {
 			public void act() {
 				// TODO Auto-generated method stub
 
-				if(MinuteQuestButBetter.mc.points>1) {
+				if (MinuteQuestButBetter.mc.points > 1) {
 					MinuteQuestButBetter.mc.inluk();
 					MinuteQuestButBetter.mc.decreasepoints();
-					points.setText(""+MinuteQuestButBetter.mc.dispoint());
+					points.setText("" + MinuteQuestButBetter.mc.dispoint());
 				}
-				
+
 			}
 
 		});
-		
-		
+
 		viewObjects.add(points);
 		viewObjects.add(str);
 		viewObjects.add(agl);
 		viewObjects.add(vit);
 		viewObjects.add(luk);
-		
+
 		back = new Button(700, 625, 60, 60, "Back", new Action() {
 
 			@Override
@@ -254,27 +249,22 @@ public class Inventory extends FullFunctionScreen {
 
 		}
 	}
-	
-	
-	public void displayequip()
-	{
-		if(!MinuteQuestButBetter.mc.getWeapon().name().equals("nonew"))
-		{
-		
+
+	public void displayequip() {
+		if (!MinuteQuestButBetter.mc.getWeapon().name().equals("nonew")) {
+
 			weaponEquip = new Graphic(500, 275, 60, 60, MinuteQuestButBetter.mc.getWeapon().img());
 			getViewObjects().add(weaponEquip);
 
 		}
-		
-		if(!MinuteQuestButBetter.mc.getArmor().name().equals("nonea"))
-		{
-		
+
+		if (!MinuteQuestButBetter.mc.getArmor().name().equals("nonea")) {
+
 			armorEquip = new Graphic(500, 200, 60, 60, MinuteQuestButBetter.mc.getArmor().img());
 			getViewObjects().add(armorEquip);
 
 		}
 
-		
 	}
 
 }

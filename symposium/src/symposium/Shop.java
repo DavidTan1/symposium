@@ -54,7 +54,7 @@ public class Shop extends FullFunctionScreen {
 
 		setBackground(Color.BLACK);
 
-		//currValue = MinuteQuestButBetter.mc.getGold();
+		// currValue = MinuteQuestButBetter.mc.getGold();
 
 		i = 1;
 		stock1 = 1;
@@ -164,12 +164,11 @@ public class Shop extends FullFunctionScreen {
 					ONE.setEnabled(false);
 					ONE.setVisible(false);
 					check();
-					
-					
+
 					MinuteQuestButBetter.mc.subGold(weapons.get(0).getCost());
 
 					uinventory.add(weapons.get(0));
-					welcomeText.setText("You have " +  MinuteQuestButBetter.mc.getGold() + " gold left.");
+					welcomeText.setText("You have " + MinuteQuestButBetter.mc.getGold() + " gold left.");
 
 				} else {
 					System.out.print("You don't have enough gold.");
@@ -257,7 +256,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock4 == 1 && weapons.get(3).getCost() <=  MinuteQuestButBetter.mc.getGold()) {
+				if (stock4 == 1 && weapons.get(3).getCost() <= MinuteQuestButBetter.mc.getGold()) {
 
 					System.out.print("Add to inventory.");
 
@@ -275,7 +274,7 @@ public class Shop extends FullFunctionScreen {
 					MinuteQuestButBetter.mc.subGold(weapons.get(3).getCost());
 
 					uinventory.add(weapons.get(3));
-					welcomeText.setText("You have " +  MinuteQuestButBetter.mc.getGold() + " gold left.");
+					welcomeText.setText("You have " + MinuteQuestButBetter.mc.getGold() + " gold left.");
 				} else {
 					welcomeText.setText("You don't have enough gold.");
 
@@ -291,7 +290,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock5 == 1 && armor.get(0).getCost() <=  MinuteQuestButBetter.mc.getGold()) {
+				if (stock5 == 1 && armor.get(0).getCost() <= MinuteQuestButBetter.mc.getGold()) {
 
 					System.out.println("Add to inventory.");
 
@@ -311,7 +310,7 @@ public class Shop extends FullFunctionScreen {
 					MinuteQuestButBetter.mc.subGold(armor.get(0).getCost());
 
 					ainventory.add(armor.get(0));
-					welcomeText.setText("You have " +  MinuteQuestButBetter.mc.getGold() + " gold left.");
+					welcomeText.setText("You have " + MinuteQuestButBetter.mc.getGold() + " gold left.");
 
 				} else {
 					System.out.print("You don't have enough gold.");
@@ -327,7 +326,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock6 == 1 && armor.get(1).getCost() <=  MinuteQuestButBetter.mc.getGold()) {
+				if (stock6 == 1 && armor.get(1).getCost() <= MinuteQuestButBetter.mc.getGold()) {
 
 					System.out.println("Add to inventory.");
 
@@ -347,7 +346,7 @@ public class Shop extends FullFunctionScreen {
 					MinuteQuestButBetter.mc.subGold(armor.get(1).getCost());
 
 					ainventory.add(armor.get(1));
-					welcomeText.setText("You have " +  MinuteQuestButBetter.mc.getGold() + " gold left.");
+					welcomeText.setText("You have " + MinuteQuestButBetter.mc.getGold() + " gold left.");
 
 				} else {
 					System.out.print("You don't have enough gold.");
@@ -363,7 +362,7 @@ public class Shop extends FullFunctionScreen {
 			@Override
 			public void act() {
 
-				if (stock7 == 1 && armor.get(2).getCost() <=  MinuteQuestButBetter.mc.getGold()) {
+				if (stock7 == 1 && armor.get(2).getCost() <= MinuteQuestButBetter.mc.getGold()) {
 
 					System.out.println("Add to inventory.");
 
@@ -383,7 +382,7 @@ public class Shop extends FullFunctionScreen {
 					MinuteQuestButBetter.mc.subGold(armor.get(2).getCost());
 
 					ainventory.add(armor.get(2));
-					welcomeText.setText("You have " +  MinuteQuestButBetter.mc.getGold() + " gold left.");
+					welcomeText.setText("You have " + MinuteQuestButBetter.mc.getGold() + " gold left.");
 
 				} else {
 					System.out.print("You don't have enough gold.");
@@ -478,8 +477,6 @@ public class Shop extends FullFunctionScreen {
 
 		}
 	}
-
-	
 
 	public void displayInventory(Weapon weapon) {
 

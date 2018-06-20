@@ -54,7 +54,7 @@ public class Mobs {
 	}
 
 	public int getLevel() {
-		level = MinuteQuestButBetter.round()+1;
+		level = MinuteQuestButBetter.round() + 1;
 		return level;
 	}
 
@@ -84,20 +84,19 @@ public class Mobs {
 
 	public int currHealthBlast() {
 		if (maxHealth == currHealth) {
-			currHealth = maxHealth - MinuteQuestButBetter.mc.getStr()*10;
+			currHealth = maxHealth - MinuteQuestButBetter.mc.getStr() * 10;
 			System.out.println(currHealth);
 
 			return currHealth;
 
 		} else {
 
-			currHealth = currHealth - MinuteQuestButBetter.mc.getStr()*10;
+			currHealth = currHealth - MinuteQuestButBetter.mc.getStr() * 10;
 			return currHealth;
 		}
 
 	}
-	
-	
+
 	public boolean dead() {
 		if (currHealth <= 0) {
 

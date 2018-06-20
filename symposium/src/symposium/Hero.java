@@ -156,7 +156,7 @@ public class Hero {
 	}
 
 	public int currHealth(Mobs a) {
-		
+
 		if (maxHealth == currHealth) {
 			currHealth = maxHealth - MinuteQuestButBetter.battle.mobs(a);
 
