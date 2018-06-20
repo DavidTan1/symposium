@@ -5,7 +5,6 @@ import java.util.List;
 import java.awt.Color;
 
 import guiTeacher.components.Action;
-import guiTeacher.components.AnimatedComponent;
 import guiTeacher.components.Button;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.TextArea;
@@ -38,8 +37,6 @@ public class Shop extends FullFunctionScreen {
 	public int stock8;
 
 	public int i;
-	//public int currValue;
-	private Graphic bob;
 	private Button inventoryb;
 	private TextArea welcomeTextS;
 	private Visible FIVE;

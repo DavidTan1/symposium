@@ -8,7 +8,6 @@ import java.awt.Color;
 import guiTeacher.components.Action;
 import guiTeacher.components.AnimatedComponent;
 import guiTeacher.components.Button;
-import guiTeacher.components.Component;
 import guiTeacher.components.Graphic;
 import guiTeacher.components.TextArea;
 import guiTeacher.interfaces.Visible;
@@ -19,7 +18,6 @@ public class Battle extends FullFunctionScreen {
 	public ArrayList<Mobs> mobs;
 	public ArrayList<Hero> hero;
 
-	// public int roundlevel;
 	public int currHP;
 	public int count;
 	public int currPosition;
@@ -51,6 +49,7 @@ public class Battle extends FullFunctionScreen {
 	private Graphic mob4;
 	private int x;
 	private int y;
+	
 
 	public Battle(int width, int height, int round) {
 		super(width, height);
@@ -58,11 +57,33 @@ public class Battle extends FullFunctionScreen {
 		// System.out.println("Round " + roundlevel);
 
 		// TODO Auto-generated constructor stub
+		
+		
+		
+		
+		
+		
+		
+		
 	}
+	
+	
+	
 
 	@Override
 	public void initAllObjects(List<Visible> viewObjects) {
 
+		
+
+			
+			
+		
+		
+		
+		
+
+		
+		
 		setBackground(Color.BLACK);
 
 		welcomeText = new TextArea(5, 800, 800, 100,
@@ -149,6 +170,7 @@ public class Battle extends FullFunctionScreen {
 		viewObjects.add(health);
 
 		updateW();
+		
 	}
 
 	public void updateW() {

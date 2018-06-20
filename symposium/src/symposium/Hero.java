@@ -1,6 +1,5 @@
 package symposium;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class Hero {
