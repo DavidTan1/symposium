@@ -9,7 +9,8 @@ public class Sprite extends AnimatedComponent {
 
 	public boolean right;
 	public boolean left;
-
+	public int num;
+	
 	public Sprite(int x, int y, int w, int h) {
 		super(x, y, w, h);
 		// TODO Auto-generated constructor stub
@@ -24,10 +25,10 @@ public class Sprite extends AnimatedComponent {
 			displayTime = currentTime;
 
 			// increase the currentFrameIndex but don't exceed size()
-			currentFrame = (currentFrame + 1) % 4;
+			currentFrame = (currentFrame + 1) % num;
 
 			if (!left) {
-				currentFrame += 4;
+				currentFrame += num;
 			}
 
 			// end animation if not on repeat

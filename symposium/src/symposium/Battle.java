@@ -48,6 +48,7 @@ public class Battle extends FullFunctionScreen {
 	private Graphic mob1;
 	private Graphic mob3;
 	private Graphic mob4;
+	
 	private int y;
 	private TextArea energy;
 
@@ -110,9 +111,12 @@ public class Battle extends FullFunctionScreen {
 		items.setBackground(Color.WHITE);
 		items.update();
 
+		
 		walklr = new Sprite(currPosition, 603, 61, 76);
 		viewObjects.add(walklr);
 
+		walklr.num = 4;
+		
 		walklr.addSequence("symposium/walkl&r.png", 200, 0, 0, 60, 75, 16);
 		Thread walkrl = new Thread(walklr);
 		walkrl.start();
@@ -166,6 +170,8 @@ public class Battle extends FullFunctionScreen {
 			walklr = new Sprite(currPosition, 603, 64, 83);
 			getViewObjects().add(walklr);
 
+			walklr.num = 4;
+			
 			walklr.addSequence("symposium/walkglove.png", 200, 0, 0, 63, 82, 8);
 			Thread walkrl = new Thread(walklr);
 			walkrl.start();
@@ -191,6 +197,8 @@ public class Battle extends FullFunctionScreen {
 			walklr = new Sprite(currPosition, 603, 71, 85);
 			getViewObjects().add(walklr);
 
+			walklr.num = 4;
+			
 			walklr.addSequence("symposium/walkinggsword.png", 200, 0, 0, 70, 84, 8);
 			Thread walkrl = new Thread(walklr);
 			walkrl.start();
@@ -208,10 +216,55 @@ public class Battle extends FullFunctionScreen {
 			punchlr.punchg = 2;
 
 		} else if (MinuteQuestButBetter.mc.getWeapon().name().equals("AXE")) {
+			
 			walklr.setVisible(false);
+
+			walklr = new Sprite(currPosition, 603, 70, 82);
+			getViewObjects().add(walklr);
+
+			
+			walklr.num = 2;
+			
+			walklr.addSequence("symposium/walkaxe.png", 200, 0, 0, 69, 81, 4);
+			Thread walkrl = new Thread(walklr);
+			walkrl.start();
+
+			punchlr.setVisible(false);
+
+			punchlr = new SpriteAttack(walklr.getX(), 590, 82, 82);
+			getViewObjects().add(punchlr);
+			punchlr.setVisible(false);
+
+			punchlr.addSequence("symposium/punchaxe.png", 200, 0, 0, 81, 81, 4);
+			Thread punchrl = new Thread(punchlr);
+			punchrl.start();
+
+			punchlr.punchg = 2;
 
 		} else if (MinuteQuestButBetter.mc.getWeapon().name().equals("ROD")) {
 			walklr.setVisible(false);
+
+			walklr = new Sprite(currPosition, 603, 136, 81);
+			getViewObjects().add(walklr);
+
+			walklr.num = 2;
+
+			
+			walklr.addSequence("symposium/walkrod.png", 200, 0, 0, 135, 80, 4);
+			Thread walkrl = new Thread(walklr);
+			walkrl.start();
+
+			punchlr.setVisible(false);
+
+			punchlr = new SpriteAttack(walklr.getX(), 590, 143, 81);
+			getViewObjects().add(punchlr);
+			punchlr.setVisible(false);
+
+			punchlr.addSequence("symposium/punchrod.png", 200, 0, 0, 142, 80, 4);
+			Thread punchrl = new Thread(punchlr);
+			punchrl.start();
+
+			punchlr.punchg = 2;
 
 		}
 	}
@@ -836,7 +889,9 @@ public class Battle extends FullFunctionScreen {
 
 	public boolean checkcollision(int x, Graphic pic, Mobs mob) {
 
-		if ((0 > ((pic.getX()) - 60) - x) && !mob.dead()) {
+		
+		
+		if ((0 > ((pic.getX()) - walklr.getWidth()) - x) && !mob.dead()) {
 			walklr.setVx(0);
 			return true;
 		}
@@ -958,8 +1013,9 @@ public class Battle extends FullFunctionScreen {
 
 				removeMob(mob, pic);
 
-				money = new Money(pic.getX(), 650, 25, 25, "X", mob.multiplier());
+				money = new Money(pic.getX(), 650, 25, 25, "O", mob.multiplier());
 				getViewObjects().add(money);
+				
 
 				update();
 
