@@ -350,7 +350,8 @@ public class Battle extends FullFunctionScreen {
 
 				blast.move(walklr.getX(), 573, 1);
 				health.move(walklr.getX(), walklr.getY() - 50, 1);
-
+				energy.move(walklr.getX(), walklr.getY() - 100, 1);
+				
 				walklr.left = true;
 
 				walklr.setVx(3.0); // parameter should be agl/weight
@@ -366,6 +367,7 @@ public class Battle extends FullFunctionScreen {
 
 				blast.move(walklr.getX() + 44, 573, 1);
 				health.move(walklr.getX(), walklr.getY() - 50, 1);
+				energy.move(walklr.getX(), walklr.getY() - 100, 1);
 
 				for (int i = 0; i < 1; i++) {
 
