@@ -142,12 +142,12 @@ public class Battle extends FullFunctionScreen {
 		viewObjects.add(mob4);
 
 		health = new TextArea(walklr.getX(), walklr.getY() - 50, 500, 50,
-				"Health: " + MinuteQuestButBetter.mc.getHealth() + "/" + MinuteQuestButBetter.mc.getHealth());
+				"Health: " + MinuteQuestButBetter.mc.currHealth + "/" + MinuteQuestButBetter.mc.getHealth());
 
 		viewObjects.add(health);
 
 		energy = new TextArea(walklr.getX(), walklr.getY() - 100, 500, 50,
-				"Energy: " + MinuteQuestButBetter.mc.getEnergy() + "/" + MinuteQuestButBetter.mc.getEnergy());
+				"Energy: " + MinuteQuestButBetter.mc.energy() + "/" + MinuteQuestButBetter.mc.getEnergy());
 
 		viewObjects.add(energy);
 		updateW();
@@ -293,26 +293,17 @@ public class Battle extends FullFunctionScreen {
 
 			}
 
-			if (!c()) {
+			if (attackrn == false) {
 
-				if (attackrn == false) {
+				blast.move(walklr.getX(), 573, 1);
+				health.move(walklr.getX(), walklr.getY() - 50, 1);
 
-					blast.move(walklr.getX(), 573, 1);
-					health.move(walklr.getX(), walklr.getY() - 50, 1);
+				walklr.left = true;
 
-					// if (c() == false) {
+				walklr.setVx(3.0); // parameter should be agl/weight
 
-					walklr.left = true;
-					// System.out.println(walklr.getX());
-
-					walklr.setVx(3.0); // parameter should be agl/weight
-
-					rightw = true;
-					leftw = false;
-
-					// }
-
-				}
+				rightw = true;
+				leftw = false;
 
 			}
 
@@ -586,27 +577,21 @@ public class Battle extends FullFunctionScreen {
 		if (mob.dead() == false) {
 
 			if (position < pic.getX()) {
-				for (int i = position; i <= pic.getX(); i++) {
+				for (int i = position + walklr.getWidth(); i <= pic.getX(); i++) {
 					count++;
+
 				}
 
-				if (count <= 65) {
-					// System.out.println("Range is " + count);
+				System.out.println("Range is " + count);
+
+				if (count <= 60) {
 
 					return true;
 				}
 
 			} else {
 
-				for (int i = pic.getX(); i <= position; i--) {
-					count++;
-				}
-
-				if (count <= 65) {
-					// System.out.println("Range is " + count);
-
-					return true;
-				}
+				walklr.setVx(0);
 			}
 
 		}
@@ -852,6 +837,7 @@ public class Battle extends FullFunctionScreen {
 	public boolean checkcollision(int x, Graphic pic, Mobs mob) {
 
 		if ((0 > ((pic.getX()) - 60) - x) && !mob.dead()) {
+			walklr.setVx(0);
 			return true;
 		}
 
@@ -864,22 +850,20 @@ public class Battle extends FullFunctionScreen {
 
 	public void mobAttack(int position, Mobs mob, Graphic pic) {
 
-		// if (pic.getX() - 20 <= position && position <= pic.getX()&&
-		// MinuteQuestButBetter.mc.currHealth(mob) > 0
-		// && dodge(MinuteQuestButBetter.mc.setAgl(), mob.getAgl())) {
+		if (checkcollision(position, pic, mob) == true && MinuteQuestButBetter.mc.currHealth(mob) > 0) {
 
-		if (checkMob(position, pic, mob) == true && MinuteQuestButBetter.mc.currHealth(mob) > 0
-				&& dodge(MinuteQuestButBetter.mc.setAgl(), mob.getAgl())) {
+			if (dodge(MinuteQuestButBetter.mc.setAgl(), mob.getAgl())) {
 
-			health.setText(
-					"Health: " + MinuteQuestButBetter.mc.currHealth(mob) + "/" + MinuteQuestButBetter.mc.getHealth());
+				System.out.println("asdhaksfhaksfhas");
 
-			health.setTextColor(Color.WHITE);
+				health.setText("Health: " + MinuteQuestButBetter.mc.currHealth(mob) + "/"
+						+ MinuteQuestButBetter.mc.getHealth());
 
-			getViewObjects().add(health);
+				health.setTextColor(Color.WHITE);
 
-			walklr.move(walklr.getX() - 3, walklr.getY(), 1000);
-			walklr.setVx(0);
+				getViewObjects().add(health);
+
+			}
 
 		} else {
 			if (MinuteQuestButBetter.mc.dead() == true) {
@@ -907,23 +891,28 @@ public class Battle extends FullFunctionScreen {
 	}
 
 	public void kill(int xcoord, Mobs mob, Graphic pic) {
-		if (checkMob(xcoord, pic, mob) == true && speedOrder(MinuteQuestButBetter.mc.setAgl(), mob.getAgl())) {
+		if (checkcollision(xcoord, pic, mob) == true) {
 
-			if (y == 1) {
-				getViewObjects().remove(one);
-				y = 0;
+			if (speedOrder(MinuteQuestButBetter.mc.setAgl(), mob.getAgl())) {
+
+				if (y == 1) {
+					getViewObjects().remove(one);
+					y = 0;
+
+				}
+
+				y = 1;
+
+				one = new TextArea(pic.getX(), 553, 93, 70, mob.name() + ":" + mob.currHealth() + "/" + mob.getVit());
+
+				getViewObjects().add(one);
+
+				blast.setVisible(false);
+
+				System.out.println("check");
 
 			}
 
-			y = 1;
-
-			one = new TextArea(pic.getX(), 553, 93, 70, mob.name() + ":" + mob.currHealth() + "/" + mob.getVit());
-
-			getViewObjects().add(one);
-
-			blast.setVisible(false);
-
-			System.out.println("check");
 			mobAttack(xcoord, mob, pic);
 
 			if (mob.dead() == true) {
@@ -982,7 +971,8 @@ public class Battle extends FullFunctionScreen {
 		if (mobspeed > userspeed) {
 			int rate = (int) (Math.random() * 100) + 1;
 
-			if (rate > 90) {
+			if (rate > 1) {
+				System.out.println("DODGE!!!");
 				return false;// dodge attack
 			}
 

@@ -14,7 +14,7 @@ public class Hero {
 	private int level;
 	private int gold;
 	private int maxHealth;
-	private int currHealth;
+	public int currHealth;
 	private int exp;
 	private int maxEnergy;
 	public int currEnergy;
@@ -116,7 +116,6 @@ public class Hero {
 	}
 
 	public int setAgl() {
-		System.out.println(getArmor());
 		int trueAGL = (int) (agl - (getArmor().getweight() * .75));
 		return trueAGL;
 	}
@@ -171,7 +170,6 @@ public class Hero {
 	}
 
 	public int setVit() {
-		System.out.println(getArmor());
 		int trueVIT = vit * (getArmor().getdefense() / 10);
 		return trueVIT;
 	}
@@ -229,7 +227,6 @@ public class Hero {
 	}
 
 	public int energy() {
-		System.out.println("Energy " + currEnergy);
 		return currEnergy;
 	}
 
